@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Code for the DevShop Servers feature.
+ */
+
+include_once 'devshop_servers.features.inc';
+
+/**
+ * Implements hook_presave()
+ *
+ * We resolve the server name to IP addresses if none has been given
+ * by the operator. we also fire up the regular services hooks.
+ */
+function devshop_servers_node_presave($node) {
+
+  if ($node->type == 'server' && empty($node->devshop_server_ip_addresses[LANGUAGE_NONE])) {
+    // this returns an array or FALSE
+    $ips = gethostbynamel($node->title);
+    if ($ips) {
+      drupal_set_message(t('Initialized the IP to %ip based on hostname %name. If an HTTP service is enabled, this will be used to create database grants so make sure it is the right address, as seen from the database server.', array('%ip' => join(',', $ips), '%name' => $node->title)), 'message');
+
+
+      // @TODO: Figure out how to save text IPs to the format that field_ipaddress stores.
+//      dsm($ips, 'IPs');
+//      $node->new_ip_addresses = $ips;
+    }
+    else {
+      drupal_set_message(t("Could not resolve IP address of server %name, not automatically setting IP address. DNS may fail.", array('%name' => $node->title)));
+    }
+  }
+}
