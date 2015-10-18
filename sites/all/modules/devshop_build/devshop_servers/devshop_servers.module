@@ -42,9 +42,7 @@ function devshop_servers_node_presave($node) {
     }
   }
 }
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
+
 /**
  * Returns our server inventory.
  */
@@ -56,11 +54,26 @@ function devshop_servers_inventory() {
 
   // DevShop System Administrators.
   // Add any users with the role "system administrator"
-  $sql = "SELECT u.uid FROM users u
+  $sql = "SELECT u.uid, u.name FROM users u
       INNER JOIN users_roles ur ON u.uid = ur.uid
       INNER JOIN role r ON ur.rid = r.rid
-      WHERE r.name = :role";
-  $uids = db_query($sql, array(':role' => 'system administrator'))->fetchCol();
+      WHERE r.name = :role AND u.status = 1";
+  $admin_uids = db_query($sql, array(':role' => 'system administrator'))->fetchAllKeyed();
+
+  // Get all users and their keys.
+  $sql = "SELECT u.uid, u.name FROM users u
+      WHERE u.status = 1";
+  $uids = db_query($sql)->fetchAllKeyed();
+  $users = user_load_multiple($uids);
+
+  // Lookup all users SSH Keys.
+  foreach ($users as &$account) {
+    $account_keys = array();
+    $keys = sshkey_load_all_by_entity('user', $account->uid);
+    foreach ($keys as $key) {
+      $account->ssh_keys[] = $key->value;
+    }
+  }
 
   // Get all server nodes.
   $sql = "SELECT nid FROM node
@@ -72,31 +85,24 @@ function devshop_servers_inventory() {
     // Add host to inventory.
     $inventory->devmasters->hosts[] = $server_node->title;
 
-    // Get users from the field
+    // Add system administrators
+    foreach ($admin_uids as $uid) {
+      $account = $users[$uid];
+      $inventory->_meta->hostvars->{$server_node->title}->system_administrators[$account->name] = array(
+        'name' => $account->name,
+        'ssh_keys' => $account->ssh_keys,
+      );
+    }
+
+    // Add server users
     $server_users = field_get_items('node', $server_node, 'devshop_server_users');
-    if (!empty($server_users)){
-      foreach ($server_users as $data){
-        $account = user_load($data['target_id']);
-
-        // If user has not been loaded yet...
-        if (empty($users[$account->name])) {
-
-          // Lookup their SSH Keys.
-          $account_keys = array();
-          $keys = sshkey_load_all_by_entity('user', $account->uid);
-          foreach ($keys as $key){
-            $account_keys[] = $key->value;
-          }
-
-          // Save to users array.
-          $users[$account->name] = array(
-              'name' => $account->name,
-              'ssh_keys' => $account_keys,
-          );
-        }
-
-        // Save user to inventory _meta.
-        $inventory->_meta->hostvars->{$server_node->title}->users[$account->name] = $users[$account->name];
+    if (!empty($server_users)) {
+      foreach ($server_users as $data) {
+        $account = $users[$uid];
+        $inventory->_meta->hostvars->{$server_node->title}->users[$account->name] = array(
+          'name' => $account->name,
+          'ssh_keys' => $account->ssh_keys,
+        );
       }
     }
   }
