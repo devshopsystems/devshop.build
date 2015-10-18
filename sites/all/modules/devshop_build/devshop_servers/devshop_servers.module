@@ -52,6 +52,7 @@ function devshop_servers_inventory() {
   // Build attributes object
   $inventory = new stdClass;
   $inventory->devmasters->hosts = array();
+  $inventory->_meta->hostvars = new stdClass();
 
   // DevShop System Administrators.
   // Add any users with the role "system administrator"
@@ -68,32 +69,36 @@ function devshop_servers_inventory() {
   $server_nodes = node_load_multiple($server_nids);
 
   foreach ($server_nodes as $server_node) {
-    // Start generating inventory.
+    // Add host to inventory.
     $inventory->devmasters->hosts[] = $server_node->title;
 
-//    // Get users from the field
-//    $server_users = field_get_items('node', $node, 'devshop_server_users');
-//    if (!empty($server_users)){
-//      foreach ($server_users as $data){
-//        $uids[$data['target_id']] = $data['target_id'];
-//      }
-//    }
-//
-//    // for all found UIDs, load up their SSH keys
-//    $all_keys = array();
-//    foreach ($uids as $uid){
-//      $account = user_load($uid);
-//      if ($account){
-//        $account_keys = array();
-//        $keys = sshkey_load_all_by_entity('user', $account->uid);
-//        foreach ($keys as $key){
-//          $all_keys[] = $key->value;
-//          $account_keys[] = $key->value;
-//        }
-//        // Adding each users authorized key.  Each item in this array gets a server account.
-//        $vars->devudo['users'][$account->name] = implode("\n", $account_keys);
-//      }
-//    }
+    // Get users from the field
+    $server_users = field_get_items('node', $server_node, 'devshop_server_users');
+    if (!empty($server_users)){
+      foreach ($server_users as $data){
+        $account = user_load($data['target_id']);
+
+        // If user has not been loaded yet...
+        if (empty($users[$account->name])) {
+
+          // Lookup their SSH Keys.
+          $account_keys = array();
+          $keys = sshkey_load_all_by_entity('user', $account->uid);
+          foreach ($keys as $key){
+            $account_keys[] = $key->value;
+          }
+
+          // Save to users array.
+          $users[$account->name] = array(
+              'name' => $account->name,
+              'ssh_keys' => $account_keys,
+          );
+        }
+
+        // Save user to inventory _meta.
+        $inventory->_meta->hostvars->{$server_node->title}->users[$account->name] = $users[$account->name];
+      }
+    }
   }
 
   print json_encode($inventory);
