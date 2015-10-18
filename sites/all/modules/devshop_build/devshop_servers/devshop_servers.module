@@ -75,6 +75,16 @@ function devshop_servers_inventory() {
     }
   }
 
+  // Add system administrators
+  foreach ($admin_uids as $uid) {
+    $account = $users[$uid];
+
+    $inventory->devmasters->vars->system_administrators[$account->name] =  array(
+      'username' => $account->name,
+      'ssh_keys' => $account->ssh_keys,
+    );
+  }
+
   // Get all server nodes.
   $sql = "SELECT nid FROM node
       WHERE type = 'server' AND status = 1";
@@ -84,15 +94,6 @@ function devshop_servers_inventory() {
   foreach ($server_nodes as $server_node) {
     // Add host to inventory.
     $inventory->devmasters->hosts[] = $server_node->title;
-
-    // Add system administrators
-    foreach ($admin_uids as $uid) {
-      $account = $users[$uid];
-      $inventory->_meta->hostvars->{$server_node->title}->system_administrators[$account->name] = array(
-        'name' => $account->name,
-        'ssh_keys' => $account->ssh_keys,
-      );
-    }
 
     // Add server users
     $server_users = field_get_items('node', $server_node, 'devshop_server_users');
