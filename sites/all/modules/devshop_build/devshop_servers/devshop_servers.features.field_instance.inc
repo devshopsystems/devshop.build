@@ -122,81 +122,6 @@ function devshop_servers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-server-devshop_server_users_admins'.
-  $field_instances['node-server-devshop_server_users_admins'] = array(
-    'bundle' => 'server',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Add the users who get full linux user accounts on this server.
-
-<strong>WARNING:</strong> These users will have SUDO access WITHOUT a password. Use with caution.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'devshop_server_users_admins',
-    'label' => 'System Administrators',
-    'required' => 0,
-    'settings' => array(
-      'nodeaccess_userreference' => array(
-        'all' => array(
-          'view' => 0,
-        ),
-        'all_published' => 0,
-        'author' => array(
-          'delete' => 0,
-          'update' => 0,
-          'view' => 0,
-        ),
-        'author_published' => 0,
-        'create' => array(
-          'server' => 0,
-        ),
-        'priority' => 0,
-        'referenced' => array(
-          'delete' => 0,
-          'deny_delete' => 0,
-          'deny_update' => 0,
-          'deny_view' => 0,
-          'update' => 0,
-          'view' => 0,
-        ),
-        'referenced_published' => 0,
-        'unused' => 0,
-        'views' => array(
-          'view' => '',
-          'view_args' => '',
-        ),
-      ),
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-server-field_url'.
   $field_instances['node-server-field_url'] = array(
     'bundle' => 'server',
@@ -256,13 +181,9 @@ function devshop_servers_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add the users who get full linux user accounts on this server.
-
-<strong>WARNING:</strong> These users will have SUDO access WITHOUT a password. Use with caution.');
   t('Enter the IP addresses for this server. You may leave this blank and we will lookup the IPs based on the hostname.');
   t('IP Addresses');
   t('Select the users that should be allowed access to this server.');
-  t('System Administrators');
   t('URL');
   t('Users');
 

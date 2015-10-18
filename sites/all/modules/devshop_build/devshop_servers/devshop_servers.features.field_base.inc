@@ -71,43 +71,6 @@ function devshop_servers_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'devshop_server_users_admins'.
-  $field_bases['devshop_server_users_admins'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'devshop_server_users_admins',
-    'field_permissions' => array(
-      'type' => 1,
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'views',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => 'entityreference_1',
-          'view_name' => 'reference_system_admins',
-        ),
-      ),
-      'target_type' => 'user',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
-  );
-
   // Exported field_base: 'field_url'.
   $field_bases['field_url'] = array(
     'active' => 1,
