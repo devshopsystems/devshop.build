@@ -13,6 +13,7 @@ include_once 'devshop_servers.features.inc';
 function devshop_servers_menu(){
   $items['inventory'] = array(
       'page callback' => 'devshop_servers_inventory',
+      'access callback' => TRUE,
   );
   return $items;
 }
