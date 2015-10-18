@@ -48,7 +48,7 @@ function devshop_servers_node_presave($node) {
 function devshop_servers_inventory() {
   // Build attributes object
   $inventory = new stdClass;
-  $inventory->devmasters->hosts = array()
+  $inventory->devmasters->hosts = array();
 
   // DevShop System Administrators.
   // Add any users with the role "system administrator"
