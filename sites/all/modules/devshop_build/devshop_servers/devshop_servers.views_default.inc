@@ -44,11 +44,10 @@ function devshop_servers_views_default_views() {
   $handler->display->display_options['fields']['devshop_server_ip_address']['click_sort_column'] = 'start';
   $handler->display->display_options['fields']['devshop_server_ip_address']['type'] = 'field_ipaddress_shorthand';
   $handler->display->display_options['fields']['devshop_server_ip_address']['delta_offset'] = '0';
-  /* Field: Content: Server Users */
+  /* Field: Content: Users */
   $handler->display->display_options['fields']['devshop_server_users']['id'] = 'devshop_server_users';
   $handler->display->display_options['fields']['devshop_server_users']['table'] = 'field_data_devshop_server_users';
   $handler->display->display_options['fields']['devshop_server_users']['field'] = 'devshop_server_users';
-  $handler->display->display_options['fields']['devshop_server_users']['label'] = 'Users';
   $handler->display->display_options['fields']['devshop_server_users']['settings'] = array(
     'link' => 1,
   );
@@ -59,12 +58,15 @@ function devshop_servers_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: Content: Delete link */
-  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
-  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
-  $handler->display->display_options['fields']['delete_node']['label'] = '';
-  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['table'] = 'field_data_field_url';
+  $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['label'] = '';
+  $handler->display->display_options['fields']['field_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_url']['type'] = 'link_url';
+  $handler->display->display_options['fields']['field_url']['field_api_classes'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
