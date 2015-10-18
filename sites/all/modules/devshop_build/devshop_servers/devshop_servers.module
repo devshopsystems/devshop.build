@@ -61,9 +61,9 @@ function devshop_servers_inventory() {
   $admin_uids = db_query($sql, array(':role' => 'system administrator'))->fetchAllKeyed();
 
   // Get all users and their keys.
-  $sql = "SELECT u.uid, u.name FROM users u
+  $sql = "SELECT u.uid FROM users u
       WHERE u.status = 1";
-  $uids = db_query($sql)->fetchAllKeyed();
+  $uids = db_query($sql)->fetchCol();
   $users = user_load_multiple($uids);
 
   // Lookup all users SSH Keys.
