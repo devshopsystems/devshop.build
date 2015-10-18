@@ -1698,14 +1698,14 @@ $options['packages'] = array (
             0 => 'views_ui.module',
             1 => 'plugins/views_wizard/views_ui_base_views_wizard.class.php',
           ),
-          'version' => '7.x-3.10',
+          'version' => '7.x-3.11',
           'project' => 'views',
-          'datestamp' => '1423648085',
+          'datestamp' => '1430321048',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'views',
-        'version' => '7.x-3.10',
+        'version' => '7.x-3.11',
       ),
       'views' => 
       array (
@@ -2036,13 +2036,13 @@ $options['packages'] = array (
             301 => 'tests/views_view.test',
             302 => 'tests/views_ui.test',
           ),
-          'version' => '7.x-3.10',
+          'version' => '7.x-3.11',
           'project' => 'views',
-          'datestamp' => '1423648085',
+          'datestamp' => '1430321048',
         ),
         'schema_version' => '7301',
         'project' => 'views',
-        'version' => '7.x-3.10',
+        'version' => '7.x-3.11',
       ),
       'views_content' => 
       array (
@@ -2060,7 +2060,7 @@ $options['packages'] = array (
             1 => 'views',
           ),
           'core' => '7.x',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'files' => 
           array (
             0 => 'plugins/views/views_content_plugin_display_ctools_context.inc',
@@ -2068,12 +2068,12 @@ $options['packages'] = array (
             2 => 'plugins/views/views_content_plugin_style_ctools_context.inc',
           ),
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'page_manager' => 
       array (
@@ -2090,14 +2090,14 @@ $options['packages'] = array (
             0 => 'ctools',
           ),
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'ctools_plugin_example' => 
       array (
@@ -2109,7 +2109,7 @@ $options['packages'] = array (
           'name' => 'Chaos Tools (CTools) Plugin Example',
           'description' => 'Shows how an external module can provide ctools plugins (for Panels, etc.).',
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'dependencies' => 
           array (
             0 => 'ctools',
@@ -2119,12 +2119,12 @@ $options['packages'] = array (
           ),
           'core' => '7.x',
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'bulk_export' => 
       array (
@@ -2141,14 +2141,14 @@ $options['packages'] = array (
             0 => 'ctools',
           ),
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'ctools_ajax_sample' => 
       array (
@@ -2160,19 +2160,19 @@ $options['packages'] = array (
           'name' => 'Chaos Tools (CTools) AJAX Example',
           'description' => 'Shows how to use the power of Chaos AJAX.',
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'dependencies' => 
           array (
             0 => 'ctools',
           ),
           'core' => '7.x',
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'term_depth' => 
       array (
@@ -2189,14 +2189,14 @@ $options['packages'] = array (
             0 => 'ctools',
           ),
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'ctools_custom_content' => 
       array (
@@ -2209,18 +2209,18 @@ $options['packages'] = array (
           'description' => 'Create custom, exportable, reusable content panes for applications like Panels.',
           'core' => '7.x',
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'dependencies' => 
           array (
             0 => 'ctools',
           ),
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'stylizer' => 
       array (
@@ -2233,19 +2233,19 @@ $options['packages'] = array (
           'description' => 'Create custom styles for applications such as Panels.',
           'core' => '7.x',
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'dependencies' => 
           array (
             0 => 'ctools',
             1 => 'color',
           ),
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'ctools_access_ruleset' => 
       array (
@@ -2258,18 +2258,18 @@ $options['packages'] = array (
           'description' => 'Create custom, exportable, reusable access rulesets for applications like Panels.',
           'core' => '7.x',
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'dependencies' => 
           array (
             0 => 'ctools',
           ),
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'php' => '5.2.4',
         ),
         'schema_version' => 0,
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'ctools' => 
       array (
@@ -2282,7 +2282,7 @@ $options['packages'] = array (
           'description' => 'A library of helpful tools by Merlin of Chaos.',
           'core' => '7.x',
           'package' => 'Chaos tool suite',
-          'version' => '7.x-1.6',
+          'version' => '7.x-1.9',
           'files' => 
           array (
             0 => 'includes/context.inc',
@@ -2292,7 +2292,7 @@ $options['packages'] = array (
             4 => 'tests/css_cache.test',
           ),
           'project' => 'ctools',
-          'datestamp' => '1422471484',
+          'datestamp' => '1440020680',
           'dependencies' => 
           array (
           ),
@@ -2300,7 +2300,7 @@ $options['packages'] = array (
         ),
         'schema_version' => '7001',
         'project' => 'ctools',
-        'version' => '7.x-1.6',
+        'version' => '7.x-1.9',
       ),
       'openid_provider' => 
       array (
@@ -2380,9 +2380,9 @@ $options['packages'] = array (
             1 => 'jquery_update.install',
           ),
           'configure' => 'admin/config/development/jquery_update',
-          'version' => '7.x-2.5',
+          'version' => '7.x-2.6',
           'project' => 'jquery_update',
-          'datestamp' => '1422221882',
+          'datestamp' => '1434549783',
           'dependencies' => 
           array (
           ),
@@ -2390,7 +2390,7 @@ $options['packages'] = array (
         ),
         'schema_version' => '7000',
         'project' => 'jquery_update',
-        'version' => '7.x-2.5',
+        'version' => '7.x-2.6',
       ),
       'oauth2_common' => 
       array (
@@ -2669,16 +2669,16 @@ $options['packages'] = array (
           'description' => 'Autoload based on PSR-0, PSR-4 and a custom PHP 5.2 compatibility mode.',
           'core' => '7.x',
           'php' => '5.3',
-          'version' => '7.x-5.1',
+          'version' => '7.x-5.5',
           'project' => 'xautoload',
-          'datestamp' => '1416521013',
+          'datestamp' => '1442068740',
           'dependencies' => 
           array (
           ),
         ),
         'schema_version' => '7000',
         'project' => 'xautoload',
-        'version' => '7.x-5.1',
+        'version' => '7.x-5.5',
       ),
       'adminrole' => 
       array (
@@ -2702,6 +2702,38 @@ $options['packages'] = array (
         'schema_version' => 0,
         'project' => 'adminrole',
         'version' => '7.x-1.0',
+      ),
+      'field_collection' => 
+      array (
+        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/field_collection/field_collection.module',
+        'basename' => 'field_collection.module',
+        'name' => 'field_collection',
+        'info' => 
+        array (
+          'name' => 'Field collection',
+          'description' => 'Provides a field collection field, to which any number of fields can be attached.',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'entity',
+          ),
+          'files' => 
+          array (
+            0 => 'field_collection.test',
+            1 => 'field_collection.info.inc',
+            2 => 'views/field_collection_handler_relationship.inc',
+            3 => 'field_collection.migrate.inc',
+          ),
+          'configure' => 'admin/structure/field-collections',
+          'package' => 'Fields',
+          'version' => '7.x-1.0-beta8',
+          'project' => 'field_collection',
+          'datestamp' => '1415122384',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7006',
+        'project' => 'field_collection',
+        'version' => '7.x-1.0-beta8',
       ),
       'oauthloginprovider' => 
       array (
@@ -3010,13 +3042,13 @@ $options['packages'] = array (
             10 => 'includes/oauth2_server.token.inc',
             11 => 'tests/oauth2_server.test',
           ),
-          'version' => '7.x-1.1',
+          'version' => '7.x-1.3',
           'project' => 'oauth2_server',
-          'datestamp' => '1403009028',
+          'datestamp' => '1430995689',
         ),
-        'schema_version' => '7102',
+        'schema_version' => '7106',
         'project' => 'oauth2_server',
-        'version' => '7.x-1.1',
+        'version' => '7.x-1.3',
       ),
       'bakery' => 
       array (
@@ -3921,17 +3953,17 @@ $options['packages'] = array (
             0 => 'tests/features.test',
           ),
           'configure' => 'admin/structure/features/settings',
-          'version' => '7.x-2.4',
+          'version' => '7.x-2.7',
           'project' => 'features',
-          'datestamp' => '1425501344',
+          'datestamp' => '1444829630',
           'dependencies' => 
           array (
           ),
           'php' => '5.2.4',
         ),
-        'schema_version' => '6101',
+        'schema_version' => '7200',
         'project' => 'features',
-        'version' => '7.x-2.4',
+        'version' => '7.x-2.7',
       ),
       'devshop_servers' => 
       array (
@@ -3950,9 +3982,10 @@ $options['packages'] = array (
             0 => 'entityreference',
             1 => 'features',
             2 => 'field_ipaddress',
-            3 => 'node',
-            4 => 'strongarm',
-            5 => 'views',
+            3 => 'link',
+            4 => 'node',
+            5 => 'strongarm',
+            6 => 'views',
           ),
           'features' => 
           array (
@@ -3969,11 +4002,13 @@ $options['packages'] = array (
             array (
               0 => 'devshop_server_ip_address',
               1 => 'devshop_server_users',
+              2 => 'field_url',
             ),
             'field_instance' => 
             array (
               0 => 'node-server-devshop_server_ip_address',
               1 => 'node-server-devshop_server_users',
+              2 => 'node-server-field_url',
             ),
             'node' => 
             array (
@@ -3987,14 +4022,25 @@ $options['packages'] = array (
               3 => 'edit any server content',
               4 => 'edit own server content',
             ),
+            'user_role' => 
+            array (
+              0 => 'system administrator',
+            ),
             'variable' => 
             array (
-              0 => 'field_bundle_settings_node__server',
-              1 => 'menu_options_server',
-              2 => 'menu_parent_server',
-              3 => 'node_options_server',
-              4 => 'node_preview_server',
-              5 => 'node_submitted_server',
+              0 => 'comment_anonymous_server',
+              1 => 'comment_default_mode_server',
+              2 => 'comment_default_per_page_server',
+              3 => 'comment_form_location_server',
+              4 => 'comment_preview_server',
+              5 => 'comment_server',
+              6 => 'comment_subject_field_server',
+              7 => 'field_bundle_settings_node__server',
+              8 => 'menu_options_server',
+              9 => 'menu_parent_server',
+              10 => 'node_options_server',
+              11 => 'node_preview_server',
+              12 => 'node_submitted_server',
             ),
             'views_view' => 
             array (
@@ -4007,8 +4053,15 @@ $options['packages'] = array (
             array (
               'ctools' => 'ctools',
             ),
+            'field_base' => 
+            array (
+              'field_server_users_admins' => 'field_server_users_admins',
+            ),
+            'field_instance' => 
+            array (
+              'node-server-field_server_users_admins' => 'node-server-field_server_users_admins',
+            ),
           ),
-          'mtime' => '1416076530',
           'description' => '',
           'php' => '5.2.4',
         ),
@@ -4019,6 +4072,22 @@ $options['packages'] = array (
     ),
     'themes' => 
     array (
+      'buildstrap' => 
+      array (
+        'filename' => '/var/aegir/projects/build/live/sites/all/themes/buildstrap/buildstrap.info',
+        'basename' => 'buildstrap.info',
+        'name' => 'BuildStrap',
+        'info' => 
+        array (
+          'name' => 'BuildStrap',
+          'description' => 'devshop.build starter theme.',
+          'core' => '7.x',
+          'base theme' => 'bootstrap',
+          'version' => NULL,
+        ),
+        'project' => '',
+        'version' => NULL,
+      ),
       'bootstrap' => 
       array (
         'filename' => '/var/aegir/projects/build/live/sites/all/themes/bootstrap/bootstrap.info',
@@ -4064,6 +4133,7 @@ $options['packages'] = array (
             'bootstrap_breadcrumb_title' => '1',
             'bootstrap_navbar_position' => '',
             'bootstrap_navbar_inverse' => '0',
+            'bootstrap_pager_first_and_last' => '1',
             'bootstrap_region_well-navigation' => '',
             'bootstrap_region_well-header' => '',
             'bootstrap_region_well-highlighted' => '',
@@ -4076,6 +4146,9 @@ $options['packages'] = array (
             'bootstrap_anchors_smooth_scrolling' => '1',
             'bootstrap_forms_required_has_error' => '0',
             'bootstrap_forms_has_error_value_toggle' => '1',
+            'bootstrap_forms_smart_descriptions' => '1',
+            'bootstrap_forms_smart_descriptions_limit' => '250',
+            'bootstrap_forms_smart_descriptions_allowed_tags' => 'b, code, em, i, kbd, span, strong',
             'bootstrap_popover_enabled' => '1',
             'bootstrap_popover_animation' => '1',
             'bootstrap_popover_html' => '0',
@@ -4093,8 +4166,6 @@ $options['packages'] = array (
             'bootstrap_popover_delay' => '0',
             'bootstrap_popover_container' => 'body',
             'bootstrap_tooltip_enabled' => '1',
-            'bootstrap_tooltip_descriptions' => '1',
-            'bootstrap_tooltip_descriptions_length' => '200',
             'bootstrap_tooltip_animation' => '1',
             'bootstrap_tooltip_html' => '0',
             'bootstrap_tooltip_placement' => 'auto left',
@@ -4107,8 +4178,13 @@ $options['packages'] = array (
             ),
             'bootstrap_tooltip_delay' => '0',
             'bootstrap_tooltip_container' => 'body',
-            'bootstrap_cdn' => '3.2.0',
-            'bootstrap_bootswatch' => '',
+            'bootstrap_cdn_provider' => 'jsdelivr',
+            'bootstrap_cdn_custom_css' => '//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.css',
+            'bootstrap_cdn_custom_css_min' => '//cdn.jsdelivr.net/bootstrap/3.3.2/css/bootstrap.min.css',
+            'bootstrap_cdn_custom_js' => '//cdn.jsdelivr.net/bootstrap/3.3.2/js/bootstrap.js',
+            'bootstrap_cdn_custom_js_min' => '//cdn.jsdelivr.net/bootstrap/3.3.2/js/bootstrap.min.js',
+            'bootstrap_cdn_jsdelivr_version' => '3.3.2',
+            'bootstrap_cdn_jsdelivr_theme' => 'bootstrap',
             'toggle_name' => '1',
             'toggle_search' => '1',
           ),
@@ -4126,21 +4202,20 @@ $options['packages'] = array (
               7 => 'modules/forum/forum.css',
               8 => 'modules/help/help.css',
               9 => 'modules/menu/menu.css',
-              10 => 'modules/node/node.css',
-              11 => 'modules/openid/openid.css',
-              12 => 'modules/poll/poll.css',
-              13 => 'modules/search/search.css',
-              14 => 'modules/statistics/statistics.css',
-              15 => 'modules/syslog/syslog.css',
-              16 => 'modules/system/maintenance.css',
-              17 => 'modules/system/system.maintenance.css',
-              18 => 'modules/system/system.menus.css',
-              19 => 'modules/system/system.messages.css',
-              20 => 'modules/system/system.theme.css',
-              21 => 'modules/taxonomy/taxonomy.css',
-              22 => 'modules/tracker/tracker.css',
-              23 => 'modules/update/update.css',
-              24 => 'modules/user/user.css',
+              10 => 'modules/openid/openid.css',
+              11 => 'modules/poll/poll.css',
+              12 => 'modules/search/search.css',
+              13 => 'modules/statistics/statistics.css',
+              14 => 'modules/syslog/syslog.css',
+              15 => 'modules/system/maintenance.css',
+              16 => 'modules/system/system.maintenance.css',
+              17 => 'modules/system/system.menus.css',
+              18 => 'modules/system/system.messages.css',
+              19 => 'modules/system/system.theme.css',
+              20 => 'modules/taxonomy/taxonomy.css',
+              21 => 'modules/tracker/tracker.css',
+              22 => 'modules/update/update.css',
+              23 => 'modules/user/user.css',
             ),
           ),
           'breakpoints' => 
@@ -4185,12 +4260,12 @@ $options['packages'] = array (
               1 => '2x',
             ),
           ),
-          'version' => '7.x-3.1-beta2+35-dev',
+          'version' => '7.x-3.1-beta3+11-dev',
           'project' => 'bootstrap',
-          'datestamp' => '1426199884',
+          'datestamp' => '1442935176',
         ),
         'project' => 'bootstrap',
-        'version' => '7.x-3.1-beta2+35-dev',
+        'version' => '7.x-3.1-beta3+11-dev',
       ),
     ),
   ),

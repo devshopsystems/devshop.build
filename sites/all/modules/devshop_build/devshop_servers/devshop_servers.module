@@ -42,7 +42,9 @@ function devshop_servers_node_presave($node) {
     }
   }
 }
-
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
 /**
  * Returns our server inventory.
  */
@@ -53,25 +55,22 @@ function devshop_servers_inventory() {
 
   // DevShop System Administrators.
   // Add any users with the role "system administrator"
-  $sql = "SELECT u.uid, u.name FROM users u
+  $sql = "SELECT u.uid FROM users u
       INNER JOIN users_roles ur ON u.uid = ur.uid
       INNER JOIN role r ON ur.rid = r.rid
       WHERE r.name = :role";
-  $results = db_query($sql, array(':role' => 'system administrator'));
-  foreach ($results as $result) {
-    $uids[$result->uid] = $result->uid;
-  }
+  $uids = db_query($sql, array(':role' => 'system administrator'))->fetchCol();
 
   // Get all server nodes.
   $sql = "SELECT nid FROM node
       WHERE type = 'server'";
-  $server_nodes = db_query($sql, array(':role' => 'system administrator'))->fetchAllAssoc();
-  foreach ($server_nodes as $server_node) {
-    $node = node_load($server_node['nid']);
+  $server_nids = db_query($sql, array(':role' => 'system administrator'))->fetchCol();
+  $server_nodes = node_load_multiple($server_nids);
 
+  foreach ($server_nodes as $server_node) {
     // Start generating inventory.
-    $inventory->devmasters->hosts[] = $node->title;
-//
+    $inventory->devmasters->hosts[] = $server_node->title;
+
 //    // Get users from the field
 //    $server_users = field_get_items('node', $node, 'devshop_server_users');
 //    if (!empty($server_users)){
