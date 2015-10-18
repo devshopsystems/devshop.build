@@ -77,7 +77,7 @@ function devshop_servers_inventory() {
 
   // Get all server nodes.
   $sql = "SELECT nid FROM node
-      WHERE type = 'server'";
+      WHERE type = 'server' AND status = 1";
   $server_nids = db_query($sql, array(':role' => 'system administrator'))->fetchCol();
   $server_nodes = node_load_multiple($server_nids);
 
