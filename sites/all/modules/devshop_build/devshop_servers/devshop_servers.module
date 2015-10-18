@@ -15,6 +15,11 @@ function devshop_servers_menu(){
       'page callback' => 'devshop_servers_inventory',
       'access callback' => TRUE,
   );
+  $items['keys/%'] = array(
+    'page callback' => 'devshop_servers_user_keys',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+  );
   return $items;
 }
 
@@ -66,22 +71,13 @@ function devshop_servers_inventory() {
   $uids = db_query($sql)->fetchCol();
   $users = user_load_multiple($uids);
 
-  // Lookup all users SSH Keys.
-  foreach ($users as &$account) {
-    $account_keys = array();
-    $keys = sshkey_load_all_by_entity('user', $account->uid);
-    foreach ($keys as $key) {
-      $account->ssh_keys[] = $key->value;
-    }
-  }
-
   // Add system administrators
   foreach ($admin_uids as $uid) {
     $account = $users[$uid];
 
     $inventory->devmasters->vars->system_administrators[$account->name] =  array(
       'username' => $account->name,
-      'ssh_keys' => $account->ssh_keys,
+      'authorized_keys' => url("keys/$account->name", array('absolute' => TRUE)),
     );
   }
 
@@ -102,7 +98,6 @@ function devshop_servers_inventory() {
         $account = $users[$data['target_id']];
         $inventory->_meta->hostvars->{$server_node->title}->users[$account->name] = array(
           'username' => $account->name,
-          'ssh_keys' => $account->ssh_keys,
         );
       }
     }
@@ -110,4 +105,15 @@ function devshop_servers_inventory() {
 
   print json_encode($inventory);
   exit;
+}
+
+
+function devshop_servers_user_keys($username) {
+  $account = user_load_by_name($username);
+  $keys = sshkey_load_all_by_entity('user', $account->uid);
+    foreach ($keys as $key) {
+      $key_components = explode(' ', $key->value);
+
+      print $key_components[0] . ' ' . $key_components[1] . PHP_EOL;
+    }
 }
