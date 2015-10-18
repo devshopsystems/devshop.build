@@ -101,7 +101,7 @@ function devshop_servers_inventory() {
       foreach ($server_users as $data) {
         $account = $users[$data['target_id']];
         $inventory->_meta->hostvars->{$server_node->title}->users[$account->name] = array(
-          'name' => $account->name,
+          'username' => $account->name,
           'ssh_keys' => $account->ssh_keys,
         );
       }
