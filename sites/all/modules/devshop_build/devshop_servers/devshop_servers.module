@@ -7,6 +7,17 @@
 include_once 'devshop_servers.features.inc';
 
 /**
+ * Implements hook_menu();
+ * @return mixed
+ */
+function devshop_servers_menu(){
+  $items['inventory'] = array(
+      'page callback' => 'devshop_servers_inventory',
+  );
+  return $items;
+}
+
+/**
  * Implements hook_presave()
  *
  * We resolve the server name to IP addresses if none has been given
@@ -29,4 +40,62 @@ function devshop_servers_node_presave($node) {
       drupal_set_message(t("Could not resolve IP address of server %name, not automatically setting IP address. DNS may fail.", array('%name' => $node->title)));
     }
   }
+}
+
+/**
+ * Returns our server inventory.
+ */
+function devshop_servers_inventory() {
+  // Build attributes object
+  $inventory = new stdClass;
+  $inventory->devmasters->hosts = array()
+
+  // DevShop System Administrators.
+  // Add any users with the role "system administrator"
+  $sql = "SELECT u.uid, u.name FROM users u
+      INNER JOIN users_roles ur ON u.uid = ur.uid
+      INNER JOIN role r ON ur.rid = r.rid
+      WHERE r.name = :role";
+  $results = db_query($sql, array(':role' => 'system administrator'));
+  foreach ($results as $result) {
+    $uids[$result->uid] = $result->uid;
+  }
+
+  // Get all server nodes.
+  $sql = "SELECT nid FROM node
+      WHERE type = 'server'";
+  $server_nodes = db_query($sql, array(':role' => 'system administrator'))->fetchAllAssoc();
+  foreach ($server_nodes as $server_node) {
+    $node = node_load($server_node['nid']);
+
+    // Start generating inventory.
+    $inventory->devmasters->hosts[] = $node->title;
+//
+//    // Get users from the field
+//    $server_users = field_get_items('node', $node, 'devshop_server_users');
+//    if (!empty($server_users)){
+//      foreach ($server_users as $data){
+//        $uids[$data['target_id']] = $data['target_id'];
+//      }
+//    }
+//
+//    // for all found UIDs, load up their SSH keys
+//    $all_keys = array();
+//    foreach ($uids as $uid){
+//      $account = user_load($uid);
+//      if ($account){
+//        $account_keys = array();
+//        $keys = sshkey_load_all_by_entity('user', $account->uid);
+//        foreach ($keys as $key){
+//          $all_keys[] = $key->value;
+//          $account_keys[] = $key->value;
+//        }
+//        // Adding each users authorized key.  Each item in this array gets a server account.
+//        $vars->devudo['users'][$account->name] = implode("\n", $account_keys);
+//      }
+//    }
+  }
+
+  print json_encode($inventory);
+  exit;
 }
