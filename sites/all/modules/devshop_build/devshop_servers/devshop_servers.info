@@ -25,6 +25,7 @@ features[user_permission][] = delete any server content
 features[user_permission][] = delete own server content
 features[user_permission][] = edit any server content
 features[user_permission][] = edit own server content
+features[user_role][] = system administrator
 features[variable][] = comment_anonymous_server
 features[variable][] = comment_default_mode_server
 features[variable][] = comment_default_per_page_server
