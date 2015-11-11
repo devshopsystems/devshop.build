@@ -18,7 +18,7 @@ function devshop_license_ctools_plugin_directory($owner, $plugin_type) {
  * Implements hook_menu().
  */
 function devshop_license_menu() {
-  $items['admin/commerce/config/license/role'] = array(
+  $items['admin/commerce/config/license/devshop'] = array(
     'title' => 'Role',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('devshop_license_settings_form'),
