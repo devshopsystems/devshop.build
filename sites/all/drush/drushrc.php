@@ -3023,6 +3023,31 @@ $options['packages'] = array (
         'project' => 'backup_migrate',
         'version' => '7.x-3.0',
       ),
+      'commerce_addressbook' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/commerce_addressbook/commerce_addressbook.module',
+        'basename' => 'commerce_addressbook.module',
+        'name' => 'commerce_addressbook',
+        'info' => 
+        array (
+          'name' => 'Commerce Addressbook',
+          'description' => 'Prepopulates and provides a dropdown for previously added addresses.',
+          'package' => 'Commerce (contrib)',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'commerce_customer',
+            1 => 'commerce_checkout',
+          ),
+          'version' => '7.x-2.0-rc9',
+          'project' => 'commerce_addressbook',
+          'datestamp' => '1438117143',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7200',
+        'project' => 'commerce_addressbook',
+        'version' => '7.x-2.0-rc9',
+      ),
       'xautoload' => 
       array (
         'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/xautoload/xautoload.module',
