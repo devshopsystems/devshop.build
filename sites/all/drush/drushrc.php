@@ -3045,6 +3045,34 @@ $options['packages'] = array (
         'project' => 'xautoload',
         'version' => '7.x-5.5',
       ),
+      'commerce_product_attributes' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/commerce_product_attributes/commerce_product_attributes.module',
+        'basename' => 'commerce_product_attributes.module',
+        'name' => 'commerce_product_attributes',
+        'info' => 
+        array (
+          'name' => 'Product Attributes',
+          'description' => 'Enables the display of product attributes in the shopping cart view.',
+          'package' => 'Commerce Product Enhancements',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/views/handlers/commerce_product_attributes_handler_field_attributes.inc',
+          ),
+          'version' => '7.x-1.0-beta3',
+          'project' => 'commerce_product_attributes',
+          'datestamp' => '1316355701',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_product_attributes',
+        'version' => '7.x-1.0-beta3',
+      ),
       'adminrole' => 
       array (
         'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/adminrole/adminrole.module',
@@ -3067,6 +3095,67 @@ $options['packages'] = array (
         'schema_version' => 0,
         'project' => 'adminrole',
         'version' => '7.x-1.0',
+      ),
+      'commerce_option_set_reference' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/commerce_option/option_set_reference/commerce_option_set_reference.module',
+        'basename' => 'commerce_option_set_reference.module',
+        'name' => 'commerce_option_set_reference',
+        'info' => 
+        array (
+          'name' => 'Product Option Set Reference',
+          'description' => 'This module enables to reference an option form to the an entity.',
+          'package' => 'Commerce Product Enhancements',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'commerce_option',
+          ),
+          'files' => 
+          array (
+            0 => 'commerce_option_set_reference.module',
+          ),
+          'version' => '7.x-1.0-beta2',
+          'project' => 'commerce_option',
+          'datestamp' => '1316543801',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_option',
+        'version' => '7.x-1.0-beta2',
+      ),
+      'commerce_option' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/commerce_option/commerce_option.module',
+        'basename' => 'commerce_option.module',
+        'name' => 'commerce_option',
+        'info' => 
+        array (
+          'name' => 'Product Option',
+          'description' => 'This module enables the define user input fields (aka options) in the add to card form.',
+          'package' => 'Commerce Product Enhancements',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_product_attributes',
+          ),
+          'files' => 
+          array (
+            0 => 'commerce_option.module',
+            1 => 'includes/commerce_option.inc',
+            2 => 'includes/commerce_option_set.inc',
+            3 => 'includes/views/commerce_option.views.inc',
+            4 => 'includes/views/handlers/commerce_option_handler_field_option_list.inc',
+          ),
+          'version' => '7.x-1.0-beta2',
+          'project' => 'commerce_option',
+          'datestamp' => '1316543801',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7100',
+        'project' => 'commerce_option',
+        'version' => '7.x-1.0-beta2',
       ),
       'field_collection' => 
       array (
