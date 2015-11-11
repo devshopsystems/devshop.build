@@ -3337,6 +3337,31 @@ $options['packages'] = array (
         'project' => 'field_ipaddress',
         'version' => '7.x-1.0-beta1',
       ),
+      'commerce_single_address' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/commerce_single_address/commerce_single_address.module',
+        'basename' => 'commerce_single_address.module',
+        'name' => 'commerce_single_address',
+        'info' => 
+        array (
+          'name' => 'Commerce Single Address',
+          'description' => 'Prepopulates customer profiles with previously provided information.',
+          'package' => 'Commerce (contrib)',
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/single-address',
+          'dependencies' => 
+          array (
+            0 => 'commerce_customer',
+          ),
+          'version' => '7.x-1.2',
+          'project' => 'commerce_single_address',
+          'datestamp' => '1388423905',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_single_address',
+        'version' => '7.x-1.2',
+      ),
       'libraries' => 
       array (
         'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/libraries/libraries.module',
