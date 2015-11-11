@@ -2,7 +2,7 @@
 
 
 $options['sites'] = array (
-  0 => 'live.build.devshop.build',
+  0 => 'branch-dev-commerce.build.devshop.build',
 );
 $options['profiles'] = array (
   0 => 'minimal',
@@ -15,7 +15,7 @@ $options['packages'] = array (
     array (
       'dblog' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/dblog/dblog.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/dblog/dblog.module',
         'basename' => 'dblog.module',
         'name' => 'dblog',
         'info' => 
@@ -42,7 +42,7 @@ $options['packages'] = array (
       ),
       'system' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/system/system.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/system/system.module',
         'basename' => 'system.module',
         'name' => 'system',
         'info' => 
@@ -76,7 +76,7 @@ $options['packages'] = array (
       ),
       'tracker' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/tracker/tracker.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/tracker/tracker.module',
         'basename' => 'tracker.module',
         'name' => 'tracker',
         'info' => 
@@ -104,7 +104,7 @@ $options['packages'] = array (
       ),
       'file' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/file/file.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/file/file.module',
         'basename' => 'file.module',
         'name' => 'file',
         'info' => 
@@ -132,7 +132,7 @@ $options['packages'] = array (
       ),
       'statistics' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/statistics/statistics.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/statistics/statistics.module',
         'basename' => 'statistics.module',
         'name' => 'statistics',
         'info' => 
@@ -160,7 +160,7 @@ $options['packages'] = array (
       ),
       'filter' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/filter/filter.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/filter/filter.module',
         'basename' => 'filter.module',
         'name' => 'filter',
         'info' => 
@@ -189,7 +189,7 @@ $options['packages'] = array (
       ),
       'search' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/search/search.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/search/search.module',
         'basename' => 'search.module',
         'name' => 'search',
         'info' => 
@@ -225,7 +225,7 @@ $options['packages'] = array (
       ),
       'simpletest' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/simpletest/simpletest.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/simpletest/simpletest.module',
         'basename' => 'simpletest.module',
         'name' => 'simpletest',
         'info' => 
@@ -302,7 +302,7 @@ $options['packages'] = array (
       ),
       'help' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/help/help.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/help/help.module',
         'basename' => 'help.module',
         'name' => 'help',
         'info' => 
@@ -329,7 +329,7 @@ $options['packages'] = array (
       ),
       'comment' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/comment/comment.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/comment/comment.module',
         'basename' => 'comment.module',
         'name' => 'comment',
         'info' => 
@@ -366,7 +366,7 @@ $options['packages'] = array (
       ),
       'contact' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/contact/contact.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/contact/contact.module',
         'basename' => 'contact.module',
         'name' => 'contact',
         'info' => 
@@ -394,7 +394,7 @@ $options['packages'] = array (
       ),
       'syslog' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/syslog/syslog.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/syslog/syslog.module',
         'basename' => 'syslog.module',
         'name' => 'syslog',
         'info' => 
@@ -422,7 +422,7 @@ $options['packages'] = array (
       ),
       'trigger' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/trigger/trigger.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/trigger/trigger.module',
         'basename' => 'trigger.module',
         'name' => 'trigger',
         'info' => 
@@ -450,7 +450,7 @@ $options['packages'] = array (
       ),
       'overlay' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/overlay/overlay.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/overlay/overlay.module',
         'basename' => 'overlay.module',
         'name' => 'overlay',
         'info' => 
@@ -473,7 +473,7 @@ $options['packages'] = array (
       ),
       'path' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/path/path.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/path/path.module',
         'basename' => 'path.module',
         'name' => 'path',
         'info' => 
@@ -501,7 +501,7 @@ $options['packages'] = array (
       ),
       'menu' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/menu/menu.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/menu/menu.module',
         'basename' => 'menu.module',
         'name' => 'menu',
         'info' => 
@@ -529,7 +529,7 @@ $options['packages'] = array (
       ),
       'user' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/user/user.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/user/user.module',
         'basename' => 'user.module',
         'name' => 'user',
         'info' => 
@@ -566,7 +566,7 @@ $options['packages'] = array (
       ),
       'update' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/update/update.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/update/update.module',
         'basename' => 'update.module',
         'name' => 'update',
         'info' => 
@@ -594,7 +594,7 @@ $options['packages'] = array (
       ),
       'color' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/color/color.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/color/color.module',
         'basename' => 'color.module',
         'name' => 'color',
         'info' => 
@@ -621,7 +621,7 @@ $options['packages'] = array (
       ),
       'forum' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/forum/forum.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/forum/forum.module',
         'basename' => 'forum.module',
         'name' => 'forum',
         'info' => 
@@ -658,7 +658,7 @@ $options['packages'] = array (
       ),
       'openid' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/openid/openid.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/openid/openid.module',
         'basename' => 'openid.module',
         'name' => 'openid',
         'info' => 
@@ -685,7 +685,7 @@ $options['packages'] = array (
       ),
       'image' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/image/image.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/image/image.module',
         'basename' => 'image.module',
         'name' => 'image',
         'info' => 
@@ -714,7 +714,7 @@ $options['packages'] = array (
       ),
       'php' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/php/php.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/php/php.module',
         'basename' => 'php.module',
         'name' => 'php',
         'info' => 
@@ -741,7 +741,7 @@ $options['packages'] = array (
       ),
       'block' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/block/block.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/block/block.module',
         'basename' => 'block.module',
         'name' => 'block',
         'info' => 
@@ -769,7 +769,7 @@ $options['packages'] = array (
       ),
       'toolbar' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/toolbar/toolbar.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/toolbar/toolbar.module',
         'basename' => 'toolbar.module',
         'name' => 'toolbar',
         'info' => 
@@ -792,7 +792,7 @@ $options['packages'] = array (
       ),
       'aggregator' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/aggregator/aggregator.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/aggregator/aggregator.module',
         'basename' => 'aggregator.module',
         'name' => 'aggregator',
         'info' => 
@@ -827,7 +827,7 @@ $options['packages'] = array (
       ),
       'node' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/node/node.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/node/node.module',
         'basename' => 'node.module',
         'name' => 'node',
         'info' => 
@@ -864,7 +864,7 @@ $options['packages'] = array (
       ),
       'field_ui' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field_ui/field_ui.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field_ui/field_ui.module',
         'basename' => 'field_ui.module',
         'name' => 'field_ui',
         'info' => 
@@ -892,7 +892,7 @@ $options['packages'] = array (
       ),
       'translation' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/translation/translation.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/translation/translation.module',
         'basename' => 'translation.module',
         'name' => 'translation',
         'info' => 
@@ -920,7 +920,7 @@ $options['packages'] = array (
       ),
       'poll' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/poll/poll.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/poll/poll.module',
         'basename' => 'poll.module',
         'name' => 'poll',
         'info' => 
@@ -954,7 +954,7 @@ $options['packages'] = array (
       ),
       'book' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/book/book.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/book/book.module',
         'basename' => 'book.module',
         'name' => 'book',
         'info' => 
@@ -989,7 +989,7 @@ $options['packages'] = array (
       ),
       'rdf' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/rdf/rdf.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/rdf/rdf.module',
         'basename' => 'rdf.module',
         'name' => 'rdf',
         'info' => 
@@ -1016,7 +1016,7 @@ $options['packages'] = array (
       ),
       'contextual' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/contextual/contextual.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/contextual/contextual.module',
         'basename' => 'contextual.module',
         'name' => 'contextual',
         'info' => 
@@ -1043,7 +1043,7 @@ $options['packages'] = array (
       ),
       'shortcut' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/shortcut/shortcut.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/shortcut/shortcut.module',
         'basename' => 'shortcut.module',
         'name' => 'shortcut',
         'info' => 
@@ -1071,7 +1071,7 @@ $options['packages'] = array (
       ),
       'blog' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/blog/blog.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/blog/blog.module',
         'basename' => 'blog.module',
         'name' => 'blog',
         'info' => 
@@ -1098,7 +1098,7 @@ $options['packages'] = array (
       ),
       'dashboard' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/dashboard/dashboard.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/dashboard/dashboard.module',
         'basename' => 'dashboard.module',
         'name' => 'dashboard',
         'info' => 
@@ -1127,7 +1127,7 @@ $options['packages'] = array (
       ),
       'taxonomy' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/taxonomy/taxonomy.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/taxonomy/taxonomy.module',
         'basename' => 'taxonomy.module',
         'name' => 'taxonomy',
         'info' => 
@@ -1157,7 +1157,7 @@ $options['packages'] = array (
       ),
       'field_sql_storage' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field/modules/field_sql_storage/field_sql_storage.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field/modules/field_sql_storage/field_sql_storage.module',
         'basename' => 'field_sql_storage.module',
         'name' => 'field_sql_storage',
         'info' => 
@@ -1186,7 +1186,7 @@ $options['packages'] = array (
       ),
       'list' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field/modules/list/list.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field/modules/list/list.module',
         'basename' => 'list.module',
         'name' => 'list',
         'info' => 
@@ -1215,7 +1215,7 @@ $options['packages'] = array (
       ),
       'text' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field/modules/text/text.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field/modules/text/text.module',
         'basename' => 'text.module',
         'name' => 'text',
         'info' => 
@@ -1244,7 +1244,7 @@ $options['packages'] = array (
       ),
       'options' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field/modules/options/options.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field/modules/options/options.module',
         'basename' => 'options.module',
         'name' => 'options',
         'info' => 
@@ -1272,7 +1272,7 @@ $options['packages'] = array (
       ),
       'number' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field/modules/number/number.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field/modules/number/number.module',
         'basename' => 'number.module',
         'name' => 'number',
         'info' => 
@@ -1300,7 +1300,7 @@ $options['packages'] = array (
       ),
       'field' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/field/field.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/field/field.module',
         'basename' => 'field.module',
         'name' => 'field',
         'info' => 
@@ -1339,7 +1339,7 @@ $options['packages'] = array (
       ),
       'locale' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/modules/locale/locale.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/modules/locale/locale.module',
         'basename' => 'locale.module',
         'name' => 'locale',
         'info' => 
@@ -1370,7 +1370,7 @@ $options['packages'] = array (
     array (
       'bartik' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/themes/bartik/bartik.info',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/themes/bartik/bartik.info',
         'basename' => 'bartik.info',
         'name' => 'Bartik',
         'info' => 
@@ -1425,7 +1425,7 @@ $options['packages'] = array (
       ),
       'stark' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/themes/stark/stark.info',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/themes/stark/stark.info',
         'basename' => 'stark.info',
         'name' => 'Stark',
         'info' => 
@@ -1450,7 +1450,7 @@ $options['packages'] = array (
       ),
       'garland' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/themes/garland/garland.info',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/themes/garland/garland.info',
         'basename' => 'garland.info',
         'name' => 'Garland',
         'info' => 
@@ -1483,7 +1483,7 @@ $options['packages'] = array (
       ),
       'seven' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/themes/seven/seven.info',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/themes/seven/seven.info',
         'basename' => 'seven.info',
         'name' => 'Seven',
         'info' => 
@@ -1538,7 +1538,7 @@ $options['packages'] = array (
       'minimal' => 
       array (
         'name' => 'minimal',
-        'filename' => '/var/aegir/projects/build/live/profiles/minimal/minimal.profile',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/profiles/minimal/minimal.profile',
         'project' => 'drupal',
         'info' => 
         array (
@@ -1564,7 +1564,7 @@ $options['packages'] = array (
       'standard' => 
       array (
         'name' => 'standard',
-        'filename' => '/var/aegir/projects/build/live/profiles/standard/standard.profile',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/profiles/standard/standard.profile',
         'project' => 'drupal',
         'info' => 
         array (
@@ -1615,7 +1615,7 @@ $options['packages'] = array (
     array (
       'jenkins' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/jenkins/jenkins.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/jenkins/jenkins.module',
         'basename' => 'jenkins.module',
         'name' => 'jenkins',
         'info' => 
@@ -1638,7 +1638,7 @@ $options['packages'] = array (
       ),
       'path_alias_xt' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/path_alias_xt/path_alias_xt.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/path_alias_xt/path_alias_xt.module',
         'basename' => 'path_alias_xt.module',
         'name' => 'path_alias_xt',
         'info' => 
@@ -1661,7 +1661,7 @@ $options['packages'] = array (
       ),
       'views_export' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/views/views_export/views_export.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/views/views_export/views_export.module',
         'basename' => 'views_export.module',
         'name' => 'views_export',
         'info' => 
@@ -1679,7 +1679,7 @@ $options['packages'] = array (
       ),
       'views_ui' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/views/views_ui.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/views/views_ui.module',
         'basename' => 'views_ui.module',
         'name' => 'views_ui',
         'info' => 
@@ -1709,7 +1709,7 @@ $options['packages'] = array (
       ),
       'views' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/views/views.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/views/views.module',
         'basename' => 'views.module',
         'name' => 'views',
         'info' => 
@@ -2046,7 +2046,7 @@ $options['packages'] = array (
       ),
       'views_content' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/views_content/views_content.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/views_content/views_content.module',
         'basename' => 'views_content.module',
         'name' => 'views_content',
         'info' => 
@@ -2077,7 +2077,7 @@ $options['packages'] = array (
       ),
       'page_manager' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/page_manager/page_manager.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/page_manager/page_manager.module',
         'basename' => 'page_manager.module',
         'name' => 'page_manager',
         'info' => 
@@ -2101,7 +2101,7 @@ $options['packages'] = array (
       ),
       'ctools_plugin_example' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/ctools_plugin_example/ctools_plugin_example.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/ctools_plugin_example/ctools_plugin_example.module',
         'basename' => 'ctools_plugin_example.module',
         'name' => 'ctools_plugin_example',
         'info' => 
@@ -2128,7 +2128,7 @@ $options['packages'] = array (
       ),
       'bulk_export' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/bulk_export/bulk_export.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/bulk_export/bulk_export.module',
         'basename' => 'bulk_export.module',
         'name' => 'bulk_export',
         'info' => 
@@ -2152,7 +2152,7 @@ $options['packages'] = array (
       ),
       'ctools_ajax_sample' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/ctools_ajax_sample/ctools_ajax_sample.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/ctools_ajax_sample/ctools_ajax_sample.module',
         'basename' => 'ctools_ajax_sample.module',
         'name' => 'ctools_ajax_sample',
         'info' => 
@@ -2176,7 +2176,7 @@ $options['packages'] = array (
       ),
       'term_depth' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/term_depth/term_depth.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/term_depth/term_depth.module',
         'basename' => 'term_depth.module',
         'name' => 'term_depth',
         'info' => 
@@ -2200,7 +2200,7 @@ $options['packages'] = array (
       ),
       'ctools_custom_content' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/ctools_custom_content/ctools_custom_content.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/ctools_custom_content/ctools_custom_content.module',
         'basename' => 'ctools_custom_content.module',
         'name' => 'ctools_custom_content',
         'info' => 
@@ -2224,7 +2224,7 @@ $options['packages'] = array (
       ),
       'stylizer' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/stylizer/stylizer.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/stylizer/stylizer.module',
         'basename' => 'stylizer.module',
         'name' => 'stylizer',
         'info' => 
@@ -2249,7 +2249,7 @@ $options['packages'] = array (
       ),
       'ctools_access_ruleset' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/ctools_access_ruleset/ctools_access_ruleset.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/ctools_access_ruleset/ctools_access_ruleset.module',
         'basename' => 'ctools_access_ruleset.module',
         'name' => 'ctools_access_ruleset',
         'info' => 
@@ -2273,7 +2273,7 @@ $options['packages'] = array (
       ),
       'ctools' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/ctools/ctools.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/ctools/ctools.module',
         'basename' => 'ctools.module',
         'name' => 'ctools',
         'info' => 
@@ -2304,7 +2304,7 @@ $options['packages'] = array (
       ),
       'openid_provider' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/openid_provider/openid_provider.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/openid_provider/openid_provider.module',
         'basename' => 'openid_provider.module',
         'name' => 'openid_provider',
         'info' => 
@@ -2335,7 +2335,7 @@ $options['packages'] = array (
       ),
       'field_group' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/field_group/field_group.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/field_group/field_group.module',
         'basename' => 'field_group.module',
         'name' => 'field_group',
         'info' => 
@@ -2363,9 +2363,342 @@ $options['packages'] = array (
         'project' => 'field_group',
         'version' => '7.x-1.4',
       ),
+      'date_all_day' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_all_day/date_all_day.module',
+        'basename' => 'date_all_day.module',
+        'name' => 'date_all_day',
+        'info' => 
+        array (
+          'name' => 'Date All Day',
+          'description' => 'Adds \'All Day\' functionality to date fields, including an \'All Day\' theme and \'All Day\' checkboxes for the Date select and Date popup widgets.',
+          'dependencies' => 
+          array (
+            0 => 'date_api',
+            1 => 'date',
+          ),
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_repeat' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_repeat/date_repeat.module',
+        'basename' => 'date_repeat.module',
+        'name' => 'date_repeat',
+        'info' => 
+        array (
+          'name' => 'Date Repeat API',
+          'description' => 'A Date Repeat API to calculate repeating dates and times from iCal rules.',
+          'dependencies' => 
+          array (
+            0 => 'date_api',
+          ),
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'php' => '5.2',
+          'files' => 
+          array (
+            0 => 'tests/date_repeat.test',
+            1 => 'tests/date_repeat_form.test',
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_repeat_field' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_repeat_field/date_repeat_field.module',
+        'basename' => 'date_repeat_field.module',
+        'name' => 'date_repeat_field',
+        'info' => 
+        array (
+          'name' => 'Date Repeat Field',
+          'description' => 'Creates the option of Repeating date fields and manages Date fields that use the Date Repeat API.',
+          'dependencies' => 
+          array (
+            0 => 'date_api',
+            1 => 'date',
+            2 => 'date_repeat',
+          ),
+          'stylesheets' => 
+          array (
+            'all' => 
+            array (
+              0 => 'date_repeat_field.css',
+            ),
+          ),
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_migrate_example' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_migrate/date_migrate_example/date_migrate_example.module',
+        'basename' => 'date_migrate_example.module',
+        'name' => 'date_migrate_example',
+        'info' => 
+        array (
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'date',
+            1 => 'date_repeat',
+            2 => 'date_repeat_field',
+            3 => 'features',
+            4 => 'migrate',
+          ),
+          'description' => 'Examples of migrating with the Date module',
+          'features' => 
+          array (
+            'field' => 
+            array (
+              0 => 'node-date_migrate_example-body',
+              1 => 'node-date_migrate_example-field_date',
+              2 => 'node-date_migrate_example-field_date_range',
+              3 => 'node-date_migrate_example-field_date_repeat',
+              4 => 'node-date_migrate_example-field_datestamp',
+              5 => 'node-date_migrate_example-field_datestamp_range',
+              6 => 'node-date_migrate_example-field_datetime',
+              7 => 'node-date_migrate_example-field_datetime_range',
+            ),
+            'node' => 
+            array (
+              0 => 'date_migrate_example',
+            ),
+          ),
+          'files' => 
+          array (
+            0 => 'date_migrate_example.migrate.inc',
+          ),
+          'name' => 'Date Migration Example',
+          'package' => 'Features',
+          'project' => 'date',
+          'version' => '7.x-2.9',
+          'datestamp' => '1441727353',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_views' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_views/date_views.module',
+        'basename' => 'date_views.module',
+        'name' => 'date_views',
+        'info' => 
+        array (
+          'name' => 'Date Views',
+          'description' => 'Views integration for date fields and date functionality.',
+          'package' => 'Date/Time',
+          'dependencies' => 
+          array (
+            0 => 'date_api',
+            1 => 'views',
+          ),
+          'core' => '7.x',
+          'php' => '5.2',
+          'files' => 
+          array (
+            0 => 'includes/date_views_argument_handler.inc',
+            1 => 'includes/date_views_argument_handler_simple.inc',
+            2 => 'includes/date_views_filter_handler.inc',
+            3 => 'includes/date_views_filter_handler_simple.inc',
+            4 => 'includes/date_views.views.inc',
+            5 => 'includes/date_views_plugin_pager.inc',
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+        ),
+        'schema_version' => '7200',
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_context' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_context/date_context.module',
+        'basename' => 'date_context.module',
+        'name' => 'date_context',
+        'info' => 
+        array (
+          'name' => 'Date Context',
+          'description' => 'Adds an option to the Context module to set a context condition based on the value of a date field.',
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'date',
+            1 => 'context',
+          ),
+          'files' => 
+          array (
+            0 => 'date_context.module',
+            1 => 'plugins/date_context_date_condition.inc',
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_tools' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_tools/date_tools.module',
+        'basename' => 'date_tools.module',
+        'name' => 'date_tools',
+        'info' => 
+        array (
+          'name' => 'Date Tools',
+          'description' => 'Tools to import and auto-create dates and calendars.',
+          'dependencies' => 
+          array (
+            0 => 'date',
+          ),
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'configure' => 'admin/config/date/tools',
+          'files' => 
+          array (
+            0 => 'tests/date_tools.test',
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_popup' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_popup/date_popup.module',
+        'basename' => 'date_popup.module',
+        'name' => 'date_popup',
+        'info' => 
+        array (
+          'name' => 'Date Popup',
+          'description' => 'Enables jquery popup calendars and time entry widgets for selecting dates and times.',
+          'dependencies' => 
+          array (
+            0 => 'date_api',
+          ),
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'configure' => 'admin/config/date/date_popup',
+          'stylesheets' => 
+          array (
+            'all' => 
+            array (
+              0 => 'themes/datepicker.1.7.css',
+            ),
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date_api' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date_api/date_api.module',
+        'basename' => 'date_api.module',
+        'name' => 'date_api',
+        'info' => 
+        array (
+          'name' => 'Date API',
+          'description' => 'A Date API that can be used by other modules.',
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'php' => '5.2',
+          'stylesheets' => 
+          array (
+            'all' => 
+            array (
+              0 => 'date.css',
+            ),
+          ),
+          'files' => 
+          array (
+            0 => 'date_api.module',
+            1 => 'date_api_sql.inc',
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+          'dependencies' => 
+          array (
+          ),
+        ),
+        'schema_version' => '7001',
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
+      'date' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/date/date.module',
+        'basename' => 'date.module',
+        'name' => 'date',
+        'info' => 
+        array (
+          'name' => 'Date',
+          'description' => 'Makes date/time fields available.',
+          'dependencies' => 
+          array (
+            0 => 'date_api',
+          ),
+          'package' => 'Date/Time',
+          'core' => '7.x',
+          'php' => '5.2',
+          'files' => 
+          array (
+            0 => 'date.migrate.inc',
+            1 => 'tests/date_api.test',
+            2 => 'tests/date.test',
+            3 => 'tests/date_field.test',
+            4 => 'tests/date_migrate.test',
+            5 => 'tests/date_validation.test',
+            6 => 'tests/date_timezone.test',
+            7 => 'tests/date_views_pager.test',
+            8 => 'tests/date_views_popup.test',
+          ),
+          'version' => '7.x-2.9',
+          'project' => 'date',
+          'datestamp' => '1441727353',
+        ),
+        'schema_version' => '7004',
+        'project' => 'date',
+        'version' => '7.x-2.9',
+      ),
       'jquery_update' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/jquery_update/jquery_update.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/jquery_update/jquery_update.module',
         'basename' => 'jquery_update.module',
         'name' => 'jquery_update',
         'info' => 
@@ -2394,7 +2727,7 @@ $options['packages'] = array (
       ),
       'oauth2_common' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/oauthconnector/modules/oauth2/oauth2_common.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/oauthconnector/modules/oauth2/oauth2_common.module',
         'basename' => 'oauth2_common.module',
         'name' => 'oauth2_common',
         'info' => 
@@ -2421,7 +2754,7 @@ $options['packages'] = array (
       ),
       'oauthconnector' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/oauthconnector/oauthconnector.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/oauthconnector/oauthconnector.module',
         'basename' => 'oauthconnector.module',
         'name' => 'oauthconnector',
         'info' => 
@@ -2450,7 +2783,7 @@ $options['packages'] = array (
       ),
       'pathauto' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/pathauto/pathauto.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/pathauto/pathauto.module',
         'basename' => 'pathauto.module',
         'name' => 'pathauto',
         'info' => 
@@ -2481,9 +2814,41 @@ $options['packages'] = array (
         'project' => 'pathauto',
         'version' => '7.x-1.2',
       ),
+      'url' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/url/url.module',
+        'basename' => 'url.module',
+        'name' => 'url',
+        'info' => 
+        array (
+          'name' => 'URL',
+          'description' => 'Defines a simple URL field type.',
+          'package' => 'Fields',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'field',
+          ),
+          'recommends' => 
+          array (
+            0 => 'elements',
+          ),
+          'files' => 
+          array (
+            0 => 'url.test',
+          ),
+          'version' => '7.x-1.0',
+          'project' => 'url',
+          'datestamp' => '1359196701',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7100',
+        'project' => 'url',
+        'version' => '7.x-1.0',
+      ),
       'devel_generate' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/devel/devel_generate/devel_generate.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/devel/devel_generate/devel_generate.module',
         'basename' => 'devel_generate.module',
         'name' => 'devel_generate',
         'info' => 
@@ -2515,7 +2880,7 @@ $options['packages'] = array (
       ),
       'devel' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/devel/devel.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/devel/devel.module',
         'basename' => 'devel.module',
         'name' => 'devel',
         'info' => 
@@ -2548,7 +2913,7 @@ $options['packages'] = array (
       ),
       'devel_node_access' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/devel/devel_node_access.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/devel/devel_node_access.module',
         'basename' => 'devel_node_access.module',
         'name' => 'devel_node_access',
         'info' => 
@@ -2577,7 +2942,7 @@ $options['packages'] = array (
       ),
       'sshkey_blacklist' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/sshkey/sshkey_blacklist/sshkey_blacklist.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/sshkey/sshkey_blacklist/sshkey_blacklist.module',
         'basename' => 'sshkey_blacklist.module',
         'name' => 'sshkey_blacklist',
         'info' => 
@@ -2600,7 +2965,7 @@ $options['packages'] = array (
       ),
       'sshkey' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/sshkey/sshkey.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/sshkey/sshkey.module',
         'basename' => 'sshkey.module',
         'name' => 'sshkey',
         'info' => 
@@ -2631,7 +2996,7 @@ $options['packages'] = array (
       ),
       'backup_migrate' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/backup_migrate/backup_migrate.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/backup_migrate/backup_migrate.module',
         'basename' => 'backup_migrate.module',
         'name' => 'backup_migrate',
         'info' => 
@@ -2660,7 +3025,7 @@ $options['packages'] = array (
       ),
       'xautoload' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/xautoload/xautoload.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/xautoload/xautoload.module',
         'basename' => 'xautoload.module',
         'name' => 'xautoload',
         'info' => 
@@ -2682,7 +3047,7 @@ $options['packages'] = array (
       ),
       'adminrole' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/adminrole/adminrole.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/adminrole/adminrole.module',
         'basename' => 'adminrole.module',
         'name' => 'adminrole',
         'info' => 
@@ -2705,7 +3070,7 @@ $options['packages'] = array (
       ),
       'field_collection' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/field_collection/field_collection.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/field_collection/field_collection.module',
         'basename' => 'field_collection.module',
         'name' => 'field_collection',
         'info' => 
@@ -2737,7 +3102,7 @@ $options['packages'] = array (
       ),
       'oauthloginprovider' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/oauthloginprovider/oauthloginprovider.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/oauthloginprovider/oauthloginprovider.module',
         'basename' => 'oauthloginprovider.module',
         'name' => 'oauthloginprovider',
         'info' => 
@@ -2763,7 +3128,7 @@ $options['packages'] = array (
       ),
       'connector_action_default_register_form' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/connector/modules/connector_action_default_register_form/connector_action_default_register_form.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/connector/modules/connector_action_default_register_form/connector_action_default_register_form.module',
         'basename' => 'connector_action_default_register_form.module',
         'name' => 'connector_action_default_register_form',
         'info' => 
@@ -2787,7 +3152,7 @@ $options['packages'] = array (
       ),
       'connector' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/connector/connector.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/connector/connector.module',
         'basename' => 'connector.module',
         'name' => 'connector',
         'info' => 
@@ -2808,9 +3173,31 @@ $options['packages'] = array (
         'project' => 'connector',
         'version' => '7.x-1.0-beta2',
       ),
+      'nodeaccess_nodereference' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/nodeaccess_nodereference/nodeaccess_nodereference.module',
+        'basename' => 'nodeaccess_nodereference.module',
+        'name' => 'nodeaccess_nodereference',
+        'info' => 
+        array (
+          'name' => 'Node access node reference',
+          'description' => 'Gives content access permissions to users if they have access to content that is referenced with Node reference or Entity reference.',
+          'core' => '7.x',
+          'version' => '7.x-1.22',
+          'project' => 'nodeaccess_nodereference',
+          'datestamp' => '1344230525',
+          'dependencies' => 
+          array (
+          ),
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7104',
+        'project' => 'nodeaccess_nodereference',
+        'version' => '7.x-1.22',
+      ),
       'field_ipaddress' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/field_ipaddress/field_ipaddress.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/field_ipaddress/field_ipaddress.module',
         'basename' => 'field_ipaddress.module',
         'name' => 'field_ipaddress',
         'info' => 
@@ -2838,7 +3225,7 @@ $options['packages'] = array (
       ),
       'libraries' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/libraries/libraries.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/libraries/libraries.module',
         'basename' => 'libraries.module',
         'name' => 'libraries',
         'info' => 
@@ -2865,7 +3252,7 @@ $options['packages'] = array (
       ),
       'field_permissions' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/field_permissions/field_permissions.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/field_permissions/field_permissions.module',
         'basename' => 'field_permissions.module',
         'name' => 'field_permissions',
         'info' => 
@@ -2895,7 +3282,7 @@ $options['packages'] = array (
       ),
       'github_connect' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/github_connect/github_connect.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/github_connect/github_connect.module',
         'basename' => 'github_connect.module',
         'name' => 'github_connect',
         'info' => 
@@ -2918,7 +3305,7 @@ $options['packages'] = array (
       ),
       'entityreference_behavior_example' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/entityreference/examples/entityreference_behavior_example/entityreference_behavior_example.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/entityreference/examples/entityreference_behavior_example/entityreference_behavior_example.module',
         'basename' => 'entityreference_behavior_example.module',
         'name' => 'entityreference_behavior_example',
         'info' => 
@@ -2942,7 +3329,7 @@ $options['packages'] = array (
       ),
       'entityreference' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/entityreference/entityreference.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/entityreference/entityreference.module',
         'basename' => 'entityreference.module',
         'name' => 'entityreference',
         'info' => 
@@ -2981,7 +3368,7 @@ $options['packages'] = array (
       ),
       'strongarm' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/strongarm/strongarm.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/strongarm/strongarm.module',
         'basename' => 'strongarm.module',
         'name' => 'strongarm',
         'info' => 
@@ -3010,7 +3397,7 @@ $options['packages'] = array (
       ),
       'oauth2_server' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/oauth2_server/oauth2_server.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/oauth2_server/oauth2_server.module',
         'basename' => 'oauth2_server.module',
         'name' => 'oauth2_server',
         'info' => 
@@ -3052,7 +3439,7 @@ $options['packages'] = array (
       ),
       'bakery' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/bakery/bakery.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/bakery/bakery.module',
         'basename' => 'bakery.module',
         'name' => 'bakery',
         'info' => 
@@ -3078,7 +3465,7 @@ $options['packages'] = array (
       ),
       'oauth_common_providerui' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/oauth/oauth_common_providerui.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/oauth/oauth_common_providerui.module',
         'basename' => 'oauth_common_providerui.module',
         'name' => 'oauth_common_providerui',
         'info' => 
@@ -3102,7 +3489,7 @@ $options['packages'] = array (
       ),
       'oauth_common' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/oauth/oauth_common.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/oauth/oauth_common.module',
         'basename' => 'oauth_common.module',
         'name' => 'oauth_common',
         'info' => 
@@ -3145,7 +3532,7 @@ $options['packages'] = array (
       ),
       'nodeaccess_userreference' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/nodeaccess_userreference/nodeaccess_userreference.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/nodeaccess_userreference/nodeaccess_userreference.module',
         'basename' => 'nodeaccess_userreference.module',
         'name' => 'nodeaccess_userreference',
         'info' => 
@@ -3172,7 +3559,7 @@ $options['packages'] = array (
       ),
       'http_client_oauth' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/http_client/http_client_oauth.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/http_client/http_client_oauth.module',
         'basename' => 'http_client_oauth.module',
         'name' => 'http_client_oauth',
         'info' => 
@@ -3201,7 +3588,7 @@ $options['packages'] = array (
       ),
       'http_client' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/http_client/http_client.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/http_client/http_client.module',
         'basename' => 'http_client.module',
         'name' => 'http_client',
         'info' => 
@@ -3230,7 +3617,7 @@ $options['packages'] = array (
       ),
       'navbar' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/navbar/navbar.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/navbar/navbar.module',
         'basename' => 'navbar.module',
         'name' => 'navbar',
         'info' => 
@@ -3254,7 +3641,7 @@ $options['packages'] = array (
       ),
       'help_example' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/advanced_help/help_example/help_example.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/advanced_help/help_example/help_example.module',
         'basename' => 'help_example.module',
         'name' => 'help_example',
         'info' => 
@@ -3277,7 +3664,7 @@ $options['packages'] = array (
       ),
       'advanced_help' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/advanced_help/advanced_help.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/advanced_help/advanced_help.module',
         'basename' => 'advanced_help.module',
         'name' => 'advanced_help',
         'info' => 
@@ -3299,7 +3686,7 @@ $options['packages'] = array (
       ),
       'unique_field' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/unique_field/unique_field.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/unique_field/unique_field.module',
         'basename' => 'unique_field.module',
         'name' => 'unique_field',
         'info' => 
@@ -3329,7 +3716,7 @@ $options['packages'] = array (
       ),
       'conditional_fields' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/conditional_fields/conditional_fields.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/conditional_fields/conditional_fields.module',
         'basename' => 'conditional_fields.module',
         'name' => 'conditional_fields',
         'info' => 
@@ -3354,7 +3741,7 @@ $options['packages'] = array (
       ),
       'xrds_simple' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/xrds_simple/xrds_simple.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/xrds_simple/xrds_simple.module',
         'basename' => 'xrds_simple.module',
         'name' => 'xrds_simple',
         'info' => 
@@ -3382,7 +3769,7 @@ $options['packages'] = array (
       ),
       'admin_menu_toolbar' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/admin_menu/admin_menu_toolbar/admin_menu_toolbar.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/admin_menu/admin_menu_toolbar/admin_menu_toolbar.module',
         'basename' => 'admin_menu_toolbar.module',
         'name' => 'admin_menu_toolbar',
         'info' => 
@@ -3406,7 +3793,7 @@ $options['packages'] = array (
       ),
       'admin_devel' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/admin_menu/admin_devel/admin_devel.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/admin_menu/admin_devel/admin_devel.module',
         'basename' => 'admin_devel.module',
         'name' => 'admin_devel',
         'info' => 
@@ -3433,7 +3820,7 @@ $options['packages'] = array (
       ),
       'admin_menu' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/admin_menu/admin_menu.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/admin_menu/admin_menu.module',
         'basename' => 'admin_menu.module',
         'name' => 'admin_menu',
         'info' => 
@@ -3462,7 +3849,7 @@ $options['packages'] = array (
       ),
       'rules_scheduler' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/rules/rules_scheduler/rules_scheduler.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/rules/rules_scheduler/rules_scheduler.module',
         'basename' => 'rules_scheduler.module',
         'name' => 'rules_scheduler',
         'info' => 
@@ -3498,7 +3885,7 @@ $options['packages'] = array (
       ),
       'rules_i18n' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/rules/rules_i18n/rules_i18n.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/rules/rules_i18n/rules_i18n.module',
         'basename' => 'rules_i18n.module',
         'name' => 'rules_i18n',
         'info' => 
@@ -3529,7 +3916,7 @@ $options['packages'] = array (
       ),
       'rules_admin' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/rules/rules_admin/rules_admin.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/rules/rules_admin/rules_admin.module',
         'basename' => 'rules_admin.module',
         'name' => 'rules_admin',
         'info' => 
@@ -3558,7 +3945,7 @@ $options['packages'] = array (
       ),
       'rules' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/rules/rules.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/rules/rules.module',
         'basename' => 'rules.module',
         'name' => 'rules',
         'info' => 
@@ -3603,7 +3990,7 @@ $options['packages'] = array (
       ),
       'eva' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/eva/eva.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/eva/eva.module',
         'basename' => 'eva.module',
         'name' => 'eva',
         'info' => 
@@ -3631,7 +4018,7 @@ $options['packages'] = array (
       ),
       'module_filter' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/module_filter/module_filter.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/module_filter/module_filter.module',
         'basename' => 'module_filter.module',
         'name' => 'module_filter',
         'info' => 
@@ -3667,7 +4054,7 @@ $options['packages'] = array (
       ),
       'entity' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/entity/entity.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/entity/entity.module',
         'basename' => 'entity.module',
         'name' => 'entity',
         'info' => 
@@ -3716,7 +4103,7 @@ $options['packages'] = array (
       ),
       'entity_token' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/entity/entity_token.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/entity/entity_token.module',
         'basename' => 'entity_token.module',
         'name' => 'entity_token',
         'info' => 
@@ -3742,9 +4129,39 @@ $options['packages'] = array (
         'project' => 'entity',
         'version' => '7.x-1.6',
       ),
+      'views_megarow' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/views_megarow/views_megarow.module',
+        'basename' => 'views_megarow.module',
+        'name' => 'views_megarow',
+        'info' => 
+        array (
+          'name' => 'Views megarow',
+          'description' => 'Open views links in a modal.',
+          'core' => '7.x',
+          'package' => 'Views',
+          'dependencies' => 
+          array (
+            0 => 'views',
+          ),
+          'configure' => 'admin/config/user-interface/views_megarow',
+          'files' => 
+          array (
+            0 => 'includes/views/plugins/views_plugin_style_table_megarows.inc',
+            1 => 'includes/views/handlers/views_handler_field_megarow_links.inc',
+          ),
+          'version' => '7.x-1.5',
+          'project' => 'views_megarow',
+          'datestamp' => '1438968242',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'views_megarow',
+        'version' => '7.x-1.5',
+      ),
       'panels_node' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/panels/panels_node/panels_node.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/panels/panels_node/panels_node.module',
         'basename' => 'panels_node.module',
         'name' => 'panels_node',
         'info' => 
@@ -3773,7 +4190,7 @@ $options['packages'] = array (
       ),
       'i18n_panels' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/panels/i18n_panels/i18n_panels.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/panels/i18n_panels/i18n_panels.module',
         'basename' => 'i18n_panels.module',
         'name' => 'i18n_panels',
         'info' => 
@@ -3800,7 +4217,7 @@ $options['packages'] = array (
       ),
       'panels_ipe' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/panels/panels_ipe/panels_ipe.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/panels/panels_ipe/panels_ipe.module',
         'basename' => 'panels_ipe.module',
         'name' => 'panels_ipe',
         'info' => 
@@ -3829,7 +4246,7 @@ $options['packages'] = array (
       ),
       'panels_mini' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/panels/panels_mini/panels_mini.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/panels/panels_mini/panels_mini.module',
         'basename' => 'panels_mini.module',
         'name' => 'panels_mini',
         'info' => 
@@ -3857,7 +4274,7 @@ $options['packages'] = array (
       ),
       'panels' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/panels/panels.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/panels/panels.module',
         'basename' => 'panels.module',
         'name' => 'panels',
         'info' => 
@@ -3890,7 +4307,7 @@ $options['packages'] = array (
       ),
       'token' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/token/token.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/token/token.module',
         'basename' => 'token.module',
         'name' => 'token',
         'info' => 
@@ -3916,7 +4333,7 @@ $options['packages'] = array (
       ),
       'machine_name' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/machine_name/machine_name.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/machine_name/machine_name.module',
         'basename' => 'machine_name.module',
         'name' => 'machine_name',
         'info' => 
@@ -3939,7 +4356,7 @@ $options['packages'] = array (
       ),
       'features' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/contrib/features/features.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/contrib/features/features.module',
         'basename' => 'features.module',
         'name' => 'features',
         'info' => 
@@ -3965,9 +4382,1218 @@ $options['packages'] = array (
         'project' => 'features',
         'version' => '7.x-2.7',
       ),
+      'inline_entity_form' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/inline_entity_form/inline_entity_form.module',
+        'basename' => 'inline_entity_form.module',
+        'name' => 'inline_entity_form',
+        'info' => 
+        array (
+          'name' => 'Inline Entity Form',
+          'description' => 'Provides a widget for inline management (creation, modification, removal) of referenced entities. ',
+          'package' => 'Fields',
+          'dependencies' => 
+          array (
+            0 => 'entity',
+            1 => 'system (>7.14)',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/entity.inline_entity_form.inc',
+            1 => 'includes/node.inline_entity_form.inc',
+            2 => 'includes/taxonomy_term.inline_entity_form.inc',
+            3 => 'includes/commerce_product.inline_entity_form.inc',
+            4 => 'includes/commerce_line_item.inline_entity_form.inc',
+          ),
+          'version' => '7.x-1.6',
+          'project' => 'inline_entity_form',
+          'datestamp' => '1434553381',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'inline_entity_form',
+        'version' => '7.x-1.6',
+      ),
+      'commerce_dunning_defaults' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_dunning/modules/commerce_dunning_defaults/commerce_dunning_defaults.module',
+        'basename' => 'commerce_dunning_defaults.module',
+        'name' => 'commerce_dunning_defaults',
+        'info' => 
+        array (
+          'name' => 'Commerce Dunning Defaults',
+          'description' => 'Provides sensible default configuration for Commerce Dunning.',
+          'core' => '7.x',
+          'package' => 'Commerce (contrib)',
+          'dependencies' => 
+          array (
+            0 => 'commerce_dunning',
+            1 => 'entityreference',
+            2 => 'field_sql_storage',
+            3 => 'message',
+            4 => 'message_notify',
+            5 => 'rules_scheduler',
+          ),
+          'version' => '7.x-1.0-beta2',
+          'project' => 'commerce_dunning',
+          'datestamp' => '1386608981',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_dunning',
+        'version' => '7.x-1.0-beta2',
+      ),
+      'commerce_dunning_testing' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_dunning/tests/commerce_dunning_testing/commerce_dunning_testing.module',
+        'basename' => 'commerce_dunning_testing.module',
+        'name' => 'commerce_dunning_testing',
+        'info' => 
+        array (
+          'name' => 'Commerce Dunning Testing',
+          'description' => 'Provides tools and a payment method for manually testing the functionality of Commerce Dunning.',
+          'package' => 'Testing',
+          'dependencies' => 
+          array (
+            0 => 'commerce_dunning',
+          ),
+          'core' => '7.x',
+          'version' => '7.x-1.0-beta2',
+          'project' => 'commerce_dunning',
+          'datestamp' => '1386608981',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_dunning',
+        'version' => '7.x-1.0-beta2',
+      ),
+      'commerce_dunning' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_dunning/commerce_dunning.module',
+        'basename' => 'commerce_dunning.module',
+        'name' => 'commerce_dunning',
+        'info' => 
+        array (
+          'name' => 'Commerce Dunning',
+          'description' => 'Provides a toolset for dunning management.',
+          'core' => '7.x',
+          'package' => 'Commerce (contrib)',
+          'dependencies' => 
+          array (
+            0 => 'commerce_cardonfile',
+          ),
+          'files' => 
+          array (
+            0 => 'tests/commerce_dunning.test',
+          ),
+          'version' => '7.x-1.0-beta2',
+          'project' => 'commerce_dunning',
+          'datestamp' => '1386608981',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_dunning',
+        'version' => '7.x-1.0-beta2',
+      ),
+      'commerce_product_reference' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/product_reference/commerce_product_reference.module',
+        'basename' => 'commerce_product_reference.module',
+        'name' => 'commerce_product_reference',
+        'info' => 
+        array (
+          'name' => 'Product Reference',
+          'description' => 'Defines a product reference field and default display formatters.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_line_item',
+            2 => 'commerce_price',
+            3 => 'commerce_product',
+            4 => 'entity',
+            5 => 'options',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/views/handlers/commerce_product_reference_handler_filter_node_is_product_display.inc',
+            1 => 'includes/views/handlers/commerce_product_reference_handler_filter_node_type.inc',
+            2 => 'includes/views/handlers/commerce_product_reference_handler_filter_product_line_item_type.inc',
+            3 => 'tests/commerce_product_reference.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_payment_example' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/payment/modules/commerce_payment_example.module',
+        'basename' => 'commerce_payment_example.module',
+        'name' => 'commerce_payment_example',
+        'info' => 
+        array (
+          'name' => 'Payment Method Example',
+          'description' => 'Provides an example payment method for testing and development.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_payment',
+          ),
+          'core' => '7.x',
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_payment' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/payment/commerce_payment.module',
+        'basename' => 'commerce_payment.module',
+        'name' => 'commerce_payment',
+        'info' => 
+        array (
+          'name' => 'Payment',
+          'description' => 'Implement core payment features for Drupal commerce.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_order',
+            2 => 'entity',
+            3 => 'rules',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'commerce_payment.rules.inc',
+            1 => 'includes/commerce_payment_transaction.controller.inc',
+            2 => 'includes/views/handlers/commerce_payment_handler_area_totals.inc',
+            3 => 'includes/views/handlers/commerce_payment_handler_field_amount.inc',
+            4 => 'includes/views/handlers/commerce_payment_handler_field_currency_code.inc',
+            5 => 'includes/views/handlers/commerce_payment_handler_field_message.inc',
+            6 => 'includes/views/handlers/commerce_payment_handler_field_payment_method.inc',
+            7 => 'includes/views/handlers/commerce_payment_handler_field_payment_transaction_link.inc',
+            8 => 'includes/views/handlers/commerce_payment_handler_field_payment_transaction_link_delete.inc',
+            9 => 'includes/views/handlers/commerce_payment_handler_field_payment_transaction_operations.inc',
+            10 => 'includes/views/handlers/commerce_payment_handler_field_status.inc',
+            11 => 'includes/views/handlers/commerce_payment_handler_filter_payment_method.inc',
+            12 => 'includes/views/handlers/commerce_payment_handler_filter_payment_transaction_status.inc',
+            13 => 'includes/views/handlers/commerce_payment_handler_filter_currency_code.inc',
+            14 => 'includes/views/handlers/commerce_payment_handler_field_balance.inc',
+            15 => 'tests/commerce_payment.rules.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7102',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_payment_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/payment/commerce_payment_ui.module',
+        'basename' => 'commerce_payment_ui.module',
+        'name' => 'commerce_payment_ui',
+        'info' => 
+        array (
+          'name' => 'Payment UI',
+          'description' => 'Exposes a default UI for payment method configuration and payment transaction administration.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'rules_admin',
+            1 => 'commerce',
+            2 => 'commerce_order',
+            3 => 'commerce_order_ui',
+            4 => 'commerce_payment',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/payment-methods',
+          'files' => 
+          array (
+            0 => 'tests/commerce_payment_ui.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_cart' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/cart/commerce_cart.module',
+        'basename' => 'commerce_cart.module',
+        'name' => 'commerce_cart',
+        'info' => 
+        array (
+          'name' => 'Cart',
+          'description' => 'Implements the shopping cart system and add to cart features.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_checkout',
+            2 => 'commerce_line_item',
+            3 => 'commerce_order',
+            4 => 'commerce_product',
+            5 => 'commerce_product_pricing',
+            6 => 'commerce_product_reference',
+            7 => 'entity',
+            8 => 'rules',
+            9 => 'views',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/views/handlers/commerce_cart_handler_field_add_to_cart_form.inc',
+            1 => 'includes/views/handlers/commerce_cart_plugin_argument_default_current_cart_order_id.inc',
+            2 => 'includes/views/handlers/commerce_cart_handler_area_empty_text.inc',
+            3 => 'tests/commerce_cart.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7102',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_line_item_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/line_item/commerce_line_item_ui.module',
+        'basename' => 'commerce_line_item_ui.module',
+        'name' => 'commerce_line_item_ui',
+        'info' => 
+        array (
+          'name' => 'Line Item UI',
+          'description' => 'Exposes a default UI for Line Items through line item type forms and default Views.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'field_ui',
+            1 => 'commerce',
+            2 => 'commerce_ui',
+            3 => 'commerce_line_item',
+            4 => 'views',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/line-items',
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_line_item' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/line_item/commerce_line_item.module',
+        'basename' => 'commerce_line_item.module',
+        'name' => 'commerce_line_item',
+        'info' => 
+        array (
+          'name' => 'Line Item',
+          'description' => 'Defines the Line Item entity and associated features.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_price',
+            2 => 'entity',
+            3 => 'rules',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/commerce_line_item.controller.inc',
+            1 => 'includes/views/handlers/commerce_line_item_handler_area_line_item_summary.inc',
+            2 => 'includes/views/handlers/commerce_line_item_handler_argument_line_item_line_item_id.inc',
+            3 => 'includes/views/handlers/commerce_line_item_handler_field_line_item_title.inc',
+            4 => 'includes/views/handlers/commerce_line_item_handler_field_line_item_type.inc',
+            5 => 'includes/views/handlers/commerce_line_item_handler_filter_line_item_type.inc',
+            6 => 'includes/views/handlers/commerce_line_item_handler_field_edit_quantity.inc',
+            7 => 'includes/views/handlers/commerce_line_item_handler_field_edit_delete.inc',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7101',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_product' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/product/commerce_product.module',
+        'basename' => 'commerce_product.module',
+        'name' => 'commerce_product',
+        'info' => 
+        array (
+          'name' => 'Product',
+          'description' => 'Defines the Product entity and associated features.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_price',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/commerce_product.controller.inc',
+            1 => 'includes/views/handlers/commerce_product_handler_area_empty_text.inc',
+            2 => 'includes/views/handlers/commerce_product_handler_argument_product_id.inc',
+            3 => 'includes/views/handlers/commerce_product_handler_field_product.inc',
+            4 => 'includes/views/handlers/commerce_product_handler_field_product_type.inc',
+            5 => 'includes/views/handlers/commerce_product_handler_field_product_link.inc',
+            6 => 'includes/views/handlers/commerce_product_handler_field_product_link_delete.inc',
+            7 => 'includes/views/handlers/commerce_product_handler_field_product_link_edit.inc',
+            8 => 'includes/views/handlers/commerce_product_handler_field_product_operations.inc',
+            9 => 'includes/views/handlers/commerce_product_handler_filter_product_type.inc',
+            10 => 'includes/commerce_product.translation_handler.inc',
+            11 => 'tests/commerce_product.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7104',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_product_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/product/commerce_product_ui.module',
+        'basename' => 'commerce_product_ui.module',
+        'name' => 'commerce_product_ui',
+        'info' => 
+        array (
+          'name' => 'Product UI',
+          'description' => 'Exposes a default UI for Products through product edit forms and default Views.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'field_ui',
+            1 => 'commerce',
+            2 => 'commerce_ui',
+            3 => 'commerce_product',
+            4 => 'views',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/products/types',
+          'files' => 
+          array (
+            0 => 'tests/commerce_product_ui.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7100',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_price' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/price/commerce_price.module',
+        'basename' => 'commerce_price.module',
+        'name' => 'commerce_price',
+        'info' => 
+        array (
+          'name' => 'Price',
+          'description' => 'Defines the price field and a price alteration system.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'commerce_price.rules.inc',
+            1 => 'includes/views/handlers/commerce_price_handler_field_commerce_price.inc',
+            2 => 'includes/views/handlers/commerce_price_handler_filter_commerce_price_amount.inc',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7100',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_tax_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/tax/commerce_tax_ui.module',
+        'basename' => 'commerce_tax_ui.module',
+        'name' => 'commerce_tax_ui',
+        'info' => 
+        array (
+          'name' => 'Tax UI',
+          'description' => 'Provides a UI for creating simple tax types and rates.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_ui',
+            2 => 'commerce_tax',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/taxes',
+          'files' => 
+          array (
+            0 => 'tests/commerce_tax_ui.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7002',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_tax' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/tax/commerce_tax.module',
+        'basename' => 'commerce_tax.module',
+        'name' => 'commerce_tax',
+        'info' => 
+        array (
+          'name' => 'Tax',
+          'description' => 'Define tax rates and configure tax rules for applicability and display.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_line_item',
+            2 => 'commerce_price',
+            3 => 'commerce_product_pricing',
+            4 => 'entity',
+            5 => 'rules',
+          ),
+          'core' => '7.x',
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_checkout' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/checkout/commerce_checkout.module',
+        'basename' => 'commerce_checkout.module',
+        'name' => 'commerce_checkout',
+        'info' => 
+        array (
+          'name' => 'Checkout',
+          'description' => 'Enable checkout as a multi-step form with customizable checkout pages.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_ui',
+            2 => 'commerce_order',
+            3 => 'entity',
+            4 => 'rules',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/checkout',
+          'files' => 
+          array (
+            0 => 'tests/commerce_checkout.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7103',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_customer_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/customer/commerce_customer_ui.module',
+        'basename' => 'commerce_customer_ui.module',
+        'name' => 'commerce_customer_ui',
+        'info' => 
+        array (
+          'name' => 'Customer UI',
+          'description' => 'Exposes a default UI for Customers through profile edit forms and default Views.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'field_ui',
+            1 => 'commerce',
+            2 => 'commerce_ui',
+            3 => 'commerce_customer',
+            4 => 'views',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/customer-profiles/types',
+          'files' => 
+          array (
+            0 => 'tests/commerce_customer_ui.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_customer' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/customer/commerce_customer.module',
+        'basename' => 'commerce_customer.module',
+        'name' => 'commerce_customer',
+        'info' => 
+        array (
+          'name' => 'Customer',
+          'description' => 'Defines the Customer entity with Address Field integration.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'addressfield',
+            1 => 'commerce',
+            2 => 'entity',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/commerce_customer_profile.controller.inc',
+            1 => 'includes/views/handlers/commerce_customer_handler_area_empty_text.inc',
+            2 => 'includes/views/handlers/commerce_customer_handler_field_customer_profile.inc',
+            3 => 'includes/views/handlers/commerce_customer_handler_field_customer_profile_link.inc',
+            4 => 'includes/views/handlers/commerce_customer_handler_field_customer_profile_link_delete.inc',
+            5 => 'includes/views/handlers/commerce_customer_handler_field_customer_profile_link_edit.inc',
+            6 => 'includes/views/handlers/commerce_customer_handler_field_customer_profile_type.inc',
+            7 => 'includes/views/handlers/commerce_customer_handler_filter_customer_profile_type.inc',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7102',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_order_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/order/commerce_order_ui.module',
+        'basename' => 'commerce_order_ui.module',
+        'name' => 'commerce_order_ui',
+        'info' => 
+        array (
+          'name' => 'Order UI',
+          'description' => 'Exposes a default UI for Orders through order edit forms and default Views.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'field_ui',
+            1 => 'commerce',
+            2 => 'commerce_ui',
+            3 => 'commerce_line_item',
+            4 => 'commerce_order',
+            5 => 'views',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/order',
+          'files' => 
+          array (
+            0 => 'includes/views/handlers/commerce_order_ui_handler_area_view_order_form.inc',
+            1 => 'tests/commerce_order_ui.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_order' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/order/commerce_order.module',
+        'basename' => 'commerce_order.module',
+        'name' => 'commerce_order',
+        'info' => 
+        array (
+          'name' => 'Order',
+          'description' => 'Defines the Order entity and associated features.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_customer',
+            2 => 'commerce_line_item',
+            3 => 'commerce_price',
+            4 => 'entity',
+            5 => 'rules',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'includes/commerce_order.controller.inc',
+            1 => 'includes/views/handlers/commerce_order_handler_area_empty_text.inc',
+            2 => 'includes/views/handlers/commerce_order_handler_area_order_total.inc',
+            3 => 'includes/views/handlers/commerce_order_handler_argument_order_order_id.inc',
+            4 => 'includes/views/handlers/commerce_order_handler_field_order.inc',
+            5 => 'includes/views/handlers/commerce_order_handler_field_order_status.inc',
+            6 => 'includes/views/handlers/commerce_order_handler_field_order_state.inc',
+            7 => 'includes/views/handlers/commerce_order_handler_field_order_type.inc',
+            8 => 'includes/views/handlers/commerce_order_handler_field_order_link.inc',
+            9 => 'includes/views/handlers/commerce_order_handler_field_order_link_delete.inc',
+            10 => 'includes/views/handlers/commerce_order_handler_field_order_link_edit.inc',
+            11 => 'includes/views/handlers/commerce_order_handler_field_order_mail.inc',
+            12 => 'includes/views/handlers/commerce_order_handler_field_order_operations.inc',
+            13 => 'includes/views/handlers/commerce_order_handler_filter_order_status.inc',
+            14 => 'includes/views/handlers/commerce_order_handler_filter_order_state.inc',
+            15 => 'includes/views/handlers/commerce_order_handler_filter_order_type.inc',
+            16 => 'includes/views/handlers/commerce_order_plugin_argument_validate_user.inc',
+            17 => 'tests/commerce_order.rules.test',
+            18 => 'tests/commerce_order.test',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7109',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_product_pricing' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/product_pricing/commerce_product_pricing.module',
+        'basename' => 'commerce_product_pricing.module',
+        'name' => 'commerce_product_pricing',
+        'info' => 
+        array (
+          'name' => 'Product Pricing',
+          'description' => 'Enables Rules based product sell price calculation for dynamic product pricing.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+            1 => 'commerce_price',
+            2 => 'commerce_product_reference',
+            3 => 'entity',
+            4 => 'rules',
+          ),
+          'core' => '7.x',
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7100',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_product_pricing_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/modules/product_pricing/commerce_product_pricing_ui.module',
+        'basename' => 'commerce_product_pricing_ui.module',
+        'name' => 'commerce_product_pricing_ui',
+        'info' => 
+        array (
+          'name' => 'Product Pricing UI',
+          'description' => 'Exposes a UI for managing product pricing rules and pre-calculation settings.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'rules_admin',
+            1 => 'commerce',
+            2 => 'commerce_ui',
+            3 => 'commerce_price',
+            4 => 'commerce_product_pricing',
+            5 => 'commerce_product_reference',
+          ),
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/product-pricing',
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_ui' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/commerce_ui.module',
+        'basename' => 'commerce_ui.module',
+        'name' => 'commerce_ui',
+        'info' => 
+        array (
+          'name' => 'Commerce UI',
+          'description' => 'Defines menu items common to the various Drupal Commerce UI modules.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'commerce',
+          ),
+          'core' => '7.x',
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce/commerce.module',
+        'basename' => 'commerce.module',
+        'name' => 'commerce',
+        'info' => 
+        array (
+          'name' => 'Commerce',
+          'description' => 'Defines features and functions common to the Commerce modules. Must be enabled to uninstall other Commerce modules.',
+          'package' => 'Commerce',
+          'dependencies' => 
+          array (
+            0 => 'system',
+            1 => 'entity',
+            2 => 'rules',
+          ),
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'tests/commerce_base.test',
+            1 => 'includes/commerce.controller.inc',
+          ),
+          'version' => '7.x-1.11',
+          'project' => 'commerce',
+          'datestamp' => '1421426596',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7102',
+        'project' => 'commerce',
+        'version' => '7.x-1.11',
+      ),
+      'commerce_license_example' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_license/modules/commerce_license_example/commerce_license_example.module',
+        'basename' => 'commerce_license_example.module',
+        'name' => 'commerce_license_example',
+        'info' => 
+        array (
+          'name' => 'Commerce License Example',
+          'description' => 'Provides an example license type for testing and development.',
+          'core' => '7.x',
+          'package' => 'Commerce (contrib)',
+          'dependencies' => 
+          array (
+            0 => 'commerce_license',
+            1 => 'inline_entity_form',
+            2 => 'advancedqueue',
+          ),
+          'version' => '7.x-1.3',
+          'project' => 'commerce_license',
+          'datestamp' => '1403714930',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_license',
+        'version' => '7.x-1.3',
+      ),
+      'commerce_license_role' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_license/modules/commerce_license_role/commerce_license_role.module',
+        'basename' => 'commerce_license_role.module',
+        'name' => 'commerce_license_role',
+        'info' => 
+        array (
+          'name' => 'Commerce License Role',
+          'description' => 'Provides a license type for selling roles.',
+          'core' => '7.x',
+          'package' => 'Commerce (contrib)',
+          'dependencies' => 
+          array (
+            0 => 'commerce_license',
+          ),
+          'version' => '7.x-1.3',
+          'project' => 'commerce_license',
+          'datestamp' => '1403714930',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_license',
+        'version' => '7.x-1.3',
+      ),
+      'commerce_license' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_license/commerce_license.module',
+        'basename' => 'commerce_license.module',
+        'name' => 'commerce_license',
+        'info' => 
+        array (
+          'name' => 'Commerce License',
+          'description' => 'Provides a framework for selling access to local or remote resources.',
+          'package' => 'Commerce (contrib)',
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/license',
+          'dependencies' => 
+          array (
+            0 => 'commerce_product',
+            1 => 'commerce_product_reference',
+            2 => 'commerce_line_item',
+            3 => 'commerce_payment',
+            4 => 'ctools',
+            5 => 'entity',
+            6 => 'entity_bundle_plugin',
+            7 => 'entityreference',
+            8 => 'list',
+            9 => 'number',
+            10 => 'views_bulk_operations',
+          ),
+          'files' => 
+          array (
+            0 => 'commerce_license.info.inc',
+            1 => 'includes/commerce_license.controller.inc',
+            2 => 'includes/commerce_license.inline_entity_form.inc',
+            3 => 'includes/plugins/license_type/base.inc',
+            4 => 'includes/views/commerce_license.views_controller.inc',
+            5 => 'includes/views/handlers/commerce_license_handler_field_access_details.inc',
+            6 => 'includes/views/plugins/commerce_license_plugin_access_sync.inc',
+          ),
+          'version' => '7.x-1.3',
+          'project' => 'commerce_license',
+          'datestamp' => '1403714930',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7102',
+        'project' => 'commerce_license',
+        'version' => '7.x-1.3',
+      ),
+      'advancedqueue_example' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/advancedqueue/advancedqueue_example/advancedqueue_example.module',
+        'basename' => 'advancedqueue_example.module',
+        'name' => 'advancedqueue_example',
+        'info' => 
+        array (
+          'name' => 'Advanced Queues example',
+          'description' => 'Example module for Advanced Queues module.',
+          'package' => 'Other',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'advancedqueue',
+          ),
+          'version' => '7.x-1.0-beta3',
+          'project' => 'advancedqueue',
+          'datestamp' => '1409216335',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'advancedqueue',
+        'version' => '7.x-1.0-beta3',
+      ),
+      'advancedqueue_test' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/advancedqueue/tests/advancedqueue_test.module',
+        'basename' => 'advancedqueue_test.module',
+        'name' => 'advancedqueue_test',
+        'info' => 
+        array (
+          'core' => '7.x',
+          'name' => 'Advanced Queues Test',
+          'description' => 'Simpletests for advancedqueue.',
+          'package' => 'Other',
+          'dependencies' => 
+          array (
+            0 => 'advancedqueue',
+            1 => 'simpletest',
+          ),
+          'files' => 
+          array (
+            0 => 'advancedqueue.test',
+          ),
+          'version' => '7.x-1.0-beta3',
+          'project' => 'advancedqueue',
+          'datestamp' => '1409216335',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'advancedqueue',
+        'version' => '7.x-1.0-beta3',
+      ),
+      'advancedqueue' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/advancedqueue/advancedqueue.module',
+        'basename' => 'advancedqueue.module',
+        'name' => 'advancedqueue',
+        'info' => 
+        array (
+          'name' => 'Advanced Queues',
+          'description' => 'Helper module for advanced queuing.',
+          'package' => 'Other',
+          'core' => '7.x',
+          'files' => 
+          array (
+            0 => 'advancedqueue.queue.inc',
+            1 => 'views/advancedqueue_handler_field_title.inc',
+            2 => 'views/advancedqueue_handler_field_status.inc',
+            3 => 'views/advancedqueue_handler_filter_status.inc',
+          ),
+          'version' => '7.x-1.0-beta3',
+          'project' => 'advancedqueue',
+          'datestamp' => '1409216335',
+          'dependencies' => 
+          array (
+          ),
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'advancedqueue',
+        'version' => '7.x-1.0-beta3',
+      ),
+      'entity_bundle_plugin_test' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/entity_bundle_plugin/tests/entity_bundle_plugin_test.module',
+        'basename' => 'entity_bundle_plugin_test.module',
+        'name' => 'entity_bundle_plugin_test',
+        'info' => 
+        array (
+          'name' => 'Entity Bundle Plugin Test',
+          'description' => 'Test support and example module for Entity Bundle Plugin.',
+          'package' => 'Entity',
+          'core' => '7.x',
+          'dependencies' => 
+          array (
+            0 => 'entity_bundle_plugin',
+          ),
+          'version' => '7.x-1.0-beta2',
+          'project' => 'entity_bundle_plugin',
+          'datestamp' => '1372669557',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'entity_bundle_plugin',
+        'version' => '7.x-1.0-beta2',
+      ),
+      'entity_bundle_plugin' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/entity_bundle_plugin/entity_bundle_plugin.module',
+        'basename' => 'entity_bundle_plugin.module',
+        'name' => 'entity_bundle_plugin',
+        'info' => 
+        array (
+          'name' => 'Entity Bundle Plugin',
+          'description' => 'Provide supports for entity types which bundles are plugin classes.',
+          'package' => 'Entity',
+          'core' => '7.x',
+          'php' => '5.3',
+          'dependencies' => 
+          array (
+            0 => 'entity',
+            1 => 'ctools',
+          ),
+          'files' => 
+          array (
+            0 => 'tests/entity_bundle_plugin_merge.test',
+            1 => 'entity_bundle_plugin.controller.inc',
+          ),
+          'version' => '7.x-1.0-beta2',
+          'project' => 'entity_bundle_plugin',
+          'datestamp' => '1372669557',
+        ),
+        'schema_version' => 0,
+        'project' => 'entity_bundle_plugin',
+        'version' => '7.x-1.0-beta2',
+      ),
+      'actions_permissions' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/views_bulk_operations/actions_permissions.module',
+        'basename' => 'actions_permissions.module',
+        'name' => 'actions_permissions',
+        'info' => 
+        array (
+          'name' => 'Actions permissions (VBO)',
+          'description' => 'Provides permission-based access control for actions. Used by Views Bulk Operations.',
+          'package' => 'Administration',
+          'core' => '7.x',
+          'version' => '7.x-3.3',
+          'project' => 'views_bulk_operations',
+          'datestamp' => '1435764542',
+          'dependencies' => 
+          array (
+          ),
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'views_bulk_operations',
+        'version' => '7.x-3.3',
+      ),
+      'views_bulk_operations' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/views_bulk_operations/views_bulk_operations.module',
+        'basename' => 'views_bulk_operations.module',
+        'name' => 'views_bulk_operations',
+        'info' => 
+        array (
+          'name' => 'Views Bulk Operations',
+          'description' => 'Provides a way of selecting multiple rows and applying operations to them.',
+          'dependencies' => 
+          array (
+            0 => 'entity',
+            1 => 'views',
+          ),
+          'package' => 'Views',
+          'core' => '7.x',
+          'php' => '5.2.9',
+          'files' => 
+          array (
+            0 => 'plugins/operation_types/base.class.php',
+            1 => 'views/views_bulk_operations_handler_field_operations.inc',
+          ),
+          'version' => '7.x-3.3',
+          'project' => 'views_bulk_operations',
+          'datestamp' => '1435764542',
+        ),
+        'schema_version' => 0,
+        'project' => 'views_bulk_operations',
+        'version' => '7.x-3.3',
+      ),
+      'commerce_license_billing' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_license_billing/commerce_license_billing.module',
+        'basename' => 'commerce_license_billing.module',
+        'name' => 'commerce_license_billing',
+        'info' => 
+        array (
+          'name' => 'Commerce License Billing',
+          'description' => 'Provides advanced recurring billing for licenses.',
+          'package' => 'Commerce (contrib)',
+          'core' => '7.x',
+          'configure' => 'admin/commerce/config/license-billing',
+          'dependencies' => 
+          array (
+            0 => 'advancedqueue',
+            1 => 'commerce_license',
+            2 => 'commerce_order',
+            3 => 'date',
+            4 => 'list',
+            5 => 'views',
+            6 => 'views_megarow',
+          ),
+          'files' => 
+          array (
+            0 => 'commerce_license_billing.info.inc',
+            1 => 'plugins/billing_cycle_engine/base.inc',
+            2 => 'includes/commerce_license_billing.interface.inc',
+            3 => 'includes/commerce_license_billing.cycle_type_ui.inc',
+            4 => 'includes/commerce_license_billing.cycle.inc',
+            5 => 'includes/views/handlers/commerce_license_billing_handler_field_usage_details.inc',
+            6 => 'tests/commerce_license_billing.test',
+          ),
+          'version' => '7.x-1.0-beta4',
+          'project' => 'commerce_license_billing',
+          'datestamp' => '1416675181',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7101',
+        'project' => 'commerce_license_billing',
+        'version' => '7.x-1.0-beta4',
+      ),
+      'commerce_license_node' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/commerce_license_node/commerce_license_node.module',
+        'basename' => 'commerce_license_node.module',
+        'name' => 'commerce_license_node',
+        'info' => 
+        array (
+          'name' => 'Commerce License Node',
+          'description' => 'Provides a license type for selling nodes.',
+          'core' => '7.x',
+          'package' => 'Commerce (contrib)',
+          'dependencies' => 
+          array (
+            0 => 'commerce_license',
+            1 => 'commerce_license_role',
+            2 => 'commerce_license_billing',
+          ),
+          'version' => '7.x-1.x-dev',
+          'project' => 'commerce_license_node',
+          'datestamp' => '1401912228',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => 0,
+        'project' => 'commerce_license_node',
+        'version' => '7.x-1.x-dev',
+      ),
+      'addressfield' => 
+      array (
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/commerce/addressfield/addressfield.module',
+        'basename' => 'addressfield.module',
+        'name' => 'addressfield',
+        'info' => 
+        array (
+          'name' => 'Address Field',
+          'description' => 'Manage a flexible address field, implementing the xNAL standard.',
+          'core' => '7.x',
+          'package' => 'Fields',
+          'dependencies' => 
+          array (
+            0 => 'ctools',
+          ),
+          'files' => 
+          array (
+            0 => 'addressfield.migrate.inc',
+            1 => 'views/addressfield_views_handler_field_administrative_area.inc',
+            2 => 'views/addressfield_views_handler_field_country.inc',
+            3 => 'views/addressfield_views_handler_filter_country.inc',
+          ),
+          'version' => '7.x-1.2',
+          'project' => 'addressfield',
+          'datestamp' => '1444254070',
+          'php' => '5.2.4',
+        ),
+        'schema_version' => '7001',
+        'project' => 'addressfield',
+        'version' => '7.x-1.2',
+      ),
       'devshop_servers' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/modules/devshop_build/devshop_servers/devshop_servers.module',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/modules/devshop_build/devshop_servers/devshop_servers.module',
         'basename' => 'devshop_servers.module',
         'name' => 'devshop_servers',
         'info' => 
@@ -4072,25 +5698,9 @@ $options['packages'] = array (
     ),
     'themes' => 
     array (
-      'buildstrap' => 
-      array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/themes/buildstrap/buildstrap.info',
-        'basename' => 'buildstrap.info',
-        'name' => 'BuildStrap',
-        'info' => 
-        array (
-          'name' => 'BuildStrap',
-          'description' => 'devshop.build starter theme.',
-          'core' => '7.x',
-          'base theme' => 'bootstrap',
-          'version' => NULL,
-        ),
-        'project' => '',
-        'version' => NULL,
-      ),
       'bootstrap' => 
       array (
-        'filename' => '/var/aegir/projects/build/live/sites/all/themes/bootstrap/bootstrap.info',
+        'filename' => '/var/aegir/projects/build/branch_dev_commerce/sites/all/themes/bootstrap/bootstrap.info',
         'basename' => 'bootstrap.info',
         'name' => 'Bootstrap',
         'info' => 
