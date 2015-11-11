@@ -6,6 +6,6 @@
  */
 
 $plugin = array(
-  'title' => t('Role'),
-  'class' => 'CommerceLicenseRole',
+  'title' => t('DevShop License'),
+  'class' => 'CommerceLicenseDevShop',
 );
