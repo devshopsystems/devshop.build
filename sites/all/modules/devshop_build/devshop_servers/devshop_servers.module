@@ -103,7 +103,7 @@ function devshop_servers_inventory() {
     }
   }
 
-  print json_encode($inventory);
+  print json_encode($inventory, JSON_UNESCAPED_SLASHES);
   exit;
 }
 
