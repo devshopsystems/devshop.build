@@ -80,11 +80,14 @@ function devshop_support_page_conversation($id) {
       "id" => $id
     ))->toArray();
 
-    if ($conversations['conversation_message']['author']['id']) {
+    if ($conversations['conversation_message']['author']['type'] == 'admin') {
+      $label = t('DevShop.Support Agent');
+      $conversation_creator = array();
+    }
+    else {
       $conversation_creator = $intercom->getUser(array(
         'id' => $conversations['conversation_message']['author']['id'],
       ))->toArray();
-
     }
 
     $user_intercom_account = $intercom->getUser(array(
@@ -106,6 +109,7 @@ function devshop_support_page_conversation($id) {
     $username = $user_intercom_account['name'];
     $label = "<strong>" . t('You') . "</strong> <em>($username)</em>";
   }
+
   $row[] = "<span class='pull-right'>$label</span>";
   $row[] = $conversations['conversation_message']['body'];
   $rows[] = $row;
