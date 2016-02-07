@@ -31,42 +31,49 @@ function devshop_servers_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'You don\'t have access to any servers, yet!
+
+If you are curious about how to get one, feel free to ask using the widget at the bottom right.
+
+Thanks!
+
+-- The OpenDevShop Team';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Hostname';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Organization */
+  $handler->display->display_options['fields']['devshop_organization']['id'] = 'devshop_organization';
+  $handler->display->display_options['fields']['devshop_organization']['table'] = 'og_membership';
+  $handler->display->display_options['fields']['devshop_organization']['field'] = 'devshop_organization';
+  $handler->display->display_options['fields']['devshop_organization']['settings'] = array(
+    'link' => 1,
+  );
+  $handler->display->display_options['fields']['devshop_organization']['delta_offset'] = '0';
   /* Field: Content: IP Addresses */
   $handler->display->display_options['fields']['devshop_server_ip_address']['id'] = 'devshop_server_ip_address';
   $handler->display->display_options['fields']['devshop_server_ip_address']['table'] = 'field_data_devshop_server_ip_address';
   $handler->display->display_options['fields']['devshop_server_ip_address']['field'] = 'devshop_server_ip_address';
+  $handler->display->display_options['fields']['devshop_server_ip_address']['label'] = '';
+  $handler->display->display_options['fields']['devshop_server_ip_address']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['devshop_server_ip_address']['click_sort_column'] = 'start';
   $handler->display->display_options['fields']['devshop_server_ip_address']['type'] = 'field_ipaddress_shorthand';
   $handler->display->display_options['fields']['devshop_server_ip_address']['delta_offset'] = '0';
-  /* Field: Content: Users */
-  $handler->display->display_options['fields']['devshop_server_users']['id'] = 'devshop_server_users';
-  $handler->display->display_options['fields']['devshop_server_users']['table'] = 'field_data_devshop_server_users';
-  $handler->display->display_options['fields']['devshop_server_users']['field'] = 'devshop_server_users';
-  $handler->display->display_options['fields']['devshop_server_users']['settings'] = array(
-    'link' => 1,
-  );
-  $handler->display->display_options['fields']['devshop_server_users']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  /* Field: Content: URL */
-  $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
-  $handler->display->display_options['fields']['field_url']['table'] = 'field_data_field_url';
-  $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
-  $handler->display->display_options['fields']['field_url']['label'] = '';
-  $handler->display->display_options['fields']['field_url']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_url']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_url']['type'] = 'link_url';
-  $handler->display->display_options['fields']['field_url']['field_api_classes'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
