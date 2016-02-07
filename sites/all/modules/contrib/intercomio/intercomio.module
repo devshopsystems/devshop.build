@@ -209,6 +209,9 @@ function _intercomio_add_js($account, $app_id) {
     }
   }
 
+  // Allow other users to alter the intercom settings.
+  drupal_alter('intercomio_settings', $intercom_settings);
+
   $script = 'var intercomSettings = ' . drupal_json_encode($intercom_settings)  . ';' . PHP_EOL;
   $script .= "
   (function() {
