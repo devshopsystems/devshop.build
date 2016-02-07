@@ -78,7 +78,18 @@ function devshop_support_page_conversation($id) {
   try {
     $conversations = $intercom->getConversation(array(
       "id" => $id
-    ));
+    ))->toArray();
+
+    if ($conversations['conversation_message']['author']['id']) {
+      $conversation_creator = $intercom->getUser(array(
+        'id' => $conversations['conversation_message']['author']['id'],
+      ))->toArray();
+
+    }
+
+    $user_intercom_account = $intercom->getUser(array(
+      'email' => $user->mail,
+    ))->toArray();
   } catch (ClientErrorResponseException $e) {
     drupal_set_message('Something went wrong. Please be patient as the team fixes it.');
     drupal_set_message($e->getMessage(), 'error');
@@ -86,20 +97,28 @@ function devshop_support_page_conversation($id) {
     return "";
   }
 
-
   $rows = array();
-  $data = $conversations->toArray();
-
   $row = array();
-  $row[] = format_interval(time() - $data['updated_at']) . ' ' . t('ago');
-  $row[] = '<strong class="pull-right">' . ($data['conversation_message']['author']['type'] == 'user'? t('You:'): t('DevShop Support')) . '</strong>';
-  $row[] = $data['conversation_message']['body'];
+
+  $row[] = format_interval(time() - $conversations['updated_at']) . ' ' . t('ago');
+
+  if ($conversation_creator['id'] == $user_intercom_account['id']) {
+    $username = $user_intercom_account['name'];
+    $label = "<strong>" . t('You') . "</strong> <em>($username)</em>";
+  }
+  $row[] = "<span class='pull-right'>$label</span>";
+  $row[] = $conversations['conversation_message']['body'];
   $rows[] = $row;
 
-  foreach ($data['conversation_parts']['conversation_parts'] as $conversation) {
+  foreach ($conversations['conversation_parts']['conversation_parts'] as $conversation) {
+
+    $author = $intercom->getUser(array(
+      'id' => $conversation['author']['id'],
+    ));
+
     $row = array();
     $row[] = format_interval(time() - $conversation['updated_at']) . ' ' . t('ago');
-    $row[] = '<strong class="pull-right">' . ($conversation['author']['type'] == 'user'? t('You:'): t('DevShop Support:')) . '</strong>';
+    $row[] = '<strong class="pull-right">' . $author['name'] . '</strong>';
     $row[] = $conversation['body'];
     $rows[] = $row;
   }
