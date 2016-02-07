@@ -21,9 +21,4 @@ function devshop_organizations_intercomio_settings_alter(&$settings) {
       );
     }
   }
-
-  dsm($account, 'account');
-
-  dsm($settings, 'settings');
-
 }
