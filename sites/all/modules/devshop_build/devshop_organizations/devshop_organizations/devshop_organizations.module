@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DevShop Organizations feature.
+ */
+
+include_once 'devshop_organizations.features.inc';
