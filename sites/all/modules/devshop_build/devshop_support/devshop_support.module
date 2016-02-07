@@ -5,7 +5,7 @@ use \Intercom\Exception\ClientErrorResponseException;
 function devshop_support_menu() {
   $items['support'] = array(
     'page callback' => 'devshop_support_page',
-    'access arguments' => array('access published content'),
+    'access arguments' => array('view published content'),
   );
 
   $items['support/conversation/%'] = array(
