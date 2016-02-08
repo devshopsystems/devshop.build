@@ -34,7 +34,7 @@ function devshop_organizations_node_info() {
       'description' => t('A group of users and machines.'),
       'has_title' => '1',
       'title_label' => t('Organization Name'),
-      'help' => '',
+      'help' => t('Create an organization to bring your team together on DevShop.Support. You must have an Organization to create a server.'),
     ),
   );
   drupal_alter('node_info', $items);
