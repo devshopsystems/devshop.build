@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file devshop_servers.install
+ */
+
+/**
+ * Installs devshop_organizations()
+ */
+function devshop_servers_update_7000() {
+  module_enable(array('devshop_organizations'));
+}
+
+/**
+ * Installs devshop_support()
+ */
+function devshop_servers_update_7001() {
+  module_enable(array('devshop_support'));
+}

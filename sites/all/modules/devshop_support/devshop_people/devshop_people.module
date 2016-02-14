@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DevShop People feature.
+ */
+
+include_once 'devshop_people.features.inc';
