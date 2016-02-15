@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Code for the DevShop Organizations feature.
+ */
+
+include_once 'devshop_organizations.features.inc';
+
+function devshop_organizations_intercomio_settings_alter(&$settings) {
+
+  global $user;
+  $account = user_load($user->uid);
+
+  foreach ($account->field_user_organizations['und'] as $i => $data) {
+    $org_node = node_load($data['target_id']);
+
+    if (isset($org_node->nid)) {
+      $settings['companies'][] = array(
+        'company_id' => $org_node->nid,
+        'name' => $org_node->title,
+      );
+    }
+  }
+
+  // If picture, add "avatar" object
+  if (isset($user->picture)) {
+    $picture = file_load($user->picture);
+    $settings['avatar'] = array(
+      'type' => 'avatar',
+      'image_url' => file_create_url($picture->uri),
+    );
+  }
+}

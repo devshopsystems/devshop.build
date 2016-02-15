@@ -14,25 +14,19 @@ function oauth2_server_authorize_page() {
 
   module_invoke_all('oauth2_server_pre_authorize');
 
+  // Save the parameters in session so that they can be fetched later.
+  $parameters = drupal_get_query_parameters();
+  $_SESSION['oauth2_server_authorize'] = $parameters;
+
   // The user is not logged in. Redirect to login.
   if (!user_is_logged_in()) {
-    // Save the parameters in session so that they can be fetched later.
-    $parameters = drupal_get_query_parameters();
-    $_SESSION['oauth2_server_authorize'] = $parameters;
-
     $query = array(
       'destination' => 'oauth2/authorize',
     );
     drupal_goto('user/login', array('query' => $query));
   }
 
-  // A login happened. Create the request with parameters from the session.
-  if (!empty($_SESSION['oauth2_server_authorize'])) {
-    $request = new OAuth2\Request($_SESSION['oauth2_server_authorize']);
-  }
-  else {
-    $request = OAuth2\Request::createFromGlobals();
-  }
+  $request = new OAuth2\Request($_SESSION['oauth2_server_authorize']);
 
   $client_id = $request->query('client_id');
   $client = NULL;
@@ -149,21 +143,33 @@ function oauth2_server_authorize_form_submit($form, &$form_state) {
  */
 function oauth2_server_token_page() {
   $request = OAuth2\Request::createFromGlobals();
+  $server = oauth2_server_from_request($request);
 
-  $client_credentials = oauth2_server_get_client_credentials($request);
-  $server = NULL;
-  // Get the client and use it to load the server and initialize the server.
-  if ($client_credentials) {
-    $client = oauth2_server_client_load($client_credentials['client_id']);
-    if ($client) {
-      $server = oauth2_server_load($client->server);
-    }
+  $response = new OAuth2\Response();
+  $server->handleTokenRequest($request, $response);
+
+  // Allow other modules to act before the token response is sent.
+  module_invoke_all('oauth2_server_token', $server, $request, $response);
+
+  return oauth2_server_send_response($response);
+}
+
+/**
+ * Page callback: revoke a token.
+ */
+function oauth2_server_revoke_page() {
+  $request = OAuth2\Request::createFromGlobals();
+  $server = oauth2_server_from_request($request);
+  $response = new OAuth2\Response();
+
+  if (!method_exists($server, 'handleRevokeRequest')) {
+    watchdog('oauth2_server', 'Version >= 1.8.0 of the oauth2-server-php library is required for revoke requests', array(), WATCHDOG_ERROR);
+    $response->setStatusCode(500);
+  }
+  else {
+    $server->handleRevokeRequest($request, $response);
   }
 
-  // Initialize the server.
-  $response = new OAuth2\Response();
-  $oauth2_server = oauth2_server_start($server);
-  $oauth2_server->handleTokenRequest($request, $response);
   return oauth2_server_send_response($response);
 }
 
@@ -204,21 +210,9 @@ function oauth2_server_tokens_page($token) {
  */
 function oauth2_server_userinfo() {
   $request = OAuth2\Request::createFromGlobals();
-
-  $client_credentials = oauth2_server_get_client_credentials($request);
-  $server = NULL;
-  // Get the client and use it to load the server and initialize the server.
-  if ($client_credentials) {
-    $client = oauth2_server_client_load($client_credentials['client_id']);
-    if ($client) {
-      $server = oauth2_server_load($client->server);
-    }
-  }
-
-  // Initialize the server.
+  $server = oauth2_server_from_request($request);
   $response = new OAuth2\Response();
-  $oauth2_server = oauth2_server_start($server);
-  $oauth2_server->handleUserInfoRequest($request, $response);
+  $server->handleUserInfoRequest($request, $response);
   return oauth2_server_send_response($response);
 }
 

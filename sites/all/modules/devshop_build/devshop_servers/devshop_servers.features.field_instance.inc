@@ -179,9 +179,62 @@ function devshop_servers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-server-group_content_access'.
+  $field_instances['node-server-group_content_access'] = array(
+    'bundle' => 'server',
+    'default_value' => array(
+      0 => array(
+        'value' => 2,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Group content visibility',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+    'widget_type' => 'options_select',
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Enter the IP addresses for this server. You may leave this blank and we will lookup the IPs based on the hostname.');
+  t('Group content visibility');
   t('IP Addresses');
   t('Select the users that should be allowed access to this server.');
   t('URL');

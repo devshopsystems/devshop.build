@@ -23,6 +23,24 @@ function hook_oauth2_server_pre_authorize() {
 }
 
 /**
+ * Execute operations before OAuth2 Server sends a token response.
+ *
+ * @param \OAuth2Server|NULL $server
+ * @param \OAuth2\Request $request
+ * @param \OAuth2\Response $response
+ */
+function hook_oauth2_server_token($server, \OAuth2\Request $request, \OAuth2\Response $response) {
+  // Example: if the response is not successful, log a message.
+  if ($response->getStatusCode() != 200) {
+    watchdog('mymodule', 'Failed token response from server @server: @code @body', array(
+      '@server' => $server ? $server->name : NULL,
+      '@code' => $response->getStatusCode(),
+      '@body' => $response->getResponseBody(),
+    ));
+  }
+}
+
+/**
  * Alter user claims about the provided account.
  *
  * The provided claims can be included in the id_token and / or returned from
@@ -81,6 +99,21 @@ function hook_oauth2_server_user_claims($account, $requested_scopes) {
   }
 
   return $claims;
+}
+
+/**
+ * Alter the list of available grant types.
+ *
+ * @param array &$grant_types
+ *   The grant types available for any OAuth2 servers. Each grant type is an
+ *   array containing a 'name' and a 'class'. The 'class' is the name of a grant
+ *   type class that implements \OAuth2\GrantType\GrantTypeInterface.
+ */
+function hook_oauth2_server_grant_types_alter(&$grant_types) {
+  $grant_types['custom_grant_type'] = array(
+    'name' => t('Custom grant type'),
+    'class' => 'MyModuleCustomGrantType',
+  );
 }
 
 /**

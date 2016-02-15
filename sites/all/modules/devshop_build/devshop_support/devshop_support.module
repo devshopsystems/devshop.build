@@ -1,0 +1,182 @@
+<?php
+
+use \Intercom\Exception\ClientErrorResponseException;
+
+function devshop_support_menu() {
+  $items['support'] = array(
+    'page callback' => 'devshop_support_page',
+    'access arguments' => array('view published content'),
+  );
+
+  $items['support/conversation/%'] = array(
+    'page callback' => 'devshop_support_page_conversation',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+  );
+
+  $items['user/%/support'] = array(
+    'title' => t('Support Conversations'),
+    'description' => 'My Profile',
+    'page callback' => 'devshop_support_user_page',
+    'page arguments' => array(1),
+    'access callback' => 'devshop_support_user_page_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+function devshop_support_page() {
+  global $user;
+//  drupal_add_js(drupal_get_path('module', 'devshop_support') . '/intercom.js');
+//  return 'loading...';
+
+  $intercom = intercomio_get_client();
+
+  try {
+    $conversations = $intercom->getConversations(array(
+      "type" => "user",
+      "email" => $user->mail,
+      "display_as" => "plaintext",
+    ));
+  }
+  catch (ClientErrorResponseException $e) {
+    drupal_set_message('Something went wrong. Please be patient as the team fixes it.');
+    drupal_set_message($e->getMessage(), 'error');
+    watchdog('devshop_support', $e->getMessage());
+    return "";
+  }
+
+  $rows = array();
+  $data = $conversations->toArray();
+  foreach ($data['conversations'] as $conversation) {
+    $row = array();
+    $row[] = $conversation['read'] == FALSE? t('New'): '';
+    $row[] = format_interval(time() - $conversation['updated_at']) . ' ' . t('ago');
+    $row[] = l(strip_tags($conversation['conversation_message']['body']), "support/conversation/" . $conversation['id']);
+    $row[] = $conversation['conversation_message']['author'];
+    $rows[] = $row;
+  }
+//  dsm($conversations);
+  return theme('table', array(
+    'rows' => $rows,
+    'header' => array(
+      '', '', ''
+    ),
+  ));
+}
+
+
+function devshop_support_page_conversation($id) {
+  global $user;
+
+  drupal_set_title(t('Support Conversation #@id', array('@id' => $id)));
+  drupal_set_breadcrumb(array(l(t('All Support Conversations'), 'support')));
+
+  $intercom = intercomio_get_client();
+
+  try {
+    $conversations = $intercom->getConversation(array(
+      "id" => $id
+    ))->toArray();
+
+    if ($conversations['conversation_message']['author']['type'] == 'admin') {
+      $label = t('DevShop.Support Agent');
+      $conversation_creator = array();
+    }
+    else {
+      $conversation_creator = $intercom->getUser(array(
+        'id' => $conversations['conversation_message']['author']['id'],
+      ))->toArray();
+    }
+
+    $user_intercom_account = $intercom->getUser(array(
+      'email' => $user->mail,
+    ))->toArray();
+  } catch (ClientErrorResponseException $e) {
+    drupal_set_message('Something went wrong. Please be patient as the team fixes it.');
+    drupal_set_message($e->getMessage(), 'error');
+    watchdog('devshop_support', $e->getMessage());
+    return "";
+  }
+
+  $rows = array();
+  $row = array();
+
+  $row[] = format_interval(time() - $conversations['updated_at']) . ' ' . t('ago');
+
+  if ($conversation_creator['id'] == $user_intercom_account['id']) {
+    $username = $user_intercom_account['name'];
+    $label = "<strong>" . t('You') . "</strong> <em>($username)</em>";
+  }
+
+  $row[] = "<span class='pull-right'>$label</span>";
+  $row[] = $conversations['conversation_message']['body'];
+  $rows[] = $row;
+
+  foreach ($conversations['conversation_parts']['conversation_parts'] as $conversation) {
+
+    $author = $intercom->getUser(array(
+      'id' => $conversation['author']['id'],
+    ));
+
+    $row = array();
+    $row[] = format_interval(time() - $conversation['updated_at']) . ' ' . t('ago');
+    $row[] = '<strong class="pull-right">' . $author['name'] . '</strong>';
+    $row[] = $conversation['body'];
+    $rows[] = $row;
+  }
+  //  dsm($conversations);
+  return theme('table', array(
+    'rows' => $rows,
+    'header' => array(
+      '', '', ''
+    ),
+  ));
+}
+
+function devshop_support_user_page_access($uid) {
+  global $user;
+  $account = user_load($uid);
+  if ($user->uid == $account->uid || user_access('administer users')) {
+    return TRUE;
+  }
+}
+
+function devshop_support_user_page($uid) {
+  global $user;
+  $account = user_load($uid);
+  $intercom = intercomio_get_client();
+
+  try {
+    $conversations = $intercom->getConversations(array(
+      "type" => "user",
+      "email" => $account->mail,
+      "display_as" => "plaintext",
+    ));
+  }
+  catch (ClientErrorResponseException $e) {
+    drupal_set_message('Something went wrong. Please be patient as the team fixes it.');
+    drupal_set_message($e->getMessage(), 'error');
+    watchdog('devshop_support', $e->getMessage());
+    return "";
+  }
+
+  $rows = array();
+  $data = $conversations->toArray();
+  foreach ($data['conversations'] as $conversation) {
+    $row = array();
+    $row[] = $conversation['read'] == FALSE? t('New'): '';
+    $row[] = format_interval(time() - $conversation['updated_at']) . ' ' . t('ago');
+    $row[] = l(strip_tags($conversation['conversation_message']['body']), "support/conversation/" . $conversation['id']);
+    $row[] = $conversation['conversation_message']['author'];
+    $rows[] = $row;
+  }
+  //  dsm($conversations);
+  return theme('table', array(
+    'rows' => $rows,
+    'header' => array(
+      '', '', ''
+    ),
+  ));
+}
