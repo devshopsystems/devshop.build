@@ -112,8 +112,6 @@ function devshop_servers_user_keys($username) {
   $account = user_load_by_name($username);
   $keys = sshkey_load_all_by_entity('user', $account->uid);
     foreach ($keys as $key) {
-      $key_components = explode(' ', $key->value);
-
-      print $key_components[0] . ' ' . $key_components[1] . PHP_EOL;
+      print $key->value . PHP_EOL;
     }
 }
