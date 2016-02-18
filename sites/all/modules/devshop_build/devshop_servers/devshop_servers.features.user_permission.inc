@@ -13,35 +13,45 @@ function devshop_servers_user_default_permissions() {
   // Exported permission: 'create server content'.
   $permissions['create server content'] = array(
     'name' => 'create server content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any server content'.
   $permissions['delete any server content'] = array(
     'name' => 'delete any server content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete own server content'.
   $permissions['delete own server content'] = array(
     'name' => 'delete own server content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit any server content'.
   $permissions['edit any server content'] = array(
     'name' => 'edit any server content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit own server content'.
   $permissions['edit own server content'] = array(
     'name' => 'edit own server content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 

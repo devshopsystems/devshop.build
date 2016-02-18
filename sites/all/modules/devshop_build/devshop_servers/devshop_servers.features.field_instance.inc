@@ -122,6 +122,50 @@ function devshop_servers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-server-field_root_server_user'.
+  $field_instances['node-server-field_root_server_user'] = array(
+    'bundle' => 'server',
+    'default_value' => array(
+      0 => array(
+        'value' => 'root',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_root_server_user',
+    'label' => 'Root Server User',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-server-field_url'.
   $field_instances['node-server-field_url'] = array(
     'bundle' => 'server',
@@ -236,7 +280,9 @@ function devshop_servers_field_default_field_instances() {
   t('Enter the IP addresses for this server. You may leave this blank and we will lookup the IPs based on the hostname.');
   t('Group content visibility');
   t('IP Addresses');
+  t('Root Server User');
   t('Select the users that should be allowed access to this server.');
+  t('The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
   t('URL');
   t('Users');
 
