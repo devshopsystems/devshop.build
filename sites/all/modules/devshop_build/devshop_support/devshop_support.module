@@ -23,6 +23,15 @@ function devshop_support_menu() {
     'access arguments' => array(1),
     'type' => MENU_LOCAL_TASK,
   );
+
+  $items['admin/config/services/intercomio/webhooks'] = array(
+    'title' => t('WebHooks'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('devshop_support_intercom_webhooks_setup_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'devshop_support.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
   return $items;
 }
 
@@ -57,7 +66,7 @@ function devshop_support_page() {
     $row[] = $conversation['conversation_message']['author'];
     $rows[] = $row;
   }
-//  dsm($conversations);
+  //  dsm($conversations);
   return theme('table', array(
     'rows' => $rows,
     'header' => array(
