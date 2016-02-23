@@ -38,6 +38,14 @@ function devshop_support_menu() {
     'file' => 'devshop_support.admin.inc',
     'type' => MENU_LOCAL_TASK,
   );
+  $items['admin/config/services/intercomio/subscriptions'] = array(
+    'title' => t('Subscriptions'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('devshop_support_intercom_conversations_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'devshop_support.conversations.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
   return $items;
 }
 
