@@ -1,0 +1,527 @@
+<?php
+/**
+ * @file devshop_hosting.module
+ *
+ * Modifies the UI of Aegir to be more friendly and conducive to DevShop.
+ */
+require_once 'vendor/autoload.php';
+
+/**
+ * Implements hook_help()
+ * @param $path
+ * @param $arg
+ * @return string
+ */
+function devshop_hosting_help($path, $arg)
+{
+  switch ($path) {
+    // Main module help for the block module
+    case 'admin/help#devshop_hosting':
+      $welcome = t('Welcome to OpenDevShop Help');
+      $note = t("There isn't much help built into OpenDevShop yet.  Please visit the documentation site for more information.");
+      $link = t("DevShop Documentation");
+      $url = "http://docs.devshop.support";
+
+      return <<<HTML
+
+<h3>$welcome</h3>
+<p>$note</p>
+
+<a href="$url" class="btn btn-primary btn-large">
+  <large>$link</large>
+<br/>
+  <small>$url</small>
+</a>
+
+HTML;
+
+  }
+}
+
+ /**
+  * Implements hook_init()
+  *
+  * Adds CSS and sets the logo.
+  */
+function devshop_hosting_init(){
+  drupal_add_css(drupal_get_path('module', 'devshop_hosting') . '/devshop.css');
+  $path = drupal_get_path('module', 'devshop_hosting') . '/icon.png';
+  drupal_set_html_head("<style>div#header div.logo a { background: url('/$path') !important; }</style>");
+
+  drupal_set_html_head('<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">');
+
+
+}
+
+/**
+ * Implements hook_menu()
+ *
+ * Defines a new menu callback: login page for new users, redirect to projects
+ * for authenticated users.
+ */
+function devshop_hosting_menu(){
+  $items['devshop'] = array(
+    'title' => 'Welcome to DevShop',
+    'description' => '',
+    'page callback' => 'devshop_hosting_home',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  $items['admin/reports/devshop_sites'] = array(
+    'title' => 'DevShop Environments',
+    'description' => "List all active sites and their IP addresses.",
+    'page callback' => 'devshop_hosting_sites_status',
+    'weight' => -60,
+    'access arguments' => array('administer site configuration'),
+  );
+  $items['devshop/login/reset/%'] = array(
+    'title' => 'Reset Login',
+    'description' => "List all active sites and their IP addresses.",
+    'page callback' => 'devshop_hosting_login_reset',
+    'page arguments' => array(3),
+    'weight' => -60,
+    'access arguments' => array('create login-reset task'),
+  );
+  return $items;
+}
+
+/**
+ * Menu callback for path "devshop"
+ *
+ * Provides a login page or redirects to proejcts
+ */
+function devshop_hosting_home(){
+  if (user_is_logged_in()){
+    drupal_goto(variable_get('devshop_frontpage', 'projects'));
+  } else {
+    $output = '<p>' . t('Please log in.') . '</p>';
+    return drupal_get_form('user_login');
+  }
+}
+
+/**
+ * Implements hook_menu_alter()
+ *
+ * Streamlines login and servers pages.
+ */
+function devshop_hosting_menu_alter(&$items){
+  $items['user/password']['type'] = MENU_CALLBACK;
+  unset($items['hosting/sites']);
+  unset($items['hosting/platforms']);
+  unset($items['hosting/clients']);
+
+  $items['hosting/servers/add'] = $items['node/add/server'];
+  $items['hosting/servers/add']['title'] = t('Add new Server');
+  $items['hosting/servers/add']['type'] = MENU_LOCAL_TASK;
+  $items['hosting/servers/add']['page arguments'] = array('server');
+
+  $items['hosting/servers/list'] = array(
+    'title' => t('All Servers'),
+    'weight' => -1,
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+
+  $items['node/%hosting_site_node/goto_site']['page callback'] = 'devshop_hosting_site_goto';
+
+}
+
+/**
+ * Override for hosting_site_goto().
+ * @param $node
+ */
+function devshop_hosting_site_goto($node) {
+  $cid = "hosting:site:" . $node->nid . ":login_link";
+  $cache = cache_get($cid);
+  if (user_access('create login-reset task') && !is_null($cache) && (time() < $cache->data['expire'])) {
+    $theurl = $cache->data['link'];
+    cache_clear_all($cid, 'cache');
+  }
+  else {
+    $theurl = devshop_hosting_site_url($node);
+  }
+
+  drupal_goto($theurl);
+  exit();
+}
+
+/**
+ * Override for _hosting_site_url().
+ * @param $node
+ *
+ * Allows us to check for project live domain alias.
+ */
+function devshop_hosting_site_url($node) {
+  $schema = 'http';
+  $port = null;
+
+  if (isset($node->project_nid)){
+    $project = node_load($node->project_nid);
+    $url = "{$node->environment}.{$project->base_url}";
+  }
+  else {
+    $url = strtolower(trim($node->title));
+  }
+
+  $platform = node_load($node->platform);
+  $server = node_load($platform->web_server);
+
+
+  if ($server->services['http']->has_port()) {
+    $port = $server->services['http']->port;
+    if ($port == 80) {
+      $port = null;
+    }
+  }
+
+  /**
+   * This is part of the ssl feature, but is better to implement here.
+   */
+  if (isset($node->ssl_enabled) && ($node->ssl_enabled == 2)) {
+    // this is a bit of a magic number, because we cant rely on the constant being available yet.
+    // 2 == Only SSL is enabled.
+    $schema = 'https';
+
+    if ($server->services['http']->has_port()) {
+      $port = $server->services['http']->ssl_port;
+      if ($port == 443) {
+        $port = null;
+      }
+    }
+  }
+
+  if (is_numeric($port)) {
+    return "{$schema}://{$url}:{$port}";
+  }
+
+  return "{$schema}://{$url}";
+}
+
+/**
+ * Implements hook_form_alter() for user_login.
+ * Provides some UI enhancements.
+ */
+function devshop_hosting_form_user_login_alter(&$form){
+  $form['pass']['#description'] .= '  ' . l(t('Forgot your Password?'), 'user/password');
+
+  // Add user register link
+  if (user_register_access()){
+    $form['submit']['#suffix'] = t('or') . ' ' . l(t('Create an Account'), 'user/register');
+  }
+}
+
+/**
+ * Implements hook_form_alter() for user_login_block.
+ * Hides the login block form on "devshop" page.
+ */
+function devshop_hosting_form_user_login_block_alter(&$form){
+  if (arg(0) == 'devshop'){
+    $form = array();
+  }
+}
+
+/**
+ * Implements hook_block()
+ *
+ * Provides three blocks:
+ *  - DevShop Tasks
+ *  - Created by ThinkDrop
+ *  - Powered by Aegir
+ */
+function devshop_hosting_block($op = 'list', $delta = 0, $edit = NULL) {
+  switch ($op) {
+    case 'list':
+      $blocks['devshop_tasks'] = array(
+        'info' => t('DevShop Tasks'),
+        'enabled' => 1,
+        'region' => 'header',
+        'weight' => 0,
+      );
+      $blocks['built'] = array(
+        'info' => t('Created by THINKDROP'),
+        'weight' => '10',
+        'cache' => BLOCK_NO_CACHE,
+        'status' => 1,
+        'region' => 'footer',
+      );
+      $blocks['driven'] = array(
+        'info' => t('Driven by Aegir'),
+        'weight' => '10',
+        'cache' => BLOCK_NO_CACHE,
+        'status' => 1,
+        'region' => 'footer',
+      );
+      return $blocks;
+    case 'view':
+      if ($delta == 'built'){
+        $image_path = drupal_get_path('module', 'devshop_hosting') . '/logo-td.png';
+        $block['subject'] = t('Created by'); // Don't display a title
+        $block['content'] = l(theme('image', $image_path), 'http://thinkdrop.net/', array('html' => TRUE));
+      }
+      elseif ($delta == 'driven') {
+        $image_path = drupal_get_path('module', 'devshop_hosting') . '/logo-aegir.png';
+        $block['subject'] = t('Powered by'); // Don't display a title
+        $block['content'] = l(theme('image', $image_path), 'http://aegirproject.org/', array('html' => TRUE));
+      }
+      elseif ($delta = 'devshop_tasks') {
+        $block['subject'] = '';
+        $block['content'] = devshop_hosting_task_queue_block();
+      }
+      return $block;
+  }
+}
+
+/**
+ * DevShop Tasks block.
+ * @todo: Ajaxify.
+ */
+function devshop_hosting_task_queue_block() {
+  if (user_access('access task logs')){
+    drupal_add_js(drupal_get_path('module', 'hosting_task') . '/hosting_task.js');
+
+    $settings['hostingTaskRefresh'] = array(
+      'queueBlock' => 1,
+    );
+    drupal_add_js($settings, 'setting');
+
+    $tasks['processing'] = hosting_get_tasks('task_status', HOSTING_TASK_PROCESSING, 5);
+    $tasks['queued'] = hosting_get_tasks('task_status', HOSTING_TASK_QUEUE);
+
+    $total_tasks = count($tasks['queued']) + count($tasks['processing']);
+    $status = format_plural($total_tasks, '1 active task.', '@count active tasks.');
+
+    if ($total_tasks == 0){
+      $status_class = 'inactive';
+    } else {
+      $status_class = 'active';
+    }
+
+    // Build our own table
+    foreach ($tasks as $task_status => $nodes){
+      foreach ($nodes as $node) {
+        $row = array();
+        $row['type'] = array(
+          'data' => drupal_ucfirst(str_replace('_', ' ', $node->task_type)) . ' ' . _hosting_node_link($node->rid),
+          'class' => 'hosting-status',
+        );
+        $class = hosting_task_status_class($node->task_status);
+        $rows[] = array(
+          'data' => $row,
+          'class' => $class,
+        );
+      }
+    }
+
+    // Build Strings
+    $link = l('Tasks Logs', 'hosting/queues/tasks', array('attributes' => array('class' => 'task-logs-link')));
+
+    $headers = array();
+
+    if (isset($rows)){
+      $table = theme('table', $headers, $rows, array('class' => 'hosting-table'));
+    }
+
+    // Output our "template"
+    return <<<HTML
+<div id='devshop-task-status' class='$status_class'>$status</div>
+<div id='hosting-task-queue-block'>
+  <div class='item'>$table</div>
+  <div class='item'>$link</div>
+</div>
+
+HTML;
+  }
+}
+
+/**
+ * Page callback for devshop site status.
+ * @return string
+ */
+function devshop_hosting_sites_status() {
+
+  $query = db_query("SELECT nid FROM {node} WHERE type = 'project' AND status = 1");
+  while ($result = db_fetch_object($query)) {
+    $node = node_load($result->nid);
+
+    foreach ($node->project->environments as $environment) {
+      if ($environment->site_status == HOSTING_SITE_ENABLED && count($environment->ip_addresses)) {
+        $ip = array_shift($environment->ip_addresses);
+        $items[] = "$ip $environment->uri";
+      }
+    }
+  }
+  return theme('item_list', $items, t('Site Hosts'));
+}
+
+/**
+ * Special callback that waits for the login task to become available.
+ */
+function devshop_hosting_login_reset($site_nid) {
+
+  $site = node_load($site_nid);
+
+  // Set time limit to 3 minutes.
+  set_time_limit(180);
+
+  // Create new reset-login task, if needed
+  $cache = cache_get("hosting:site:" . $site_nid . ":login_link");
+  if (!($cache && (time() < $cache->data['expire']))) {
+    $task = hosting_add_task($site_nid, 'login-reset');
+    drupal_get_messages();
+  }
+  else {
+    $task = hosting_get_most_recent_task($site_nid, 'login-reset');
+  }
+
+  // Wait for it to complete
+  while ($task->task_status == HOSTING_TASK_QUEUED || $task->task_status == HOSTING_TASK_PROCESSING) {
+    sleep(1);
+    $cache = cache_get("hosting:site:" . $site_nid . ":login_link");
+    if ($cache && (time() < $cache->data['expire'])) {
+      break;
+    }
+  }
+
+  // Output link to login.
+  $title = t('Log in');
+  $close = t('Close');
+  $login_text = t('Log in to !site', array('!site' => $site->environment->uri));
+  $url = url("node/{$site_nid}/goto_site");
+
+  print <<<HTML
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title" id="loginModalLabel">
+         $title
+       </h4>
+     </div>
+     <div class="modal-body">
+       <a href="$url" target="_blank" class="btn btn-primary">
+         <i class="fa fa-sign-in"></i>
+         $login_text
+       </a>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-default" data-dismiss="modal">$close</button>
+     </div>
+   </div>
+HTML;
+
+}
+
+/**
+ * Replacement for hosting_get_tasks() that will load tasks for the platform and the site, as well as clone targets.
+ * @param $environment
+ *   The environment object.
+ *
+ * @param null $type
+ *   The task type you wish to retrieve.
+ *
+ * @param null $key
+ *
+ *    If $key is specified, the return array will be re-ordered, with the key of
+ *    the array being set to $task_node->$key.
+ *
+ *    For example, if you want all tasks for an environment, sorted by date, use
+ *    'vid' for the $key parameter:
+ *
+ *    $tasks = devshop_get_tasks($environment, NULL, 'vid');
+ *
+ * @return array
+ *
+ *    By default, an array is returned with Task types as the keys. Each element
+ *    in the array is another array, keyed by VID.
+ *
+ */
+function devshop_get_tasks($environment, $type = NULL, $key = NULL) {
+
+  // Load tasks from hosting_task table for both site and platform.
+  if ($environment->site) {
+    if ($type) {
+      $where = "(t.rid = %d OR t.rid = %d) AND t.task_type = '%s'";
+      $args = array(
+        $environment->platform,
+        $environment->site,
+        $type
+      );
+    }
+    else {
+      $where = "(t.rid = %d OR t.rid = %d)";
+      $args = array(
+        $environment->platform,
+        $environment->site,
+      );
+    }
+  }
+  else {
+    if ($type) {
+      $where = "t.rid = %d AND t.task_type = '%s'";
+      $args = array(
+        $environment->platform,
+        $type
+      );
+    }
+    else {
+      $where = "t.rid = %d";
+      $args = array(
+        $environment->platform,
+      );
+    }
+  }
+
+  $query = db_query("
+    SELECT t.nid, t.vid, t.task_type
+      FROM {node} tn
+      INNER JOIN {hosting_task} t ON tn.vid = t.vid
+      WHERE
+        $where
+      ORDER BY t.vid DESC
+      LIMIT 5
+  ",
+    $args
+  );
+  $tasks = array();
+  while ($result = db_fetch_object($query)) {
+    $tasks[$result->task_type][$result->vid] = node_load($result->nid, $result->vid);
+  }
+
+  // Load "Clone" tasks
+  if ($type == NULL || $type == 'clone') {
+    $query = db_query(
+      "
+      SELECT ta.nid, ta.vid
+        FROM {hosting_task_arguments} ta
+        INNER JOIN {hosting_task} t ON ta.vid = t.vid
+        WHERE
+          name = 'target_platform' AND value = %d
+        ORDER BY vid DESC
+        LIMIT 1
+    ",
+      $environment->platform
+    );
+    while ($result = db_fetch_object($query)) {
+      $task_node = node_load($result->nid, $result->vid);
+      $tasks[$task_node->task_type][$task_node->vid] = $task_node;
+    }
+  }
+
+  // If key is requested...
+  if ($key) {
+    foreach ($tasks as $task_type => $task_list) {
+      foreach ($task_list as $task) {
+        $new_task_list[$task->{$key}] = $task;
+      }
+    }
+    if ($key == 'vid' || $key == 'nid') {
+      krsort($new_task_list);
+    }
+    else {
+      ksort($new_task_list);
+    }
+    return $new_task_list;
+  }
+  else {
+    ksort($tasks);
+    return $tasks;
+  }
+}
