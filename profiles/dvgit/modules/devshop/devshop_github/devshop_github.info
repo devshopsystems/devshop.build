@@ -1,5 +1,0 @@
-name = DevShop GitHub
-description = Integration with GitHub
-core = 6.x
-package = DevShop
-dependencies[] = devshop_projects

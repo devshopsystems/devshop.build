@@ -65,7 +65,7 @@ function hook_sshkey_load(array &$keys) {
  * @param $key
  *   The SSH key object being inserted or updated.
  */
-function hook_sshkey_presave(&$key) {
+function hook_sshkey_presave($key) {
 
 }
 

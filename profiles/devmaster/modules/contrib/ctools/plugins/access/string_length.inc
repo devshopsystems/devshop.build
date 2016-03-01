@@ -19,7 +19,7 @@ $plugin = array(
 /**
  * Settings form for the 'by role' access plugin.
  */
-function ctools_string_length_ctools_access_settings(&$form, &$form_state, $conf) {
+function ctools_string_length_ctools_access_settings($form, &$form_state, $conf) {
   $form['settings']['operator'] = array(
     '#type' => 'radios',
     '#title' => t('Operator'),
@@ -40,6 +40,7 @@ function ctools_string_length_ctools_access_settings(&$form, &$form_state, $conf
     '#default_value' => $conf['length'],
     '#description' => t('Access/visibility will be granted based on string context length.'),
   );
+  return $form;
 }
 
 /**
@@ -53,12 +54,12 @@ function ctools_string_length_ctools_access_check($conf, $context) {
     $length = drupal_strlen($context->data);
   }
 
-  switch($conf['operator']) {
+  switch ($conf['operator']) {
     case '<':
       return $length < $conf['length'];
     case '<=':
       return $length <= $conf['length'];
-    case '==':
+    case '=':
       return $length == $conf['length'];
     case '!=':
       return $length != $conf['length'];
@@ -67,6 +68,8 @@ function ctools_string_length_ctools_access_check($conf, $context) {
     case '>=':
       return $length >= $conf['length'];
   }
+  // Invalid Operator sent, return FALSE.
+  return FALSE;
 }
 
 /**

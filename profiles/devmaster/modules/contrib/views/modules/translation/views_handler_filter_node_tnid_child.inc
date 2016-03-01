@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @file
+ * Definition of views_handler_filter_node_tnid_child.
+ */
+
 /**
  * Filter by whether the node is not the original translation.
  *
@@ -11,6 +17,6 @@ class views_handler_filter_node_tnid_child extends views_handler_filter {
 
   function query() {
     $table = $this->ensure_my_table();
-    $this->query->add_where($this->options['group'], "$table.tnid <> $table.nid AND $table.tnid > 0");
+    $this->query->add_where_expression($this->options['group'], "$table.tnid <> $table.nid AND $table.tnid > 0");
   }
 }

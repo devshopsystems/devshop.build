@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the RSS style plugin.
@@ -17,6 +18,7 @@ class views_plugin_style_rss extends views_plugin_style {
     if ($input) {
       $url_options['query'] = $input;
     }
+    $url_options['absolute'] = TRUE;
 
     $url = url($this->view->get_url(NULL, $path), $url_options);
     if ($display->has_path()) {
@@ -29,8 +31,8 @@ class views_plugin_style_rss extends views_plugin_style {
         $this->view->feed_icon = '';
       }
 
-      $this->view->feed_icon .= theme('feed_icon', $url, $title);
-      drupal_add_link(array(
+      $this->view->feed_icon .= theme('feed_icon', array('url' => $url, 'title' => $title));
+      drupal_add_html_head_link(array(
         'rel' => 'alternate',
         'type' => 'application/rss+xml',
         'title' => $title,
@@ -43,7 +45,6 @@ class views_plugin_style_rss extends views_plugin_style {
     $options = parent::option_definition();
 
     $options['description'] = array('default' => '', 'translatable' => TRUE);
-    $options['mission_description'] = array('default' => '', 'translatable' => TRUE);
 
     return $options;
   }
@@ -51,18 +52,11 @@ class views_plugin_style_rss extends views_plugin_style {
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
-    $form['mission_description'] = array(
-      '#type' => 'checkbox',
-      '#default_value' => !empty($this->options['mission_description']),
-      '#title' => t('Use the site mission for the description'),
-    );
     $form['description'] = array(
       '#type' => 'textfield',
       '#title' => t('RSS description'),
       '#default_value' => $this->options['description'],
       '#description' => t('This will appear in the RSS feed itself.'),
-      '#process' => array('views_process_dependency'),
-      '#dependency' => array('edit-style-options-override' => array(FALSE)),
       '#maxlength' => 1024,
     );
   }
@@ -75,6 +69,36 @@ class views_plugin_style_rss extends views_plugin_style {
    */
   function get_channel_elements() {
     return array();
+  }
+
+  /**
+   * Return an atom:link XHTML element to add to the channel to comply with
+   * the RSS 2.0 specification.
+   *
+   * @see http://validator.w3.org/feed/docs/warning/MissingAtomSelfLink.html
+   *
+   * @return
+   *   An array that can be passed to format_xml_elements().
+   */
+  function get_channel_elements_atom_link() {
+    $url_options = array('absolute' => TRUE);
+    $input = $this->view->get_exposed_input();
+    if ($input) {
+      $url_options['query'] = $input;
+    }
+    $url = url($this->view->get_url(), $url_options);
+
+    return array(
+      array(
+        'namespace' => array('xmlns:atom' => 'http://www.w3.org/2005/Atom'),
+        'key' => 'atom:link',
+        'attributes' => array(
+          'href' => $url,
+          'rel' => 'self',
+          'type' => 'application/rss+xml',
+        ),
+      ),
+    );
   }
 
   /**
@@ -101,11 +125,14 @@ class views_plugin_style_rss extends views_plugin_style {
 
     // This will be filled in by the row plugin and is used later on in the
     // theming output.
-    $this->namespaces = array();
+    $this->namespaces = array('xmlns:dc' => 'http://purl.org/dc/elements/1.1/');
 
     // Fetch any additional elements for the channel and merge in their
     // namespaces.
-    $this->channel_elements = $this->get_channel_elements();
+    $this->channel_elements = array_merge(
+      $this->get_channel_elements(),
+      $this->get_channel_elements_atom_link()
+    );
     foreach ($this->channel_elements as $element) {
       if (isset($element['namespace'])) {
         $this->namespaces = array_merge($this->namespaces, $element['namespace']);
@@ -117,9 +144,13 @@ class views_plugin_style_rss extends views_plugin_style {
       $rows .= $this->row_plugin->render($row);
     }
 
-    $output = theme($this->theme_functions(), $this->view, $this->options, $rows);
+    $output = theme($this->theme_functions(),
+      array(
+        'view' => $this->view,
+        'options' => $this->options,
+        'rows' => $rows
+      ));
     unset($this->view->row_index);
-
     return $output;
   }
 }

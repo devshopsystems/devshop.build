@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Contains the table style plugin.
@@ -29,11 +30,12 @@ class views_plugin_style_table extends views_plugin_style {
     $options['columns'] = array('default' => array());
     $options['default'] = array('default' => '');
     $options['info'] = array('default' => array());
-    $options['override'] = array('default' => TRUE);
-    $options['sticky'] = array('default' => FALSE);
+    $options['override'] = array('default' => TRUE, 'bool' => TRUE);
+    $options['sticky'] = array('default' => FALSE, 'bool' => TRUE);
     $options['order'] = array('default' => 'asc');
+    $options['caption'] = array('default' => '', 'translatable' => TRUE);
     $options['summary'] = array('default' => '', 'translatable' => TRUE);
-    $options['empty_table'] = array('default' => FALSE);
+    $options['empty_table'] = array('default' => FALSE, 'bool' => TRUE);
 
     return $options;
   }
@@ -160,9 +162,7 @@ class views_plugin_style_table extends views_plugin_style {
     $handlers = $this->display->handler->get_handlers('field');
     if (empty($handlers)) {
       $form['error_markup'] = array(
-        '#value' => t('You need at least one field before you can configure your table settings'),
-        '#prefix' => '<div class="error form-item description">',
-        '#suffix' => '</div>',
+        '#markup' => '<div class="error messages">' . t('You need at least one field before you can configure your table settings') . '</div>',
       );
       return;
     }
@@ -180,10 +180,18 @@ class views_plugin_style_table extends views_plugin_style {
       '#description' => t('(Sticky header effects will not be active for preview below, only on live output.)'),
     );
 
+    $form['caption'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Short description of table'),
+      '#description' => t('Include a caption for better accessibility of your table.'),
+      '#default_value' => $this->options['caption'],
+      '#maxlength' => 255,
+    );
+
     $form['summary'] = array(
       '#type' => 'textfield',
       '#title' => t('Table summary'),
-      '#description' => t('This value will be displayed as table-summary attribute in the html. Set this for better accessiblity of your site.'),
+      '#description' => t('This value will be displayed as table-summary attribute in the html. Use this to give a summary of complex tables.'),
       '#default_value' => $this->options['summary'],
       '#maxlength' => 255,
     );
@@ -221,19 +229,17 @@ class views_plugin_style_table extends views_plugin_style {
         $form['info'][$field]['sortable'] = array(
           '#type' => 'checkbox',
           '#default_value' => !empty($this->options['info'][$field]['sortable']),
-          '#process' => array('views_process_dependency'),
           '#dependency' => array($id => array($field)),
         );
         $form['info'][$field]['default_sort_order'] = array(
           '#type' => 'select',
           '#options' => array('asc' => t('Ascending'), 'desc' => t('Descending')),
           '#default_value' => !empty($this->options['info'][$field]['default_sort_order']) ? $this->options['info'][$field]['default_sort_order'] : 'asc',
-          '#process' => array('views_process_dependency'),
           '#dependency_count' => 2,
           '#dependency' => array($id => array($field), 'edit-style-options-info-' . $safe . '-sortable' => array(1)),
         );
         // Provide an ID so we can have such things.
-        $radio_id = form_clean_id('edit-default-' . $field);
+        $radio_id = drupal_html_id('edit-default-' . $field);
         $form['default'][$field] = array(
           '#type' => 'radio',
           '#return_value' => $field,
@@ -242,7 +248,6 @@ class views_plugin_style_table extends views_plugin_style {
           // because 'radio' doesn't fully support '#id' =(
           '#attributes' => array('id' => $radio_id),
           '#default_value' => $default,
-          '#process' => array('views_process_dependency'),
           '#dependency' => array($id => array($field)),
         );
       }
@@ -255,20 +260,23 @@ class views_plugin_style_table extends views_plugin_style {
           'views-align-center' => t('Center'),
           'views-align-right' => t('Right'),
           ),
-        '#process' => array('views_process_dependency'),
         '#dependency' => array($id => array($field)),
       );
       $form['info'][$field]['separator'] = array(
         '#type' => 'textfield',
         '#size' => 10,
         '#default_value' => isset($this->options['info'][$field]['separator']) ? $this->options['info'][$field]['separator'] : '',
-        '#process' => array('views_process_dependency'),
+        '#dependency' => array($id => array($field)),
+      );
+      $form['info'][$field]['empty_column'] = array(
+        '#type' => 'checkbox',
+        '#default_value' => isset($this->options['info'][$field]['empty_column']) ? $this->options['info'][$field]['empty_column'] : FALSE,
         '#dependency' => array($id => array($field)),
       );
 
       // markup for the field name
       $form['info'][$field]['name'] = array(
-        '#value' => $field_names[$field],
+        '#markup' => $field_names[$field],
       );
     }
 
@@ -289,9 +297,7 @@ class views_plugin_style_table extends views_plugin_style {
     );
 
     $form['description_markup'] = array(
-      '#prefix' => '<div class="description form-item">',
-      '#suffix' => '</div>',
-      '#value' => t('Place fields into columns; you may combine multiple fields into the same column. If you do, the separator in the column specified will be used to separate the fields. Check the sortable box to make that column click sortable, and check the default sort radio to determine which column will be sorted by default, if any. You may control column order and field labels in the fields section.'),
+      '#markup' => '<div class="description form-item">' . t('Place fields into columns; you may combine multiple fields into the same column. If you do, the separator in the column specified will be used to separate the fields. Check the sortable box to make that column click sortable, and check the default sort radio to determine which column will be sorted by default, if any. You may control column order and field labels in the fields section.') . '</div>',
     );
   }
 

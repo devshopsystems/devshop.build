@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @file
+ * Definition of views_handler_argument_date.
+ */
+
 /**
  * Abstract argument handler for dates.
  *
@@ -12,7 +18,8 @@
  * - many to one: If true, the "many to one" helper will be used.
  * - invalid input: A string to give to the user for obviously invalid input.
  *                  This is deprecated in favor of argument validators.
- * @see views_many_to_one_helper
+ *
+ * @see views_many_to_one_helper()
  *
  * @ingroup views_argument_handlers
  */
@@ -35,7 +42,7 @@ class views_handler_argument_date extends views_handler_argument_formula {
    */
   function get_default_argument($raw = FALSE) {
     if (!$raw && $this->options['default_argument_type'] == 'date') {
-      return date($this->arg_format, time());
+      return date($this->arg_format, REQUEST_TIME);
     }
     else if (!$raw && in_array($this->options['default_argument_type'], array('node_created', 'node_changed'))) {
       foreach (range(1, 3) as $i) {
@@ -52,16 +59,15 @@ class views_handler_argument_date extends views_handler_argument_formula {
       if (empty($node)) {
         return parent::get_default_argument();
       }
-      else if ($this->options['default_argument_type'] == 'node_created') {
+      elseif ($this->options['default_argument_type'] == 'node_created') {
         return date($this->arg_format, $node->created);
       }
-      else if ($this->options['default_argument_type'] == 'node_changed') {
+      elseif ($this->options['default_argument_type'] == 'node_changed') {
         return date($this->arg_format, $node->changed);
       }
     }
 
     return parent::get_default_argument($raw);
-
   }
 
   /**
@@ -79,11 +85,17 @@ class views_handler_argument_date extends views_handler_argument_formula {
       $plugin = $this->get_plugin($type);
       $name = $this->options[$option];
       if (in_array($name, array('date', 'node_created', 'node_changed'))) {
+
         // Write which plugin to use.
         $output = $indent . $prefix . "['$option'] = '$name';\n";
         return $output;
       }
     }
     return parent::export_plugin($indent, $prefix, $storage, $option, $definition, $parents);
+  }
+
+
+  function get_sort_name() {
+    return t('Date', array(), array('context' => 'Sort order'));
   }
 }

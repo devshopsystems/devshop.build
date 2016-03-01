@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Definition of views_handler_field_aggregator_category.
+ */
+
+/**
  * Field handler to provide simple renderer that allows linking to aggregator
  * category.
  *
@@ -17,7 +22,7 @@ class views_handler_field_aggregator_category extends views_handler_field {
 
   function option_definition() {
     $options = parent::option_definition();
-    $options['link_to_category'] = array('default' => FALSE);
+    $options['link_to_category'] = array('default' => FALSE, 'bool' => TRUE);
     return $options;
   }
 
@@ -25,13 +30,13 @@ class views_handler_field_aggregator_category extends views_handler_field {
    * Provide link to category option
    */
   function options_form(&$form, &$form_state) {
-    parent::options_form($form, $form_state);
     $form['link_to_category'] = array(
       '#title' => t('Link this field to its aggregator category page'),
       '#description' => t('This will override any other link you have set.'),
       '#type' => 'checkbox',
       '#default_value' => !empty($this->options['link_to_category']),
     );
+    parent::options_form($form, $form_state);
   }
 
   /**

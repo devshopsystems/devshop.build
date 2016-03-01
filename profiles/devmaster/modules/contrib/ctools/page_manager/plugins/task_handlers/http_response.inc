@@ -15,7 +15,7 @@ $plugin = array(
 
   // Administrative fields.
   'title' => t('HTTP response code'),
-  'admin summary' =>'page_manager_http_response_admin_summary',
+  'admin summary' => 'page_manager_http_response_admin_summary',
   'admin title' => 'page_manager_http_response_title',
   'operations' => array(
     'settings' => array(
@@ -68,7 +68,7 @@ $plugin = array(
   'add finish' => 'settings',
 
   'required forms' => array(
-    'settings' => t('HTTP Response settings'),
+    'settings' => t('Panel settings'),
   ),
 
   'edit forms' => array(
@@ -105,8 +105,9 @@ $plugin = array(
  */
 function page_manager_http_response_codes() {
   return array(
-    404 => t('404 Page not found'),
     403 => t('403 Access denied'),
+    404 => t('404 Page not found'),
+    410 => t('410 Gone'),
     301 => t('301 Redirect'),
   );
 }
@@ -124,7 +125,7 @@ function page_manager_http_response_admin_summary($handler, $task, $subtask, $pa
   // Get operations for just this handler.
   $operations = $operations['handlers']['children'][$handler->name]['children']['actions']['children'];
   $args = array('handlers', $handler->name, 'actions');
-  $rendered_operations = page_manager_render_operations($page, $operations, array(), array('class' => 'actions'), 'actions', $args);
+  $rendered_operations = page_manager_render_operations($page, $operations, array(), array('class' => array('actions')), 'actions', $args);
 
   $plugin = page_manager_get_task_handler($handler->handler);
 
@@ -133,19 +134,19 @@ function page_manager_http_response_admin_summary($handler, $task, $subtask, $pa
 
   $access = ctools_access_group_summary(!empty($handler->conf['access']) ? $handler->conf['access'] : array(), $context);
   if ($access) {
-    $access = t('This task will be selected if @conditions.', array('@conditions' => $access));
+    $access = t('This panel will be selected if @conditions.', array('@conditions' => $access));
   }
   else {
-    $access = t('This task will always be selected.');
+    $access = t('This panel will always be selected.');
   }
 
   $rows = array();
 
   $type = $handler->type == t('Default') ? t('In code') : $handler->type;
   $rows[] = array(
-    array('class' => t('page-summary-label'), 'data' => t('Storage')),
-    array('class' => t('page-summary-data'), 'data' => $type),
-    array('class' => t('page-summary-operation'), 'data' => ''),
+    array('class' => array('page-summary-label'), 'data' => t('Storage')),
+    array('class' => array('page-summary-data'), 'data' => $type),
+    array('class' => array('page-summary-operation'), 'data' => ''),
   );
 
   if (!empty($handler->disabled)) {
@@ -158,36 +159,36 @@ function page_manager_http_response_admin_summary($handler, $task, $subtask, $pa
   }
 
   $rows[] = array(
-    array('class' => t('page-summary-label'), 'data' => t('Status')),
-    array('class' => t('page-summary-data'), 'data' => $text),
-    array('class' => t('page-summary-operation'), 'data' => $link),
+    array('class' => array('page-summary-label'), 'data' => t('Status')),
+    array('class' => array('page-summary-data'), 'data' => $text),
+    array('class' => array('page-summary-operation'), 'data' => $link),
   );
 
   $link = l(t('Edit'), page_manager_edit_url($task_name, array('handlers', $handler->name, 'criteria')));
   $rows[] = array(
-    array('class' => t('page-summary-label'), 'data' => t('Selection rule')),
-    array('class' => t('page-summary-data'), 'data' => $access),
-    array('class' => t('page-summary-operation'), 'data' => $link),
+    array('class' => array('page-summary-label'), 'data' => t('Selection rule')),
+    array('class' => array('page-summary-data'), 'data' => $access),
+    array('class' => array('page-summary-operation'), 'data' => $link),
   );
 
   $link = l(t('Edit'), page_manager_edit_url($task_name, array('handlers', $handler->name, 'settings')));
   $codes = page_manager_http_response_codes();
   $rows[] = array(
-    array('class' => t('page-summary-label'), 'data' => t('Response code')),
-    array('class' => t('page-summary-data'), 'data' => $codes[$handler->conf['code']]),
-    array('class' => t('page-summary-operation'), 'data' => $link),
+    array('class' => array('page-summary-label'), 'data' => t('Response code')),
+    array('class' => array('page-summary-data'), 'data' => $codes[$handler->conf['code']]),
+    array('class' => array('page-summary-operation'), 'data' => $link),
   );
 
-  $info = theme('table', array(), $rows, array('class' => 'page-manager-handler-summary'));
+  $info = theme('table', array('header' => array(), 'rows' => $rows, 'attributes' => array('class' => array('page-manager-handler-summary'))));
 
   $title = $handler->conf['title'];
-  if ($title != t('HTTP Response')) {
-    $title = t('HTTP Response: @title', array('@title' => $title));
+  if ($title != t('Panel')) {
+    $title = t('Panel: @title', array('@title' => $title));
   }
 
-  $output .= '<div class="clear-block">';
+  $output .= '<div class="clearfix">';
   if ($show_title) {
-    $output .= '<div class="handler-title clear-block">';
+  $output .= '<div class="handler-title clearfix">';
     $output .= '<div class="actions handler-actions">' . $rendered_operations['actions'] . '</div>';
     $output .= '<span class="title-label">' . $title . '</span>';
   }
@@ -200,7 +201,7 @@ function page_manager_http_response_admin_summary($handler, $task, $subtask, $pa
 }
 
 /**
- * Set up a title for the handler based upon the selection rules.
+ * Set up a title for the panel based upon the selection rules.
  */
 function page_manager_http_response_title($handler, $task, $subtask) {
   if (isset($handler->conf['title'])) {
@@ -212,15 +213,35 @@ function page_manager_http_response_title($handler, $task, $subtask) {
 }
 
 /**
- * General settings for the handler
+ * General settings for the panel
  */
-function page_manager_http_response_edit_settings(&$form, &$form_state) {
+function page_manager_http_response_edit_settings($form, &$form_state) {
+  ctools_include('page_manager.admin', 'page_manager', '');
+  ctools_include('export', 'ctools');
+
   $conf = $form_state['handler']->conf;
   $form['title'] = array(
     '#type' => 'textfield',
     '#default_value' => $conf['title'],
     '#title' => t('Administrative title'),
     '#description' => t('Administrative title of this variant.'),
+  );
+
+  $name = isset($conf['name']) ? $conf['name'] : FALSE;
+  $form['name'] = array(
+    '#type' => 'machine_name',
+    '#title' => t('Machine name'),
+    '#required' => FALSE,
+    '#default_value' => $name,
+    '#description' => t("A unique machine-readable name for this variant. It must only contain lowercase letters, numbers, and underscores. This name will be used when exporting the variant. If left empty the variant's name will be used instead."),
+    '#size' => 32,
+    '#maxlength' => 32,
+    '#machine_name' => array(
+      'exists' => 'page_manager_handler_check_machine_name',
+      'source' => array('title'),
+    ),
+    '#field_prefix' => '<span dir="ltr">' . $form_state['task_name'] . '__',
+    '#field_suffix' => '</span>&lrm;',
   );
 
   $form['code'] = array(
@@ -235,14 +256,41 @@ function page_manager_http_response_edit_settings(&$form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Redirect destination'),
     '#default_value' => $conf['destination'],
-    '#process' => array('ctools_dependent_process'),
     '#dependency' => array('edit-code' => array(301)),
     '#description' => t('Enter the path to redirect to. You may use keyword substitutions from contexts. You can use external urls (http://www.example.com/foo) or internal urls (node/1).'),
   );
+
+  return $form;
 }
 
-function page_manager_http_response_edit_settings_submit(&$form, &$form_state) {
+function page_manager_http_response_edit_settings_submit($form, &$form_state) {
+  $machine_name = $form_state['handler']->name;
+  $name = $form_state['task_name'] . '__' . $form_state['values']['name'];
+
+  // If new name doesn't equal machine name, we need to update and redirect.
+  if ($machine_name !== $name) {
+    $form_state['handler']->name = $name;
+    // If there's a trail, we need to replace it for redirection.
+    if (isset($form_state['trail'])) {
+      $form_state['new trail'] = $form_state['trail'];
+      $delta = array_search($machine_name, $form_state['new trail']);
+      $form_state['new trail'][$delta] = $name;
+    }
+    // If handler id is set, replace it.
+    if ($form_state['handler_id']) {
+      $form_state['handler_id'] = $name;
+    }
+    // If we're defining a new custom handler, move page handler to new name.
+    if (isset($form_state['page']->handlers[$machine_name]) && isset($form_state['page']->handler_info[$machine_name])) {
+      $form_state['page']->handlers[$name] = $form_state['page']->handlers[$machine_name];
+      unset($form_state['page']->handlers[$machine_name]);
+      $form_state['page']->handler_info[$name] = $form_state['page']->handler_info[$machine_name];
+      unset($form_state['page']->handler_info[$machine_name]);
+    }
+  }
+
   $form_state['handler']->conf['title'] = $form_state['values']['title'];
+  $form_state['handler']->conf['name'] = $form_state['values']['name'];
   $form_state['handler']->conf['code'] = $form_state['values']['code'];
   $form_state['handler']->conf['destination'] = $form_state['values']['destination'];
 }
@@ -270,11 +318,7 @@ function page_manager_http_response_render($handler, $base_contexts, $args, $tes
     $url = parse_url($path);
     if (isset($url['query'])) {
       $path = strtr($path, array('?' . $url['query'] => ''));
-      $info['query'] = array();
-      foreach (explode('&', $url['query']) as $query_part) {
-        list($key, $value) = explode('=', $query_part); 
-        $info['query'][$key] = $value; 
-      }
+      $info['query'] = drupal_get_query_array($url['query']);
     }
     if (isset($url['fragment'])) {
       $path = strtr($path, array('#' . $url['fragment'] => ''));

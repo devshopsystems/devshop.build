@@ -1,48 +1,38 @@
 <?php
 
+/**
+ * @file
+ * Implements a generic entity delete action. Uses Entity API if available.
+ */
+
 function views_bulk_operations_delete_action_info() {
   return array(
-    'views_bulk_operations_delete_node_action' => array(
-      'type' => 'node',
-      'description' => t('Delete node'),
+    'views_bulk_operations_delete_item' => array(
+      'type' => 'entity',
+      'label' => t('Delete item'),
       'configurable' => FALSE,
-      'behavior' => array('deletes_node_property'),
+      'behavior' => array('deletes_property'),
+      'triggers' => array('any'),
     ),
-    'views_bulk_operations_delete_user_action' => array(
-      'type' => 'user',
-      'description' => t('Delete user'),
+    'views_bulk_operations_delete_revision' => array(
+      'type' => 'entity',
+      'label' => t('Delete revision'),
       'configurable' => FALSE,
-      'behavior' => array('deletes_node_property'),
-    ),
-    'views_bulk_operations_delete_comment_action' => array(
-      'type' => 'comment',
-      'description' => t('Delete comment'),
-      'configurable' => FALSE,
-      'behavior' => array('deletes_node_property'),
-    ),
-    'views_bulk_operations_delete_term_action' => array(
-      'type' => 'term',
-      'description' => t('Delete term'),
-      'configurable' => FALSE,
-      'behavior' => array('deletes_node_property'),
+      'behavior' => array('deletes_property'),
+      'triggers' => array('any'),
     ),
   );
 }
 
-function views_bulk_operations_delete_node_action($node) {
-  node_delete($node->nid);
+function views_bulk_operations_delete_item($entity, $context) {
+  $info = entity_get_info($context['entity_type']);
+  $entity_id = $entity->{$info['entity keys']['id']};
+
+  entity_delete($context['entity_type'], $entity_id);
 }
 
-function views_bulk_operations_delete_user_action($user) {
-  user_delete(null, $user->uid);
-}
-
-function views_bulk_operations_delete_comment_action($comment) {
-  module_load_include('inc', 'comment', 'comment.admin');
-  _comment_delete_thread($comment);
-  _comment_update_node_statistics($comment->nid);
-}
-
-function views_bulk_operations_delete_term_action($term) {
-  taxonomy_del_term($term->tid);
+function views_bulk_operations_delete_revision($entity, $context) {
+  $info = entity_get_info($context['entity_type']);
+  $revision_id = $entity->{$info['entity keys']['revision']};
+  entity_revision_delete($context['entity_type'], $revision_id);
 }
