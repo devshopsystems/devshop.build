@@ -1,4 +1,6 @@
 # Aegir files
 sites/sites.php
 sites/*/drushrc.php
+sites/*/settings.php
+sites/*/local.settings.php
 sites/all/drush/drushrc.php
