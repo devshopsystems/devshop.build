@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @file
+ * Definition of views_handler_argument_node_type.
+ */
+
 /**
  * Argument handler to accept a node type.
  */
@@ -24,9 +30,9 @@ class views_handler_argument_node_type extends views_handler_argument_string {
   }
 
   function node_type($type) {
-    $output = node_get_types('name', $type);
+    $output = node_type_get_name($type);
     if (empty($output)) {
-      $output = t('Unknown node type');
+      $output = t('Unknown content type');
     }
     return check_plain($output);
   }

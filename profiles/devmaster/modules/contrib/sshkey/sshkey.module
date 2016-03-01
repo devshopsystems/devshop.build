@@ -28,6 +28,23 @@ define('SSHKEY_ACCESS_IGNORE', NULL);
 class SSHKeyParseException extends Exception { }
 
 /**
+ * Implements hook_entity_info().
+ */
+function sshkey_entity_info() {
+  $info['sshkey'] = array(
+    'label' => t('SSH Key'),
+    'base table' => 'sshkey',
+    'entity keys' => array(
+      'id' => 'key_id',
+      'label' => 'title',
+    ),
+    'fieldable' => FALSE,
+  );
+
+  return $info;
+}
+
+/**
  * Implements hook_help().
  */
 function sshkey_help($path, $arg) {
@@ -42,15 +59,25 @@ function sshkey_help($path, $arg) {
 }
 
 /**
- * Implements hook_perm().
+ * Implements hook_permission().
  */
-function sshkey_perm() {
+function sshkey_permission() {
   $perm = array(
-    'view any SSH public keys',
-    'view own SSH public keys',
-    'manage any SSH public keys',
-    'manage own SSH public keys',
-    'administer SSH public keys',
+    'view any SSH public keys' => array(
+      'title' => t('View any SSH public keys'),
+    ),
+    'view own SSH public keys' => array(
+      'title' => t('View own SSH public keys'),
+    ),
+    'manage any SSH public keys' => array(
+      'title' => t('Manage any SSH public keys'),
+    ),
+    'manage own SSH public keys' => array(
+      'title' => t('Manage own SSH public keys'),
+    ),
+    'administer SSH public keys' => array(
+      'title' => t('Administer SSH public keys'),
+    ),
   );
   return $perm;
 }
@@ -108,7 +135,7 @@ function sshkey_menu() {
     'modal' => TRUE,
   );
 
-  $items['admin/settings/ssh-keys'] = array(
+  $items['admin/config/system/ssh-keys'] = array(
     'title' => 'SSH public key settings',
     'description' => 'Configure the SSH public key settings.',
     'page callback' => 'drupal_get_form',
@@ -125,25 +152,37 @@ function sshkey_menu() {
  */
 function sshkey_theme($existing, $type, $theme, $path) {
   $info['sshkey_fingerprint'] = array(
-    'arguments' => array('key' => NULL),
+    'variables' => array('key' => NULL),
   );
   return $info;
 }
 
 /**
- * Implements hook_user().
+ * Implements hook_entity_delete().
  */
-function sshkey_user($op, $edit, $account, $category = NULL) {
-  if ($op == 'delete') {
-    sshkey_delete_all_by_entity('user', $account->uid);
+function sshkey_entity_delete($entity, $entity_type) {
+  if ($entity_type == 'sshkey') {
+    return;
   }
+  list($id) = entity_extract_ids($entity_type, $entity);
+  sshkey_delete_all_by_entity($entity_type, $id);
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function sshkey_views_api() {
+  return array(
+    'api' => 2,
+    'path' => drupal_get_path('module', 'sshkey') . '/views',
+  );
 }
 
 /**
  * Access callback for SSH public key operations.
  */
 function sshkey_access($op, $entity_type = NULL, $entity_id = NULL, $key = NULL, $account = NULL) {
-  static $rights = array();
+  $rights = &drupal_static(__FUNCTION__, array());
 
   if (!in_array($op, array('view', 'create', 'edit', 'delete'), TRUE)) {
     // If $op was not one of the supported ones, we return access denied.
@@ -158,12 +197,17 @@ function sshkey_access($op, $entity_type = NULL, $entity_id = NULL, $key = NULL,
   $cid = is_object($key) ? $key->key_id : 0;
 
   // Make sure the entity type and IDs match the existing key's entity data.
-  if (is_object($key) && ($key->entity_type != $entity_type || $key->entity_id != $entity_id)) {
-    return FALSE;
+  if (is_object($key)) {
+    if (isset($entity_type) && $key->entity_type != $entity_type) {
+      return FALSE;
+    }
+    elseif (isset($entity_id) && $key->entity_id != $entity_id) {
+      return FALSE;
+    }
   }
 
   // Make sure that an actual entity object exists to attach to.
-  if (!sshkey_entity_object_load($entity_type, $entity_id)) {
+  if (!entity_load($entity_type, array($entity_id))) {
     return FALSE;
   }
 
@@ -204,7 +248,8 @@ function sshkey_sshkey_access($op, $entity_type, $entity_id, $key, $account) {
       return SSHKEY_ACCESS_ALLOW;
     }
     else {
-      $entity = sshkey_entity_object_load($entity_type, $entity_id);
+      $entity = entity_load($entity_type, array($entity_id));
+      $entity = reset($entity);
       if (isset($entity->uid) && $entity->uid == $account->uid && user_access('view own SSH public keys')) {
         return SSHKEY_ACCESS_ALLOW;
       }
@@ -215,7 +260,8 @@ function sshkey_sshkey_access($op, $entity_type, $entity_id, $key, $account) {
       return SSHKEY_ACCESS_ALLOW;
     }
     else {
-      $entity = sshkey_entity_object_load($entity_type, $entity_id);
+      $entity = entity_load($entity_type, array($entity_id));
+      $entity = reset($entity);
       if (isset($entity->uid) && $entity->uid == $account->uid && user_access('manage own SSH public keys')) {
         return SSHKEY_ACCESS_ALLOW;
       }
@@ -229,7 +275,7 @@ function sshkey_sshkey_access($op, $entity_type, $entity_id, $key, $account) {
  * Load an SSH public key and optionally by entity type and ID.
  */
 function sshkey_load($key_id, $reset = FALSE) {
-  $keys = sshkey_load_multiple(array($key_id), $reset);
+  $keys = entity_load('sshkey', array($key_id), array(), $reset);
   return !empty($keys) ? reset($keys) : FALSE;
 }
 
@@ -237,8 +283,7 @@ function sshkey_load($key_id, $reset = FALSE) {
  * Load an SSH public key by fingerprint.
  */
 function sshkey_load_by_fingerprint($fingerprint) {
-  $key_id = db_result(db_query("SELECT key_id FROM {sshkey} WHERE fingerprint = '%s'", $fingerprint));
-  $keys = sshkey_load_multiple(array($key_id));
+  $keys = entity_load('sshkey', FALSE, array('fingerprint' => $fingerprint));
   return !empty($keys) ? reset($keys) : FALSE;
 }
 
@@ -246,49 +291,25 @@ function sshkey_load_by_fingerprint($fingerprint) {
  * Load all SSH public keys associated with an entity.
  */
 function sshkey_load_all_by_entity($entity_type, $entity_id) {
-  $key_ids = sshkey_db_fetch_col(db_query("SELECT key_id FROM {sshkey} WHERE entity_type = '%s' AND entity_id = %d", $entity_type, $entity_id));
-  return sshkey_load_multiple($key_ids);
+  return entity_load('sshkey', FALSE, array('entity_type' => $entity_type, 'entity_id' => $entity_id));
 }
 
 /**
  * Load multiple SSH public keys.
  */
-function sshkey_load_multiple($key_ids = array(), $reset = FALSE) {
-  static $keys = array();
-
-  if ($reset) {
-    $keys = array();
-  }
-
-  if (empty($key_ids)) {
-    return array();
-  }
-
-  if ($new_key_ids = array_diff($key_ids, array_keys($keys))) {
-    $query = db_query("SELECT * FROM {sshkey} WHERE key_id IN (" . db_placeholders($new_key_ids, 'int') . ")", $new_key_ids);
-    $new_keys = array();
-    while ($key = db_fetch_object($query)) {
-      $new_keys[$key->key_id] = $key;
-    }
-
-    // Allow other modules to alter the loaded public keys.
-    foreach (module_implements('sshkey_load') as $module) {
-      $function = $module . '_load';
-      $function($new_keys);
-    }
-    $keys += $new_keys;
-  }
-
-  return array_intersect_key($keys, array_combine($key_ids, $key_ids));
+function sshkey_load_multiple($key_ids = array(), array $conditions = array(), $reset = FALSE) {
+  return entity_load('sshkey', $key_ids, $conditions, $reset);
 }
 
 /**
  * Save a SSH public key.
  */
-function sshkey_save(&$key) {
+function sshkey_save($key) {
+  $transaction = db_transaction();
+
   try {
     if (!empty($key->key_id) && !isset($key->original)) {
-      $key->original = db_fetch_object(db_query("SELECT * FROM {sshkey} WHERE key_id = %d", $key->key_id));
+      $key->original = entity_load_unchanged('sshkey', $key->key_id);
     }
 
     // Determine if we will be inserting a new node.
@@ -320,19 +341,19 @@ function sshkey_save(&$key) {
     }
 
     // Allow other modules to alter the public key before saving.
-    foreach (module_implements('sshkey_presave') as $module) {
-      $function = $module . '_presave';
-      $function($key);
-    }
+    module_invoke_all('sshkey_presave', $key);
+    module_invoke_all('entity_presave', $key, 'sshkey');
 
     // Save the key to the database and invoke the post-save hooks.
     if ($key->is_new) {
       drupal_write_record('sshkey', $key);
       module_invoke_all('sshkey_insert', $key);
+      module_invoke_all('entity_insert', $key, 'sshkey');
     }
     else {
       drupal_write_record('sshkey', $key, array('key_id'));
       module_invoke_all('sshkey_update', $key);
+      module_invoke_all('entity_update', $key, 'sshkey');
     }
 
     // Clear internal properties.
@@ -340,10 +361,15 @@ function sshkey_save(&$key) {
     unset($key->original);
 
     // Clear the static loading cache.
-    sshkey_load_multiple(FALSE, TRUE);
+    entity_get_controller('sshkey')->resetCache(array($key->key_id));
+
+    // Ignore slave server temporarily to give time for the
+    // saved node to be propagated to the slave.
+    db_ignore_slave();
   }
   catch (Exception $e) {
-    //watchdog_exception('sshkey', $e);
+    $transaction->rollback();
+    watchdog_exception('sshkey', $e);
     throw $e;
   }
 }
@@ -363,28 +389,35 @@ function sshkey_delete_multiple($key_ids) {
     return;
   }
 
+  $transaction = db_transaction();
+
   try {
     $keys = sshkey_load_multiple($key_ids);
     foreach ($keys as $key_id => $key) {
       module_invoke_all('sshkey_delete', $key);
+      module_invoke_all('entity_delete', $key, 'sshkey');
     }
 
-    db_query("DELETE FROM {sshkey} WHERE key_id IN (" . db_placeholders($key_ids, 'int') . ")", $key_ids);
+    db_delete('sshkey')
+      ->condition('key_id', $key_ids, 'IN')
+      ->execute();
+
   }
   catch (Exception $e) {
-    //watchdog_exception('sshkey', $e);
+    $transaction->rollback();
+    watchdog_exception('sshkey', $e);
     throw $e;
   }
 
-  // Clear the static loading cache..
-  sshkey_load_multiple(FALSE, TRUE);
+  // Clear the entity caches.
+  entity_get_controller('sshkey')->resetCache();
 }
 
 /**
  * Delete all SSH public keys associated with an entity.
  */
 function sshkey_delete_all_by_entity($entity_type, $entity_id) {
-  $key_ids = sshkey_db_fetch_col(db_query("SELECT key_id FROM {sshkey} WHERE entity_type = '%s' AND entity_id = %d", $entity_type, $entity_id));
+  $key_ids = db_query("SELECT key_id FROM {sshkey} WHERE entity_type = :entitytype AND entity_id = :entityid", array(':entitytype' => $entity_type, ':entityid' => $entity_id))->fetchCol();
   return !empty($key_ids) ? sshkey_delete_multiple($key_ids) : FALSE;
 }
 
@@ -447,55 +480,11 @@ function sshkey_parse($key_raw) {
   return $parsed;
 }
 
-function sshkey_extract_entity_id($entity_type, $entity) {
-  $ids = array(
-    'node' => 'nid',
-    'taxonomy_term', 'tid',
-    'user' => 'uid',
-  );
-
-  if (isset($ids[$entity_type])) {
-    return $entity->{$ids[$entity_type]};
-  }
-}
-
-function sshkey_entity_object_load($entity_type, $entity_id) {
-  static $entities = array();
-
-  if (!isset($entities[$entity_type][$entity_id])) {
-    $entity = FALSE;
-    switch ($entity_type) {
-      case 'node':
-        $entity = node_load($entity_id);
-        break;
-      case 'taxonomy_term':
-        $entity = taxonomy_get_term($entity_id);
-        break;
-      case 'user':
-        $entity = user_load(array('uid' => $entity_id));
-        break;
-    }
-    $entities[$entity_type][$entity_id] = $entity;
-  }
-
-  return $entities[$entity_type][$entity_id];
-}
-
-/**
- * Backport of the DBTNG fetchCol() from Drupal 7.
- */
-function sshkey_db_fetch_col($query) {
-  $row = array();
-  while ($result = db_result($query)) {
-    $row[] = $result;
-  }
-  return $row;
-}
-
 /**
  * Theme callback to output a formatted SSH key fingerprint.
  */
-function theme_sshkey_fingerprint($key) {
+function theme_sshkey_fingerprint($variables) {
+  $key = $variables['key'];
   $chunks = str_split($key->fingerprint, 2);
   return implode(':', $chunks);
 }

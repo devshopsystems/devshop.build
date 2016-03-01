@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @file
+ * Definition of views_handler_field_comment_link_delete.
+ */
+
 /**
  * Field handler to present a link to delete a node.
  *
@@ -15,7 +21,7 @@ class views_handler_field_comment_link_delete extends views_handler_field_commen
     $cid =  $this->get_value($values, 'cid');
 
     $this->options['alter']['make_link'] = TRUE;
-    $this->options['alter']['path'] = "comment/delete/" . $cid;
+    $this->options['alter']['path'] = "comment/" . $cid . "/delete";
     $this->options['alter']['query'] = drupal_get_destination();
 
     return $text;

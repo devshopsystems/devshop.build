@@ -1,25 +1,17 @@
 <?php
 
 function views_bulk_operations_user_roles_action_info() {
-  if (user_access('administer users') || user_access('execute Modify user roles (views_bulk_operations_user_roles_action)')) {
-    return array('views_bulk_operations_user_roles_action' => array(
-      'type' => 'user',
-      'description' => t('Modify user roles'),
-      'configurable' => TRUE,
-    ));
-  }
+  return array('views_bulk_operations_user_roles_action' => array(
+    'type' => 'user',
+    'label' => t('Modify user roles'),
+    'configurable' => TRUE,
+    'triggers' => array('any'),
+  ));
 }
 
 function views_bulk_operations_user_roles_action_form($context) {
   $roles = user_roles(TRUE);
   unset($roles[DRUPAL_AUTHENTICATED_RID]);  // Can't edit authenticated role.
-  if (module_exists('role_delegation')) {
-    foreach ($roles as $rid => $role) {
-      if (!user_access('assign all roles') && !user_access(_role_delegation_make_perm($role))) {
-        unset($roles[$rid]);
-      }
-    }
-  }
 
   $form['add_roles'] = array(
     '#type' => 'select',
@@ -27,8 +19,7 @@ function views_bulk_operations_user_roles_action_form($context) {
     '#title' => t('Add roles'),
     '#description' => t('Choose one or more roles you would like to assign to the selected users.'),
     '#options' => $roles,
-    '#size' => 5,
-    '#default_value' => $context['add_roles'],
+    '#size' => 5
   );
   $form['remove_roles'] = array(
     '#type' => 'select',
@@ -36,8 +27,7 @@ function views_bulk_operations_user_roles_action_form($context) {
     '#title' => t('Remove roles'),
     '#description' => t('Choose one or more roles you would like to remove from the selected users.'),
     '#options' => $roles,
-    '#size' => 5,
-    '#default_value' => $context['remove_roles'],
+    '#size' => 5
   );
   return $form;
 }
@@ -55,25 +45,19 @@ function views_bulk_operations_user_roles_action_submit($form, $form_state) {
   );
 }
 
-function views_bulk_operations_user_roles_action(&$user, $context) {
-  $roles = $user->roles;
-  $selected = (is_array($context['add_roles']) ? $context['add_roles'] : array()) +
-              (is_array($context['remove_roles']) ? $context['remove_roles'] : array());
-  $placeholders = db_placeholders($selected);
-  $result = db_query("SELECT rid, name FROM {role} WHERE rid IN ($placeholders)", array_keys($selected));
-  while ($role = db_fetch_object($result)) {
-    if (isset($context['add_roles'][$role->rid])) {
-      $add_roles[$role->rid] = $role->name;
-    }
-    if (isset($context['remove_roles'][$role->rid])) {
-      $remove_roles[$role->rid] = $role->name;
-    }
+function views_bulk_operations_user_roles_action($user, $context) {
+  $wrapper = entity_metadata_wrapper('user', $user);
+  if (!$wrapper->roles->access("update")) {
+    // No access.
+    return;
   }
-  if (!empty($add_roles)) {
-    $roles += $add_roles;
+  $roles = $wrapper->roles->value();
+  if (is_array($context['add_roles'])) {
+    $roles = array_merge($roles, $context['add_roles']);
   }
-  if (!empty($remove_roles)) {
-    $roles = array_diff($roles, $remove_roles);
+  if (is_array($context['remove_roles'])) {
+    $roles = array_diff($roles, $context['remove_roles']);
   }
-  user_save($user, array('roles' => $roles));
+  $wrapper->roles->set($roles);
+  $wrapper->save();
 }

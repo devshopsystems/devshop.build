@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Definition of views_handler_filter_aggregator_category_cid.
+ */
+
+/**
  * Filter by aggregator category cid
  *
  * @ingroup views_filter_handlers
@@ -14,7 +19,7 @@ class views_handler_filter_aggregator_category_cid extends views_handler_filter_
     $this->value_options = array();
 
     $result = db_query('SELECT * FROM {aggregator_category} ORDER BY title');
-    while ($category = db_fetch_object($result)) {
+    foreach ($result as $category) {
       $this->value_options[$category->cid] = $category->title;
     }
   }
