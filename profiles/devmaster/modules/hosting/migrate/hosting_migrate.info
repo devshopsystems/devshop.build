@@ -1,0 +1,13 @@
+name = Site migration
+description = Migrate sites between platforms, performing upgrades when necessary.
+package = Hosting
+dependencies[] = hosting
+dependencies[] = hosting_site
+
+core = 6.x
+; Information added by Drupal.org packaging script on 2015-08-28
+version = "6.x-2.5"
+core = "6.x"
+project = "hosting"
+datestamp = "1440771843"
+

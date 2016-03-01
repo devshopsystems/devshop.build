@@ -1,0 +1,12 @@
+name = Hosting tasks
+description = Allow Hostmaster to keep track of tasks that have been processed on the servers.
+package = Hosting
+dependencies[] = hosting
+core = 6.x
+
+; Information added by Drupal.org packaging script on 2015-08-28
+version = "6.x-2.5"
+core = "6.x"
+project = "hosting"
+datestamp = "1440771843"
+

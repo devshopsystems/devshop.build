@@ -1,0 +1,13 @@
+name = Hosting solr
+description = Allow hostmaster to configure solr servers.
+package = Hosting
+dependencies[] = hosting
+
+core = 6.x
+
+; Information added by Drupal.org packaging script on 2015-05-02
+version = "6.x-1.0-beta3"
+core = "6.x"
+project = "hosting_solr"
+datestamp = "1430531312"
+

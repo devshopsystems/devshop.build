@@ -1,0 +1,103 @@
+<?php
+
+// vim: filetype=php
+
+function hosting_solr_schema() {
+  $schema['hosting_solr'] = array(
+    'fields' => array(
+      'vid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'server' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'path' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('vid', 'nid'),
+  );
+  $schema['hosting_solr_server'] = array(
+    'fields' => array(
+      'server' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'solr_war_path' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('server'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function hosting_solr_install() {
+  drupal_install_schema('hosting_solr');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function hosting_solr_uninstall() {
+  drupal_uninstall_schema('hosting_solr');
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function hosting_solr_update_6001() {
+  //New field for new functionality. Issue #1864124
+
+  $ret = array();
+  db_add_field($ret, 'hosting_solr', 'path', array('type' => 'varchar', 'length' => '255', 'default' => ''));
+  return $ret;
+}
+
+/**
+ * Create hosting_solr_server
+ */
+function hosting_solr_update_6002() {
+  $ret = array();
+
+  if (!db_result(db_query("SHOW TABLES LIKE 'hosting_solr_server'"))) {
+      $schema = array(
+      'fields' => array(
+        'server' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'solr_war_path' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'default' => '',
+        ),
+      ),
+      'primary key' => array('server'),
+    );
+    db_create_table($ret, 'hosting_solr_server', $schema);
+  }
+
+  return $ret;
+}
