@@ -1,6 +1,6 @@
 name = DevShop Servers
 core = 7.x
-package = DevShop
+package = DevShop.Build
 version = 7.x-1.0
 project = devshop_servers
 dependencies[] = devshop_organizations

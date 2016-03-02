@@ -1,4 +1,0 @@
-deploy:
-  # I am pretty sure updb clears caches any time you run it! let's try...
-  - drush {{ alias }} updb
-  - drush {{ alias }} fra -y

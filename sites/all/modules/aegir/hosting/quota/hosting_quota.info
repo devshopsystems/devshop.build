@@ -1,0 +1,15 @@
+name = Client Quota
+description = Allow Hostmaster to configure quotas.
+package = Hosting
+dependencies[] = hosting
+dependencies[] = hosting_client
+
+core = 7.x
+
+
+; Information added by Drupal.org packaging script on 2016-02-09
+version = "7.x-3.4"
+core = "7.x"
+project = "hosting"
+datestamp = "1455050666"
+

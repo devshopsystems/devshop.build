@@ -1,0 +1,12 @@
+name = Git integration
+description = Allows Hostmaster managed sites and platforms to use Git.
+package = Hosting
+dependencies[] = hosting_site
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2016-01-28
+version = "7.x-3.3"
+core = "7.x"
+project = "hosting_git"
+datestamp = "1453979086"
+

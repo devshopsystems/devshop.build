@@ -1,0 +1,9 @@
+name = "Provision sync"
+description = "Allows you to sync data between two Drupal sites."
+
+; Information added by Drupal.org packaging script on 2016-01-28
+version = "7.x-3.3"
+core = "7.x"
+project = "hosting_tasks_extra"
+datestamp = "1453978759"
+
