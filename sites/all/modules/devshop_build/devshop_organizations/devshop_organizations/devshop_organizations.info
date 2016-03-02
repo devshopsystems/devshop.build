@@ -1,6 +1,6 @@
 name = DevShop Organizations
 core = 7.x
-package = DevShop.Support
+package = DevShop.Build
 version = 7.x-1.0-alpha1
 dependencies[] = features
 dependencies[] = image

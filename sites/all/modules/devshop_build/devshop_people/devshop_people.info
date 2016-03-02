@@ -1,6 +1,6 @@
 name = DevShop People
 core = 7.x
-package = Features
+package = DevShop.Build
 dependencies[] = views
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
