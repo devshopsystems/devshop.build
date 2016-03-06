@@ -4,3 +4,8 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+
+# Ignore aegir files.
+sites/sites.php
+sites/*/drushrc.php
+sites/all/drush/drushrc.php
