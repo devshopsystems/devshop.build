@@ -1,0 +1,4 @@
+name = DevShop Support
+core = 7.x
+package = DevShop.Build
+version = 7.x-1.0
