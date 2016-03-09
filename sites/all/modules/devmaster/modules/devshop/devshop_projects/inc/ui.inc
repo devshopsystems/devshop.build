@@ -19,7 +19,7 @@ function devshop_projects_projects_page() {
 
   $tasks = hosting_available_tasks('site');
 
-  $results = db_query("SELECT n.nid FROM {hosting_devshop_project} p LEFT JOIN {node} n ON n.nid = p.nid WHERE n.status = :status ORDER BY n.changed", array(':status' => 1));
+  $results = db_query("SELECT n.nid FROM {hosting_devshop_project} p LEFT JOIN {node} n ON n.nid = p.nid WHERE n.status = :status ORDER BY n.changed DESC", array(':status' => 1));
   $rows = array();
 
   foreach ($results as $result) {
