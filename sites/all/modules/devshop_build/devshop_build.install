@@ -1,2 +1,19 @@
 <?php
 
+/**
+ * Enable the devmaster modules.
+ */
+function devshop_build_update_7000() {
+    module_enable(array(
+        'devshop_hosting',
+        'devshop_dothooks',
+        'devshop_projects',
+        'devshop_pull',
+        'devshop_github',
+        'devshop_testing',
+        'aegir_ssh',
+        'aegir_download',
+        'aegir_commit',
+        'aegir_features',
+    ));
+}
