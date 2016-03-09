@@ -24,6 +24,10 @@ function devshop_projects_projects_page() {
 
   foreach ($results as $result) {
     $project_node = node_load($result->nid);
+    // If a node cannot be viewed, hide it
+    if (!node_access($project_node)) {
+      continue;
+    }
     $project = $project_node->project;
 
     // Load an environment for extra info like version.
