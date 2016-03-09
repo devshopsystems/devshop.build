@@ -26,6 +26,11 @@ function devshop_projects_projects_page() {
     $project_node = node_load($result->nid);
     $project = $project_node->project;
 
+    // Make sure user can view the project node.
+    if (!node_access('view', $project_node)) {
+      continue;
+    }
+
     // Load an environment for extra info like version.
     // @TODO: load the chosen live environment.
     $first_environment = current($project->environments);
