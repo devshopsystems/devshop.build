@@ -74,8 +74,67 @@ function devshop_organizations_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
+    $pane->pid = 'new-5188f2df-fd37-4b19-b6a4-563d088260bf';
+    $pane->panel = 'bottom';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'devshop_servers-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:node_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '5188f2df-fd37-4b19-b6a4-563d088260bf';
+    $display->content['new-5188f2df-fd37-4b19-b6a4-563d088260bf'] = $pane;
+    $display->panels['bottom'][0] = 'new-5188f2df-fd37-4b19-b6a4-563d088260bf';
+    $pane = new stdClass();
+    $pane->pid = 'new-594a8389-89f6-49b0-bdec-bc5697a08705';
+    $pane->panel = 'top';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_logo';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'image',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'image_style' => 'thumbnail',
+        'image_link' => 'content',
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'pull-left well',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '594a8389-89f6-49b0-bdec-bc5697a08705';
+    $display->content['new-594a8389-89f6-49b0-bdec-bc5697a08705'] = $pane;
+    $display->panels['top'][0] = 'new-594a8389-89f6-49b0-bdec-bc5697a08705';
+    $pane = new stdClass();
     $pane->pid = 'new-71681751-22a8-4c41-93ea-76de14090eec';
-    $pane->panel = 'left';
+    $pane->panel = 'top';
     $pane->type = 'views';
     $pane->subtype = 'devshop_organization_members';
     $pane->shown = TRUE;
@@ -96,7 +155,7 @@ function devshop_organizations_default_page_manager_handlers() {
       'context' => array(
         0 => '',
       ),
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
     );
@@ -106,34 +165,11 @@ function devshop_organizations_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '71681751-22a8-4c41-93ea-76de14090eec';
     $display->content['new-71681751-22a8-4c41-93ea-76de14090eec'] = $pane;
-    $display->panels['left'][0] = 'new-71681751-22a8-4c41-93ea-76de14090eec';
-    $pane = new stdClass();
-    $pane->pid = 'new-940f8f7a-2ac4-4846-9ee8-406cd6c12f50';
-    $pane->panel = 'right';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'devshop_organization_servers-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => array(
-        0 => 'argument_entity_id:node_1',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = '940f8f7a-2ac4-4846-9ee8-406cd6c12f50';
-    $display->content['new-940f8f7a-2ac4-4846-9ee8-406cd6c12f50'] = $pane;
-    $display->panels['right'][0] = 'new-940f8f7a-2ac4-4846-9ee8-406cd6c12f50';
+    $display->panels['top'][1] = 'new-71681751-22a8-4c41-93ea-76de14090eec';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

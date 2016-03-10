@@ -1,4 +1,0 @@
-name = BuildStrap
-description = devshop.build starter theme.
-core = 7.x
-base theme = bootstrap

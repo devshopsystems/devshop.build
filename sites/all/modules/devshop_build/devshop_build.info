@@ -1,0 +1,4 @@
+name = DevShop Build
+core = 7.x
+package = DevShop.Build Core Module
+version = 7.x-1.0

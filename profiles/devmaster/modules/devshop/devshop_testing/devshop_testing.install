@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ *   Install, update and uninstall for Devshop Projects
+ */
+
+/**
+ * Implements hook_enable()
+ */
+function devshop_testing_enable() {
+  drupal_set_message('The DevShop testing system has been enabled. Visit your projects settings pages to enable testing.');
+}
+
+/**
+ * Implementation of hook_schema().
+ */
+function devshop_testing_schema() {
+ $schema['hosting_devshop_project_testing'] = array(
+    'fields' => array(
+      'project_nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Project Node ID.',
+      ),
+      'tests_to_run' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+        'description' => 'A list of tests to run',
+      ),
+    ),
+    'primary key' => array('project_nid'),
+  );
+
+  return $schema;
+}
