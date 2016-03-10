@@ -31,7 +31,7 @@ function devshop_organizations_node_info() {
     'organization' => array(
       'name' => t('Organization'),
       'base' => 'node_content',
-      'description' => t('A group of users and machines.'),
+      'description' => t('A group of users and machines and conversations.'),
       'has_title' => '1',
       'title_label' => t('Organization Name'),
       'help' => t('Create an organization to bring your team together on DevShop.Support. You must have an Organization to create a server.'),

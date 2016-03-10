@@ -28,7 +28,7 @@ function devshop_servers_node_info() {
     'server' => array(
       'name' => t('Server'),
       'base' => 'node_content',
-      'description' => t('A system capable of running services.'),
+      'description' => t('A customer\'s server.'),
       'has_title' => '1',
       'title_label' => t('Host Name'),
       'help' => t('A server is a system capable of running services.  DevShop will connect to each server to provision services.'),
