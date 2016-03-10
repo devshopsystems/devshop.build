@@ -3,14 +3,25 @@
 /**
  * Enable the devmaster modules.
  */
-function devshop_build_update_7001() {
+function devshop_build_update_7002() {
     module_enable(array(
         'hosting',
         'hosting_task',
+        'hosting_platform',
         'hosting_server',
         'hosting_site',
+        'hosting_logs',
         'hosting_platform',
+        'hosting_clone',
+        'hosting_cron',
+        'hosting_db_server',
+        'hosting_web_server',
+        'hosting_migrate',
+        'hosting_filemanager',
+        'hosting_site_backup_manager',
+        'hosting_backup_queue',
         'devshop_hosting',
+        'devshop_pull',
         'devshop_dothooks',
         'devshop_projects',
         'devshop_pull',
