@@ -5,6 +5,11 @@
  */
 function devshop_build_update_7001() {
     module_enable(array(
+        'hosting',
+        'hosting_task',
+        'hosting_server',
+        'hosting_site',
+        'hosting_platform',
         'devshop_hosting',
         'devshop_dothooks',
         'devshop_projects',
