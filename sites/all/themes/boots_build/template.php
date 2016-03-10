@@ -216,7 +216,6 @@ function boots_preprocess_environment(&$vars) {
  * Usage:
  * $tasks = hosting_get_tasks('task_status', HOSTING_TASK_PROCESSING);
  * print boots_render_tasks($tasks);
- */
 function boots_render_tasks($tasks = NULL, $class = '', $actions = array(), $float = 'left'){
   global $user;
 
@@ -377,6 +376,7 @@ function boots_render_tasks($tasks = NULL, $class = '', $actions = array(), $flo
 HTML;
 
 }
+*/
 
 /**
  * Implements hook_preprocess_page()
@@ -406,7 +406,7 @@ function boots_preprocess_page(&$vars){
   }
 
   if (user_access('access task logs')){
-    $vars['tasks'] = boots_render_tasks();
+    // $vars['tasks'] = boots_render_tasks();
   }
 
   // On any node/% page...
