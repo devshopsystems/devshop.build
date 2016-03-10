@@ -37,9 +37,9 @@ function devshop_build_update_7002() {
 /**
  * Rebuild node access permissions.
  */
-function devshop_build_update_7003() {
-    node_access_rebuild();
-}
+//function devshop_build_update_7003() {
+//    node_access_rebuild();
+//}
 
 /**
  * Fix the node type table to work with hosting_server.
