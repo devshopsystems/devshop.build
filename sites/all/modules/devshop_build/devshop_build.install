@@ -28,9 +28,9 @@ function devshop_build_update_7002() {
         'devshop_github',
         'devshop_testing',
         'aegir_ssh',
-        'aegir_download',
-        'aegir_commit',
-        'aegir_features',
+//        'aegir_download',
+//        'aegir_commit',
+//        'aegir_features',
     ));
 }
 
