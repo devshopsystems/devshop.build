@@ -11,7 +11,7 @@ function devshop_build_update_7002() {
         'hosting_server',
         'hosting_site',
         'hosting_logs',
-        'hosting_platform',
+        'hosting_package',
         'hosting_clone',
         'hosting_cron',
         'hosting_db_server',
