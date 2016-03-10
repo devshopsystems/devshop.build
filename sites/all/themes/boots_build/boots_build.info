@@ -1,5 +1,5 @@
-name = Boots
-description = Bootstrap-powered theme for devshop.
+name = Boots Build
+description = Theme for devshop.build.
 core = 7.x
 engine = phptemplate
 
