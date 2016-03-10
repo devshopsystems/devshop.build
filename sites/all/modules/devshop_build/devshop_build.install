@@ -24,7 +24,6 @@ function devshop_build_update_7002() {
         'devshop_pull',
         'devshop_dothooks',
         'devshop_projects',
-        'devshop_pull',
         'devshop_github',
         'devshop_testing',
         'aegir_ssh',
