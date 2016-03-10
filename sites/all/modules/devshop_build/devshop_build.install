@@ -45,8 +45,6 @@ function devshop_build_update_7002() {
  * Fix the node type table to work with hosting_server.
  */
 function devshop_build_update_7004() {
-    update_sql("UPDATE node_type SET module = 'hosting_server', base = 'hosting_server' WHERE module = 'hosting_server'");
-
     db_update('node_type')
         ->fields(array('module' => 'hosting_server'))
         ->fields(array('base' => 'hosting_server'))
