@@ -46,8 +46,6 @@ function drush_devshop_provision_provision_devshop_deploy($git_ref = '')
   $environment = (object) $project->environments[d()->environment];
   $desired_ref_type = $project->settings['git']['refs'][$git_ref];
 
-  drush_log(print_r($environment, 1), 'debug');
-
   try {
 
     $wrapper = new GitWrapper();
@@ -127,6 +125,11 @@ function drush_devshop_provision_post_provision_devshop_deploy($git_ref = '') {
   $project = (object) d("@project_{$project_name}")->project;
   $environment = (object) $project->environments[d()->environment];
   $desired_ref_type = $project->settings['git']['refs'][$git_ref];
+
+  // Ensure drush_alias exists. Not sure why it was missing for me.
+  if (empty($environment->drush_alias)) {
+    $environment->drush_alias = d()->name;
+  }
 
   $commands = array();
 

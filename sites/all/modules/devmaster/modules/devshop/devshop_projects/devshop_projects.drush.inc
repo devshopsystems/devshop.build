@@ -123,6 +123,11 @@ function drush_devshop_projects_pre_hosting_task()
     $task->options['tests-to-run'] = $task->task_args['tests_to_run'];
     $task->options['test-type'] = $task->task_args['test_type'];
   }
+
+  // Verify Server
+  if ($task->ref->type == 'server' && $task->task_type == 'verify') {
+    $task->options['is-devshop'] = TRUE;
+  }
 }
 
 /**
@@ -313,7 +318,7 @@ function devshop_projects_post_hosting_verify_task($task, $data) {
 
     // If the project doesn't have an install profile chosen yet, bail.
     if (empty($platform->project->install_profile)) {
-      drush_log('[DEVSHOP] No install profile found for this platform\'s project.', 'notice');
+      drush_log('[DEVSHOP] No install profile found for this project. Not doing anything.', 'ok');
       return;
     }
 
