@@ -1,8 +1,22 @@
 <?php
 
 /**
+ * Enable hosting_server modules()
+ */
+function devshop_build_update_7001() {
+   module_enable(array(
+        'hosting',
+        'hosting_task',
+        'hosting_server',
+        'hosting_queued',
+   ));
+}
+
+
+/**
  * Enable the devmaster modules.
  */
+/*
 function devshop_build_update_7002() {
     module_enable(array(
         'hosting',
@@ -32,13 +46,15 @@ function devshop_build_update_7002() {
 //        'aegir_features',
     ));
 }
-
+*/
 /**
  * Rebuild node access permissions.
  */
 //function devshop_build_update_7003() {
 //    node_access_rebuild();
 //}
+
+
 
 /**
  * Fix the node type table to work with hosting_server.
@@ -50,3 +66,20 @@ function devshop_build_update_7004() {
         ->condition('module', 'devshop_servers')
         ->execute();
 }
+
+/**
+ * Update existing servers with a hosting context.
+ */
+function devshop_build_update_7005() {
+
+    $query = db_select('node', 'n')
+      ->fields('n', array('nid', 'title'));
+
+    $query->condition('n.type', 'server');
+    $results = $query->execute()->fetchAllKeyed(0);
+
+    foreach ($results as $nid => $name) {
+        hosting_context_register($nid, 'server_' . preg_replace("/[!\W\.\-]/", "", $name));
+    }
+}
+
