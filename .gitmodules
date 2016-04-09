@@ -1,0 +1,3 @@
+[submodule "sites/all/modules/aegir/aegir_ansible"]
+	path = sites/all/modules/aegir/aegir_ansible
+	url = https://github.com/opendevshop/aegir_ansible
