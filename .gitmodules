@@ -4,3 +4,6 @@
 [submodule "sites/all/modules/aegir/hosting"]
 	path = sites/all/modules/aegir/hosting
 	url = git@git.drupal.org:project/hosting.git
+[submodule "profiles/devmaster"]
+	path = profiles/devmaster
+	url = git@github.com:opendevshop/devmaster.git
