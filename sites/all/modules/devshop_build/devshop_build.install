@@ -1,11 +1,1 @@
 <?php
-
-
-
-$query = db_select('node', 'n')
-  ->fields('n', array('nid', 'title'));
-
-$query->condition('n.type', 'server');
-$results = $query->execute()->fetchAllKeyed();
-
-
