@@ -188,7 +188,7 @@ function devshop_organizations_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: IP Addresses */
+  /* Field: : devshop_server_ip_address */
   $handler->display->display_options['fields']['devshop_server_ip_address']['id'] = 'devshop_server_ip_address';
   $handler->display->display_options['fields']['devshop_server_ip_address']['table'] = 'field_data_devshop_server_ip_address';
   $handler->display->display_options['fields']['devshop_server_ip_address']['field'] = 'devshop_server_ip_address';
