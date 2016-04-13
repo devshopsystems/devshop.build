@@ -7,3 +7,6 @@
 [submodule "profiles/devmaster"]
 	path = profiles/devmaster
 	url = git@github.com:opendevshop/devmaster.git
+[submodule "sites/all/modules/aegir/hosting_task_jenkins"]
+	path = sites/all/modules/aegir/hosting_task_jenkins
+	url = git@github.com:opendevshop/hosting_task_jenkins.git
