@@ -31,7 +31,11 @@ function devshop_servers_update_7002() {
  */
 function devshop_servers_update_7003() {
   module_enable(array(
+    'hosting_platform',
+    'hosting_site',
     'hosting_server',
+    'hosting_web_server',
+    'hosting_db_server',
     'hosting_task',
     'hosting_task_jenkins',
     'devshop_hosting',
@@ -47,6 +51,9 @@ function devshop_servers_update_7003() {
  * Create default client node.
  */
 function devshop_servers_update_7004 () {
+  variable_set('hosting_admin_client', 1);
+  define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
+
   $node = new stdClass();
   $node->uid = 1;
   $node->type = 'client';
