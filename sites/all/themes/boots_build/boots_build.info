@@ -3,7 +3,8 @@ description = Theme for devshop.build.
 core = 7.x
 engine = phptemplate
 
-base theme = bootstrap
+base theme = boots
+
 
 stylesheets[all][] = boots.css
 stylesheets[all][] = fontawesome/css/font-awesome.min.css
