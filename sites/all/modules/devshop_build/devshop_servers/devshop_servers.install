@@ -137,3 +137,10 @@ function devshop_servers_update_7008() {
   define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
   node_access_rebuild();
 }
+
+/**
+ * Set jenkins URL.
+ */
+function devshop_servers_update_7009() {
+  variable_set('hosting_task_jenkins_url', 'http://jenkins:NbgWHjMjNZOj@http://jenkins.devshop.build:8081/');
+}
