@@ -23,7 +23,8 @@ function devshop_servers_update_7001() {
 function devshop_servers_update_7002() {
   module_enable(array(
     'hosting_server',
-    'hosting_task'
+    'hosting_task',
+    'hosting_task_jenkins',
   ));
 }
 
