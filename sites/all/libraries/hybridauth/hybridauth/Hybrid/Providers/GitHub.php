@@ -1,0 +1,1 @@
+../../../additional-providers/hybridauth-github/Providers/GitHub.php
