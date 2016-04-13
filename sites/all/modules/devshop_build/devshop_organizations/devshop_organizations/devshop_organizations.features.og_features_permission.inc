@@ -96,16 +96,6 @@ function devshop_organizations_og_features_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported og permission: 'node:organization:update devshop_server_ip_address field'
-  $permissions['node:organization:update devshop_server_ip_address field'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:organization:update devshop_server_users field'
-  $permissions['node:organization:update devshop_server_users field'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:organization:update field_logo field'
   $permissions['node:organization:update field_logo field'] = array(
     'roles' => array(
@@ -159,16 +149,6 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:view devshop_organization field'
   $permissions['node:organization:view devshop_organization field'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:organization:view devshop_server_ip_address field'
-  $permissions['node:organization:view devshop_server_ip_address field'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:organization:view devshop_server_users field'
-  $permissions['node:organization:view devshop_server_users field'] = array(
     'roles' => array(),
   );
 
