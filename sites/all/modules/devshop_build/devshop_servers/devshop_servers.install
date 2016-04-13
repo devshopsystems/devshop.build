@@ -18,20 +18,49 @@ function devshop_servers_update_7001() {
 }
 
 /**
- * Installs aegir server modules
+ * Remove "ip address" and "server users" fields.
  */
 function devshop_servers_update_7002() {
+  field_delete_field('devshop_server_ip_address');
+  field_delete_field('devshop_server_users');
+  field_purge_batch(1);
+}
+
+/**
+ * Installs aegir server modules
+ */
+function devshop_servers_update_7003() {
   module_enable(array(
     'hosting_server',
     'hosting_task',
     'hosting_task_jenkins',
+    'devshop_hosting',
+    'devshop_projects',
+    'devshop_dothooks',
+    'devshop_pull',
+    'devshop_github',
+    'aegir_ssh',
   ));
+}
+
+/**
+ * Create default client node.
+ */
+function devshop_servers_update_7004 () {
+  $node = new stdClass();
+  $node->uid = 1;
+  $node->type = 'client';
+  $node->title = 'admin';
+  $node->status = 1;
+  node_save($node);
+  variable_set('hosting_default_client', $node->nid);
+  variable_set('hosting_admin_client', $node->nid);
 }
 
 /**
  * Give server node type back to hosting_server.
  */
-function devshop_servers_update_7003 () {
+function devshop_servers_update_7005 () {
   db_update('node_type')
     ->fields(array(
       'module' => 'hosting_server',
@@ -43,41 +72,50 @@ function devshop_servers_update_7003 () {
 }
 
 /**
- * Remove "ip address" and "server users" fields.
+ * Create hosting_server records for all existing servers.
  */
-function devshop_servers_update_7004() {
-  field_delete_field('devshop_server_ip_address');
-  field_delete_field('devshop_server_users');
-  field_purge_batch(1);
+function devshop_servers_update_7006() {
+  $results = db_select('node', 'n')
+    ->condition('type', 'server')
+    ->fields('n', array('nid'))
+    ->execute()
+    ->fetchCol();
+
+  $nodes = node_load_multiple($results);
+
+  foreach ($nodes as $node) {
+    if (empty($node->hosting_name)) {
+      hosting_server_insert($node);
+    }
+  }
 }
 
 /**
  * Create server_master
- * @TODO: Fix this!
  */
-//function devshop_servers_update_7011 (){
-//
-//  $node = new stdClass();
-//  $node->uid = 1;
-//  $node->type = 'server';
-//  $node->title = 'hub.devshop.build';
-//  $node->status = 1;
-//  $node->hosting_name = 'server_master';
-//  $node->services = array();
-//
-//  hosting_services_add($node, 'http', 'apache', array(
-//    'restart_cmd' => 'sudo /usr/sbin/apache2ctl graceful',
-//    'port' => 80,
-//    'available' => 1,
-//  ));
-//  hosting_services_add($node, 'db', 'mysql', array(
-//    'db_type' => 'mysql',
-//    'db_user' => 'root',
-//    'db_passwd' => '',
-//    'port' => 3306,
-//    'available' => 1,
-//  ));
-//
-//  node_save($node);
-//  drupal_set_message(st('Creating server_master node. You must edit it and enter the valid mysql root password'));
-//}
+function devshop_servers_update_7007 (){
+
+  $node = new stdClass();
+  $node->uid = 1;
+  $node->type = 'server';
+  $node->title = 'hub.devshop.build';
+  $node->status = 1;
+  $node->hosting_name = 'server_master';
+  $node->services = array();
+
+  hosting_services_add($node, 'http', 'apache', array(
+    'restart_cmd' => 'sudo /usr/sbin/apache2ctl graceful',
+    'port' => 80,
+    'available' => 1,
+  ));
+  hosting_services_add($node, 'db', 'mysql', array(
+    'db_type' => 'mysql',
+    'db_user' => 'root',
+    'db_passwd' => '',
+    'port' => 3306,
+    'available' => 1,
+  ));
+
+  node_save($node);
+  drupal_set_message(st('Creating server_master node. You must edit it and enter the valid mysql root password'));
+}
