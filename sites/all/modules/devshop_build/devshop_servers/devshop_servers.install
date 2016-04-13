@@ -127,3 +127,13 @@ function devshop_servers_update_7007 (){
   node_save($node);
   drupal_set_message(st('Creating server_master node. You must edit it and enter the valid mysql root password'));
 }
+
+/**
+ * Rebuild node access.
+ */
+function devshop_servers_update_7008() {
+
+  // Not sure why we need this, but access rebuild fails without it.
+  define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
+  node_access_rebuild();
+}
