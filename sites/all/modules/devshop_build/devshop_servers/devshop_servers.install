@@ -142,5 +142,5 @@ function devshop_servers_update_7008() {
  * Set jenkins URL.
  */
 function devshop_servers_update_7009() {
-  variable_set('hosting_task_jenkins_url', 'http://jenkins:NbgWHjMjNZOj@http://jenkins.devshop.build:8081/');
+  variable_set('hosting_task_jenkins_url', 'http://jenkins:NbgWHjMjNZOj@jenkins.devshop.build:8081/');
 }
