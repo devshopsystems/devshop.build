@@ -33,44 +33,6 @@ function devshop_servers_field_default_field_bases() {
     'type' => 'field_ipaddress',
   );
 
-  // Exported field_base: 'devshop_server_users'.
-  $field_bases['devshop_server_users'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'devshop_server_users',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'entityreference',
-    'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'direction' => 'ASC',
-          'property' => 'name',
-          'type' => 'property',
-        ),
-        'target_bundles' => array(),
-      ),
-      'target_type' => 'user',
-    ),
-    'translatable' => 0,
-    'type' => 'entityreference',
-  );
-
   // Exported field_base: 'field_root_server_user'.
   $field_bases['field_root_server_user'] = array(
     'active' => 1,
