@@ -50,3 +50,34 @@ function devshop_servers_update_7004() {
   field_delete_field('devshop_server_users');
   field_purge_batch(1);
 }
+
+/**
+ * Create server_master
+ * @TODO: Fix this!
+ */
+//function devshop_servers_update_7011 (){
+//
+//  $node = new stdClass();
+//  $node->uid = 1;
+//  $node->type = 'server';
+//  $node->title = 'hub.devshop.build';
+//  $node->status = 1;
+//  $node->hosting_name = 'server_master';
+//  $node->services = array();
+//
+//  hosting_services_add($node, 'http', 'apache', array(
+//    'restart_cmd' => 'sudo /usr/sbin/apache2ctl graceful',
+//    'port' => 80,
+//    'available' => 1,
+//  ));
+//  hosting_services_add($node, 'db', 'mysql', array(
+//    'db_type' => 'mysql',
+//    'db_user' => 'root',
+//    'db_passwd' => '',
+//    'port' => 3306,
+//    'available' => 1,
+//  ));
+//
+//  node_save($node);
+//  drupal_set_message(st('Creating server_master node. You must edit it and enter the valid mysql root password'));
+//}
