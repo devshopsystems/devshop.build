@@ -108,6 +108,7 @@ function devshop_servers_update_7007 (){
   $node->title = 'hub.devshop.build';
   $node->status = 1;
   $node->hosting_name = 'server_master';
+  $node->devshop_organization[LANGUAGE_NONE][0]['target_id'] = 18;
   $node->services = array();
 
   hosting_services_add($node, 'http', 'apache', array(
