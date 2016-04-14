@@ -1,6 +1,6 @@
 [submodule "sites/all/modules/aegir/aegir_ansible"]
 	path = sites/all/modules/aegir/aegir_ansible
-	url = https://github.com/opendevshop/aegir_ansible
+	url = git@github.com:opendevshop/aegir_ansible
 [submodule "sites/all/modules/aegir/hosting"]
 	path = sites/all/modules/aegir/hosting
 	url = git@git.drupal.org:project/hosting.git
