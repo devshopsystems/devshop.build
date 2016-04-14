@@ -33,4 +33,5 @@ function devshop_servers_user_keys($username) {
 function devshop_servers_ansible_inventory_alter(&$inventory) {
   $inventory->ansible_apache->vars->aegir_user_name = 'devshop';
   $inventory->ansible_apache->vars->aegir_user_uid = 123456;
+  $inventory->ansible_apache->vars->aegir_user_home = '/home/devshop';
 }
