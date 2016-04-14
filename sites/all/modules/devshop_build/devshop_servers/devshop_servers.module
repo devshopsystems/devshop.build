@@ -26,3 +26,10 @@ function devshop_servers_user_keys($username) {
       print $key->value . PHP_EOL;
     }
 }
+
+/**
+ * Implements hook_ansible_inventory_alter().
+ */
+function devshop_servers_ansible_inventory_alter(&$inventory) {
+  $inventory->ansible_apache->hostvars->aegir_user_name = 'devshop';
+}
