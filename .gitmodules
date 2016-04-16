@@ -10,3 +10,6 @@
 [submodule "sites/all/modules/aegir/hosting_task_jenkins"]
 	path = sites/all/modules/aegir/hosting_task_jenkins
 	url = git@github.com:opendevshop/hosting_task_jenkins.git
+[submodule "sites/all/modules/aegir/aegir_config"]
+	path = sites/all/modules/aegir/aegir_config
+	url = git@git.drupal.org:project/aegir_config.git
