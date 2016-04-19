@@ -31,3 +31,14 @@ function devshop_organizations_intercomio_settings_alter(&$settings) {
     );
   }
 }
+
+/**
+ * Implements hook_node_insert().
+ */
+function devshop_organizations_node_insert($node) {
+  if (!empty($node->project)) {
+    $project_node = node_load($node->project);
+    $node->devshop_organization = $project_node->devshop_organization;
+    $node->devshop_content_access = $project_node->devshop_content_access;
+  }
+}
