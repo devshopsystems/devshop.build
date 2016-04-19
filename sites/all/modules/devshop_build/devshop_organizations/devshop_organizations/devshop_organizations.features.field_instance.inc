@@ -207,6 +207,58 @@ function devshop_organizations_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-project-group_content_access'.
+  $field_instances['node-project-group_content_access'] = array(
+    'bundle' => 'project',
+    'default_value' => array(
+      0 => array(
+        'value' => 2,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'group_content_access',
+    'label' => 'Private',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'type' => 'list_default',
+      ),
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 33,
+    ),
+    'widget_type' => 'options_select',
+  );
+
   // Exported field_instance: 'node-server-devshop_organization'.
   $field_instances['node-server-devshop_organization'] = array(
     'bundle' => 'server',
@@ -320,6 +372,7 @@ function devshop_organizations_field_default_field_instances() {
   t('Group');
   t('Logo');
   t('Organization');
+  t('Private');
   t('System Name');
   t('Upload your organizations logo.');
   t('User Organizations');

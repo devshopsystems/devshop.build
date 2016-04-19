@@ -14,6 +14,7 @@ function devshop_organizations_user_default_permissions() {
   $permissions['administer group'] = array(
     'name' => 'administer group',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'og',
@@ -23,8 +24,10 @@ function devshop_organizations_user_default_permissions() {
   $permissions['create organization content'] = array(
     'name' => 'create organization content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'devshop user' => 'devshop user',
     ),
     'module' => 'node',
   );
@@ -33,6 +36,7 @@ function devshop_organizations_user_default_permissions() {
   $permissions['delete any organization content'] = array(
     'name' => 'delete any organization content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -42,8 +46,10 @@ function devshop_organizations_user_default_permissions() {
   $permissions['delete own organization content'] = array(
     'name' => 'delete own organization content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'devshop user' => 'devshop user',
     ),
     'module' => 'node',
   );
@@ -52,6 +58,7 @@ function devshop_organizations_user_default_permissions() {
   $permissions['edit any organization content'] = array(
     'name' => 'edit any organization content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -61,8 +68,10 @@ function devshop_organizations_user_default_permissions() {
   $permissions['edit own organization content'] = array(
     'name' => 'edit own organization content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
+      'devshop user' => 'devshop user',
     ),
     'module' => 'node',
   );

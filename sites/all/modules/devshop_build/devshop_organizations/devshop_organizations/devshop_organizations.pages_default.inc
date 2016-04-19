@@ -97,6 +97,29 @@ function devshop_organizations_default_page_manager_handlers() {
     $display->content['new-5188f2df-fd37-4b19-b6a4-563d088260bf'] = $pane;
     $display->panels['bottom'][0] = 'new-5188f2df-fd37-4b19-b6a4-563d088260bf';
     $pane = new stdClass();
+    $pane->pid = 'new-f0a6eb02-0253-4f81-89a2-f2023646d6c6';
+    $pane->panel = 'bottom';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'devshop_organization_projects-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_entity_id:node_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'f0a6eb02-0253-4f81-89a2-f2023646d6c6';
+    $display->content['new-f0a6eb02-0253-4f81-89a2-f2023646d6c6'] = $pane;
+    $display->panels['bottom'][1] = 'new-f0a6eb02-0253-4f81-89a2-f2023646d6c6';
+    $pane = new stdClass();
     $pane->pid = 'new-594a8389-89f6-49b0-bdec-bc5697a08705';
     $pane->panel = 'top';
     $pane->type = 'entity_field';
