@@ -11,14 +11,16 @@ function devshop_organizations_intercomio_settings_alter(&$settings) {
   global $user;
   $account = user_load($user->uid);
 
-  foreach ($account->field_user_organizations['und'] as $i => $data) {
-    $org_node = node_load($data['target_id']);
+  if (is_array($account->field_user_organizations['und'])) {
+    foreach ($account->field_user_organizations['und'] as $i => $data) {
+      $org_node = node_load($data['target_id']);
 
-    if (isset($org_node->nid)) {
-      $settings['companies'][] = array(
-        'company_id' => $org_node->nid,
-        'name' => $org_node->title,
-      );
+      if (isset($org_node->nid)) {
+        $settings['companies'][] = array(
+          'company_id' => $org_node->nid,
+          'name' => $org_node->title,
+        );
+      }
     }
   }
 
