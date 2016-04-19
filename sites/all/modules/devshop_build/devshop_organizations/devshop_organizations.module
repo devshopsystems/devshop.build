@@ -25,10 +25,12 @@ function devshop_organizations_intercomio_settings_alter(&$settings) {
   // If picture, add "avatar" object
   if (isset($user->picture)) {
     $picture = file_load($user->picture);
-    $settings['avatar'] = array(
-      'type' => 'avatar',
-      'image_url' => file_create_url($picture->uri),
-    );
+    if (isset($picture->uri)) {
+      $settings['avatar'] = array(
+        'type' => 'avatar',
+        'image_url' => file_create_url($picture->uri),
+      );
+    }
   }
 }
 
