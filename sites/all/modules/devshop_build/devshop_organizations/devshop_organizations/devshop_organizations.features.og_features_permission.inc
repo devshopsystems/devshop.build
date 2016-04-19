@@ -130,8 +130,8 @@ function devshop_organizations_og_features_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported og permission: 'node:organization:update group_content_access field'
-  $permissions['node:organization:update group_content_access field'] = array(
+  // Exported og permission: 'node:organization:update devshop_content_access field'
+  $permissions['node:organization:update devshop_content_access field'] = array(
     'roles' => array(),
   );
 
@@ -181,8 +181,8 @@ function devshop_organizations_og_features_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported og permission: 'node:organization:view group_content_access field'
-  $permissions['node:organization:view group_content_access field'] = array(
+  // Exported og permission: 'node:organization:view devshop_content_access field'
+  $permissions['node:organization:view devshop_content_access field'] = array(
     'roles' => array(),
   );
 

@@ -207,8 +207,8 @@ function devshop_organizations_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-project-group_content_access'.
-  $field_instances['node-project-group_content_access'] = array(
+  // Exported field_instance: 'node-project-devshop_content_access'.
+  $field_instances['node-project-devshop_content_access'] = array(
     'bundle' => 'project',
     'default_value' => array(
       0 => array(
@@ -233,7 +233,7 @@ function devshop_organizations_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'group_content_access',
+    'field_name' => 'devshop_content_access',
     'label' => 'Private',
     'required' => 1,
     'settings' => array(
