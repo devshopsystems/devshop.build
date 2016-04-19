@@ -138,9 +138,9 @@ function devshop_people_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => 'DevShop.Support welcom',
+      'admin_title' => 'DevShop.Build welcome',
       'title' => '',
-      'body' => 'Welcome to http://DevShop.Support!
+      'body' => 'Welcome to http://DevShop.Build!
 
 We are in Private Alpha right now, so thank you so much for joining us in using this new product.
 
