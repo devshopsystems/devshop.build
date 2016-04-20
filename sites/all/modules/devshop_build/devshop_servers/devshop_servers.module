@@ -4,7 +4,7 @@
  * Code for the DevShop Servers feature.
  */
 
-if (!constant('HOSTING_ADMIN_CLIENT')) {
+if (!defined('HOSTING_ADMIN_CLIENT')) {
   define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
 }
 
