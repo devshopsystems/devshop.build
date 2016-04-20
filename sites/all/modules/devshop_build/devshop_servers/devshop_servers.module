@@ -35,3 +35,16 @@ function devshop_servers_ansible_inventory_alter(&$inventory) {
   $inventory->ansible_apache->vars->aegir_user_uid = 123456;
   $inventory->ansible_apache->vars->aegir_user_home = '/home/devshop';
 }
+
+/**
+ * Implements hook_node_access_records_alter().
+ *
+ * Make OG access grants priority over hosting_server/hosting_client.
+ */
+function devshop_servers_node_access_records_alter(&$grants, $node) {
+  foreach ($grants as $i => &$grant) {
+    if ($grant['realm'] == 'og_access:node') {
+      $grant['priority'] = 2;
+    }
+  }
+}
