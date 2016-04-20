@@ -45,6 +45,8 @@ function devshop_servers_node_access_records_alter(&$grants, $node) {
   foreach ($grants as $i => &$grant) {
     if ($grant['realm'] == 'og_access:node') {
       $grant['priority'] = 2;
+      $grants[] = $grant;
+      return;
     }
   }
 }
