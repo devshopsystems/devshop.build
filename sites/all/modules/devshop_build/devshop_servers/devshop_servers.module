@@ -4,10 +4,6 @@
  * Code for the DevShop Servers feature.
  */
 
-if (!defined('HOSTING_ADMIN_CLIENT')) {
-  define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
-}
-
 include_once 'devshop_servers.features.inc';
 
 /**
@@ -52,6 +48,13 @@ function devshop_servers_node_access_records_alter(&$grants, $node) {
     $project_node = node_load($project_nid);
     $grants = module_invoke_all('node_access_records', $project_node);
   }
+
+  // If node is a server task, load grants from the devshop_organization node
+//  dsm($node, 'ehko');
+//  if ($node->type == 'task' && $node->ref->type == 'server' && isset($node->ref->devshop_organization[LANGUAGE_NONE][0]['target_id'])) {
+//    $grants = module_invoke_all('node_access_records', $node->ref);
+//  }
+
 
   // If node has OG Access, force it to be the only one.
   foreach ($grants as $i => &$grant) {

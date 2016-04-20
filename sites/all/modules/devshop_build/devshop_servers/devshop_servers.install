@@ -150,5 +150,6 @@ function devshop_servers_update_7009() {
  * Rebuild node access.
  */
 function devshop_servers_update_7010() {
+  define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
   node_access_rebuild();
 }
