@@ -144,3 +144,11 @@ function devshop_servers_update_7008() {
 function devshop_servers_update_7009() {
   variable_set('hosting_task_jenkins_url', 'http://jenkins:NbgWHjMjNZOj@jenkins.devshop.build:8081/');
 }
+
+
+/**
+ * Rebuild node access.
+ */
+function devshop_servers_update_7010() {
+  node_access_rebuild();
+}
