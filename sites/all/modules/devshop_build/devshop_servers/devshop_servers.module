@@ -45,6 +45,7 @@ function devshop_servers_ansible_inventory_alter(&$inventory) {
  */
 function devshop_servers_node_access_records_alter(&$grants, $node) {
   foreach ($grants as $i => &$grant) {
+    // If node has OG Access, this overrides all.
     if ($grant['realm'] == 'og_access:node') {
       $grant['priority'] = 2;
       $grants = array(
