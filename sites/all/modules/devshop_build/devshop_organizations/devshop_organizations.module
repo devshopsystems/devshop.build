@@ -11,7 +11,7 @@ function devshop_organizations_intercomio_settings_alter(&$settings) {
   global $user;
   $account = user_load($user->uid);
 
-  if (is_array($account->field_user_organizations['und'])) {
+  if (isset($account->field_user_organizations['und']) && is_array($account->field_user_organizations['und'])) {
     foreach ($account->field_user_organizations['und'] as $i => $data) {
       $org_node = node_load($data['target_id']);
 
