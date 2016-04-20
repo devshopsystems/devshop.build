@@ -44,14 +44,22 @@ function devshop_servers_ansible_inventory_alter(&$inventory) {
  * Make OG access grants priority over hosting_server/hosting_client.
  */
 function devshop_servers_node_access_records_alter(&$grants, $node) {
+  // If node has a project and does not have another access realm... load the grants from the project.
+  if (!empty($node->project) && $node->type != 'project') {
+    $project_nid = is_numeric($node->project)? $node->project: $node->project->nid;
+    $project_node = node_load($project_nid);
+    $grants = module_invoke_all('node_access_records', $project_node);
+  }
+
+  // If node has OG Access, force it to be the only one.
   foreach ($grants as $i => &$grant) {
-    // If node has OG Access, this overrides all.
     if ($grant['realm'] == 'og_access:node') {
       $grant['priority'] = 2;
       $grants = array(
         $grant
       );
-      return;
+      break;
     }
   }
+
 }
