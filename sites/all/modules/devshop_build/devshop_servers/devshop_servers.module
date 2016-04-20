@@ -4,6 +4,8 @@
  * Code for the DevShop Servers feature.
  */
 
+define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
+
 include_once 'devshop_servers.features.inc';
 
 /**
