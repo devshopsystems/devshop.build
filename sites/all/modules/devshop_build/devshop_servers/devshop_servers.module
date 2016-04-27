@@ -68,3 +68,36 @@ function devshop_servers_node_access_records_alter(&$grants, $node) {
   }
 
 }
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_servers_form_alter(&$form, &$form_state, $form_id) {
+  $form['title']['#title'] = t('Name your Server');
+  $form['title']['#attributes']['placeholder'] = t('servername');
+  $form['title']['#attributes']['data-placement'] = 'top';
+
+  $form['title']['#description'] = t('Enter the unique name you wish to give your server.');
+
+  $form['title']['#field_prefix'] = "<div class='input-group'>";
+  $form['title']['#field_suffix'] = "
+        <div class=\"input-group-addon\">.devshop.systems</div>
+        </div>
+  ";
+
+  $form['title']['#element_validate'][] = 'devshop_servers_title_element_validate';
+}
+
+/**
+ * Validator for the server name field: Appends ".devshop.systems" to the title.
+ * @param $element
+ * @param $form_state
+ * @param $form
+ */
+function devshop_servers_title_element_validate($element, &$form_state, $form) {
+  if (!empty($element['#value'])) {
+    $new_name = $element['#value'] . '.devshop.systems';
+    form_set_value($element, $new_name, $form_state);
+  }
+}
