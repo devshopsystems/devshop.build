@@ -95,7 +95,39 @@ function devshop_servers_form_alter(&$form, &$form_state, $form_id) {
 
   // @TODO: Test that content privacy is still saved.
   $form['group_content_access']['#access'] = FALSE;
+
+    // If Issue doesn't get in, we can alter ourselves. https://www.drupal.org/node/2714539
+//  // re-order some things
+//  $form['services_tabs'] = array(
+//    '#type' => 'vertical_tabs',
+//  );
+//
+//  foreach (element_children($form['services']) as $i) {
+//    $form['services'][$i]['#type'] = 'fieldset';
+//    $form['services'][$i]['#group'] = 'services_tabs';
+//    $form['services'][$i]['#collapsible'] = TRUE;
+//    $form['services'][$i]['#collapsed'] = TRUE;
+//    $form['services'][$i]['#prefix'] = '';
+//    $form['services'][$i]['#suffix'] = '';
+//  }
 //  dsm($form);
+
+//  $form['visibility'] = array(
+//    '#type' => 'vertical_tabs',
+//    '#attached' => array(
+//      'js' => array(drupal_get_path('module', 'block') . '/block.js'),
+//    ),
+//  );
+//
+//  // Per-path visibility.
+//  $form['visibility']['path'] = array(
+//    '#type' => 'fieldset',
+//    '#title' => t('Pages'),
+//    '#collapsible' => TRUE,
+//    '#collapsed' => TRUE,
+//    '#group' => 'visibility',
+//    '#weight' => 0,
+//  );
 
 
 }
