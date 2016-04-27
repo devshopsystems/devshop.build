@@ -87,6 +87,17 @@ function devshop_servers_form_alter(&$form, &$form_state, $form_id) {
   ";
 
   $form['title']['#element_validate'][] = 'devshop_servers_title_element_validate';
+
+  // Disable fields
+  $form['human_name']['#access'] = FALSE;
+  $form['ips_wrapper']['#access'] = FALSE;
+  $form['field_url']['#access'] = FALSE;
+
+  // @TODO: Test that content privacy is still saved.
+  $form['group_content_access']['#access'] = FALSE;
+//  dsm($form);
+
+
 }
 
 /**
