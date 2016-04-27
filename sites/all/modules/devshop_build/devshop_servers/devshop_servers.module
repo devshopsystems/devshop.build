@@ -92,10 +92,13 @@ function devshop_servers_form_alter(&$form, &$form_state, $form_id) {
   $form['human_name']['#access'] = FALSE;
   $form['ips_wrapper']['#access'] = FALSE;
   $form['field_url']['#access'] = FALSE;
+  $form['field_root_server_user']['#access'] = FALSE;
 
   // @TODO: Test that content privacy is still saved.
   $form['group_content_access']['#access'] = FALSE;
 
+  $form['services_tabs']['#weight'] = 10;
+  
     // If Issue doesn't get in, we can alter ourselves. https://www.drupal.org/node/2714539
 //  // re-order some things
 //  $form['services_tabs'] = array(
