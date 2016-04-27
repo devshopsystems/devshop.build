@@ -73,7 +73,7 @@ function devshop_servers_node_access_records_alter(&$grants, $node) {
 /**
  * Implements hook_form_alter().
  */
-function devshop_servers_form_alter(&$form, &$form_state, $form_id) {
+function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form_id) {
   $form['title']['#title'] = t('Name your Server');
   $form['title']['#attributes']['placeholder'] = t('servername');
   $form['title']['#attributes']['data-placement'] = 'top';
