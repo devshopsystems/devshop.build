@@ -49,6 +49,14 @@ function devshop_servers_node_access_records_alter(&$grants, $node) {
     $grants = module_invoke_all('node_access_records', $project_node);
   }
 
+  // Give tasks on servers access
+  if ($node->type == 'task') {
+    $server_node = node_load($node->rid);
+    if ($server_node->type == 'server' && isset($server_node->devshop_organization[LANGUAGE_NONE][0]['target_id'])) {
+      $grants = module_invoke_all('node_access_records', $server_node);
+    }
+  }
+
   // If node is a server task, load grants from the devshop_organization node
 //  dsm($node, 'ehko');
 //  if ($node->type == 'task' && $node->ref->type == 'server' && isset($node->ref->devshop_organization[LANGUAGE_NONE][0]['target_id'])) {
