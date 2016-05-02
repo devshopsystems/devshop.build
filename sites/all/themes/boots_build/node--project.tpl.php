@@ -146,6 +146,11 @@
     <?php endif; ?>
     <?php endif; ?>
 
+    <?php // Extra items to allow modules to add things. ?>
+    <?php foreach ($project_extra_items as $item): ?>
+    <li><?php print $item; ?></li>
+    <?php endforeach; ?>
+
   </ul>
 </div>
 
