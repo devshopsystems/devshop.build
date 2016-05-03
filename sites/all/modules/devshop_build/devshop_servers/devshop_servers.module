@@ -190,3 +190,22 @@ function devshop_servers_form_devshop_project_create_step_git_alter(&$form, &$fo
     ),
   );
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_servers_form_devshop_remotes_alias_add_form_alter(&$form, &$form_state, $form_id) {
+
+  $form['note']['#markup'] = t('To deploy data from a remote site, make sure you grant DevShop.Build access:');
+
+  $form['options'] = array(
+    '#weight' => -9,
+    '#theme' => 'item_list',
+    '#items' => array(
+      t('If your project is on Acquia or Pantheon, add the user !link', array(
+        '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
+      )),
+      t("If your site is on a private server, you can grant access to devshop.build's SSH key:"),
+    ),
+  );
+}
