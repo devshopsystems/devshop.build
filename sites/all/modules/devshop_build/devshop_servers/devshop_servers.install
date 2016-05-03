@@ -153,3 +153,12 @@ function devshop_servers_update_7010() {
   define('HOSTING_ADMIN_CLIENT', variable_get('hosting_admin_client', 1));
   node_access_rebuild();
 }
+
+/**
+ * Set module weight above devshop_github.
+ */
+function devshop_servers_update_7011() {
+  db_query('UPDATE {system} SET weight = 2 WHERE name = :module', array(
+    ':module' => 'devshop_servers'
+  ));
+}

@@ -155,3 +155,38 @@ function devshop_servers_title_element_validate($element, &$form_state, $form) {
     form_set_value($element, $new_name, $form_state);
   }
 }
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_servers_form_devshop_project_create_step_git_alter(&$form, &$form_state, $form_id) {
+
+  // Create Project Wizard
+  // Add info about connecting to Repo
+  $form['connect'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Repository Access'),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+  $form['connect'] ['options'] = array(
+    '#theme' => 'item_list',
+    '#items' => array(
+      t('If your project is on GitHub, add the user !link', array(
+        '!link' => l( '<img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' .
+          t('devshopbot'), 'http://github.com/devshopbot',
+          array(
+            'html' => TRUE,
+            'attributes' => array(
+              'class' => 'label label-default',
+            ),
+          )
+        ),
+      )),
+      t('If your project is on Acquia or Pantheon, add the user !link', array(
+        '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
+      )),
+    ),
+  );
+}
