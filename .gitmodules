@@ -16,3 +16,6 @@
 [submodule "sites/all/drush/provision"]
 	path = sites/all/drush/provision
 	url = git@git.drupal.org:project/provision.git
+[submodule "sites/all/modules/aegir/aegir_cloud"]
+	path = sites/all/modules/aegir/aegir_cloud
+	url = git@git.drupal.org:project/aegir_cloud.git
