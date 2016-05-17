@@ -14,7 +14,9 @@ function devshop_servers_user_default_permissions() {
   $permissions['create server content'] = array(
     'name' => 'create server content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
+      'devshop user' => 'devshop user',
     ),
     'module' => 'node',
   );
@@ -23,6 +25,7 @@ function devshop_servers_user_default_permissions() {
   $permissions['delete any server content'] = array(
     'name' => 'delete any server content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -32,7 +35,9 @@ function devshop_servers_user_default_permissions() {
   $permissions['delete own server content'] = array(
     'name' => 'delete own server content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
+      'devshop user' => 'devshop user',
     ),
     'module' => 'node',
   );
@@ -41,6 +46,7 @@ function devshop_servers_user_default_permissions() {
   $permissions['edit any server content'] = array(
     'name' => 'edit any server content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
@@ -50,6 +56,7 @@ function devshop_servers_user_default_permissions() {
   $permissions['edit own server content'] = array(
     'name' => 'edit own server content',
     'roles' => array(
+      'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
     ),
     'module' => 'node',
