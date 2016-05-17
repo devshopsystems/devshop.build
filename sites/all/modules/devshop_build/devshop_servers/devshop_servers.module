@@ -103,7 +103,12 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
   // Disable fields
   $form['human_name']['#access'] = FALSE;
-  $form['ips_wrapper']['#access'] = FALSE;
+
+  // Hide IP address form on server create.
+  if (!isset($form['#node']->nid)){
+    $form['ips_wrapper']['#access'] = FALSE;
+  }
+
   $form['field_url']['#access'] = FALSE;
   $form['field_root_server_user']['#access'] = FALSE;
 
@@ -111,6 +116,9 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   $form['group_content_access']['#access'] = FALSE;
 
   $form['services_tabs']['#weight'] = 10;
+
+  // Alter softlayer options to limit to what we want
+
   
     // If Issue doesn't get in, we can alter ourselves. https://www.drupal.org/node/2714539
 //  // re-order some things
