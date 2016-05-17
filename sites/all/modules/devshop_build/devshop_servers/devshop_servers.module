@@ -96,6 +96,11 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
   $form['title']['#element_validate'][] = 'devshop_servers_title_element_validate';
 
+  // Remove the domain from title.
+  $form['title']['#default_value'] = strtr($form['title']['#default_value'], array(
+    '.devshop.systems' => '',
+  ));
+
   // Disable fields
   $form['human_name']['#access'] = FALSE;
   $form['ips_wrapper']['#access'] = FALSE;
