@@ -16,7 +16,6 @@ dependencies[] = views_content
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
-features[field_base][] = devshop_server_ip_address
 features[field_base][] = field_root_server_user
 features[field_base][] = field_url
 features[field_base][] = group_content_access
