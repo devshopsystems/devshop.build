@@ -52,20 +52,16 @@ function devshop_servers_views_default_views() {
 .btn-group-server .btn {
     max-height: 4em;
 }
-</style>';
+</style>
+
+<a href="/node/add/server"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
   $handler->display->display_options['header']['area']['format'] = 'unfiltered';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You don\'t have access to any servers, yet!
-
-If you are curious about how to get one, feel free to ask using the widget at the bottom right.
-
-Thanks!
-
--- The OpenDevShop Team';
+  $handler->display->display_options['empty']['area']['content'] = 'No organization servers.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['devshop_organization_target_id']['id'] = 'devshop_organization_target_id';
@@ -131,15 +127,6 @@ Thanks!
   </div>
  </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: : devshop_server_ip_address */
-  $handler->display->display_options['fields']['devshop_server_ip_address']['id'] = 'devshop_server_ip_address';
-  $handler->display->display_options['fields']['devshop_server_ip_address']['table'] = 'field_data_devshop_server_ip_address';
-  $handler->display->display_options['fields']['devshop_server_ip_address']['field'] = 'devshop_server_ip_address';
-  $handler->display->display_options['fields']['devshop_server_ip_address']['label'] = '';
-  $handler->display->display_options['fields']['devshop_server_ip_address']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['devshop_server_ip_address']['click_sort_column'] = 'start';
-  $handler->display->display_options['fields']['devshop_server_ip_address']['type'] = 'field_ipaddress_shorthand';
-  $handler->display->display_options['fields']['devshop_server_ip_address']['delta_offset'] = '0';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -187,6 +174,12 @@ Thanks!
   $handler->display->display_options['filters']['type']['value'] = array(
     'server' => 'server',
   );
+  /* Filter criterion: Hosting Server: Status */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'hosting_server';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['operator'] = '!=';
+  $handler->display->display_options['filters']['status_1']['value']['value'] = '-2';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
