@@ -34,36 +34,14 @@ function devshop_organizations_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Unfiltered text */
-  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<style>
-.btn-member {
-    width: 100px;
-    height: 100px;
-}
-
-.btn-member i.fa {
-    margin-top: .35em;
-}
-
-.view-devshop-organization-members td {
-  padding: 0 1em 1em 0;
-  max-width: 100px;
-}
-
-.view-devshop-organization-members table {
-  padding-left: 1em;
-}
-</style>';
-  $handler->display->display_options['header']['area']['format'] = 'unfiltered';
+  /* Footer: Global: Unfiltered text */
+  $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['footer']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a href="/group/node/!1/admin/people/add-user?destination=node/!1" class="btn btn-large "><i class="fa fa-user-plus"></i> Add Member</a>
+<a href="/group/node/!1/admin/people" class="btn btn-large"><i class="fa fa-users"></i> Manage Members</a>';
+  $handler->display->display_options['footer']['area_text_custom']['tokenize'] = TRUE;
   /* Relationship: OG membership: OG membership from User */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'users';
