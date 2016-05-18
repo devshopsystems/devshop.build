@@ -235,8 +235,8 @@ function safeword_field_settings_form($field, $instance, $has_data) {
       '#type'          => 'textfield',
       '#title'         => t('Replacement value'),
       '#default_value' => $settings['replace_value'],
-      '#required'      => TRUE,
-      '#description'   => t('A character to replace disallowed characters in the machine name via JavaScript.'),
+      '#required'      => FALSE,
+      '#description'   => t('A character to replace disallowed characters in the machine name via JavaScript. Leave blank to remove disallowed characters.'),
     );
 
     $form['unique'] = array(
