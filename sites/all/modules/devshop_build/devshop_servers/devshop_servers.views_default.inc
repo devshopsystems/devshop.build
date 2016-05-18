@@ -31,38 +31,24 @@ function devshop_servers_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Header: CSS */
+  /* Header: Header */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['ui_name'] = 'CSS';
+  $handler->display->display_options['header']['area']['ui_name'] = 'Header';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<style>
-/** HACK IT IN! **/
-.btn-server-dashboard {
-    width: 18em;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.btn-server-dashboard i.fa {
-  margin-left: -.5em;
-  margin-right: .5em;
-}
-.btn-group-server .btn {
-    max-height: 4em;
-}
-</style>
-
-<a href="/node/add/server"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/server?organization=!1" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
   $handler->display->display_options['header']['area']['format'] = 'unfiltered';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No organization servers.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['content'] = '<div class="well well-lg">
+  This organization has no servers.
+</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'unfiltered';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['devshop_organization_target_id']['id'] = 'devshop_organization_target_id';
   $handler->display->display_options['relationships']['devshop_organization_target_id']['table'] = 'og_membership';
@@ -183,6 +169,16 @@ function devshop_servers_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<div class=\'well well-lg\'>
+You do not have access to any servers.
+</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'unfiltered';
   $handler->display->display_options['path'] = 'servers';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Servers';
