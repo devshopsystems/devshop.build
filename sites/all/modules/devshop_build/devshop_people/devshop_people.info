@@ -1,6 +1,7 @@
 name = DevShop People
 core = 7.x
 package = DevShop.Build
+dependencies[] = contact
 dependencies[] = features
 dependencies[] = og
 dependencies[] = og_field_access
@@ -12,6 +13,7 @@ features[features_api][] = api:2
 features[og_features_permission][] = node:organization:update field_root_server_user field
 features[og_features_permission][] = node:organization:view field_root_server_user field
 features[page_manager_handlers][] = user_view__panel_context_23643cfc-8075-47c1-b928-760ff2ba56b5
+features[user_permission][] = access site-wide contact form
 features[views_view][] = people
 features_exclude[dependencies][ctools] = ctools
-project path = sites/all/modules/devshop_support
+project path = sites/all/modules/devshop_people
