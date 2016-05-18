@@ -46,3 +46,10 @@ function devshop_organizations_node_insert($node) {
     $node->devshop_content_access = $project_node->devshop_content_access;
   }
 }
+
+/**
+ * Implements hook_menu_alter().
+ */
+function devshop_organizations_menu_alter(&$items) {
+  $items['node/%node/group']['type'] = MENU_CALLBACK;
+}
