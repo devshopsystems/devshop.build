@@ -4,6 +4,7 @@ core = 7.x
 engine = phptemplate
 
 base theme = boots
+stylesheets[all][] = style.css
 
 ; Settings
 settings[toggle_logo] = 0

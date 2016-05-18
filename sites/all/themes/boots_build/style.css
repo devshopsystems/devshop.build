@@ -1,0 +1,17 @@
+.btn-member {
+    width: 100px;
+    height: 100px;
+}
+
+.btn-member i.fa {
+    margin-top: .35em;
+}
+
+.view-devshop-organization-members td {
+    padding: 0 1em 1em 0;
+    max-width: 100px;
+}
+
+.view-devshop-organization-members table {
+    padding-left: 1em;
+}
