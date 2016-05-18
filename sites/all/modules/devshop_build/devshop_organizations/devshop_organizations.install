@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Enable contact module and set the access denied page.
+ */
+function devshop_organizations_update_7000 () {
+  module_enable(array('contact'));
+  variable_set('site_403', 'access_denied');
+}
