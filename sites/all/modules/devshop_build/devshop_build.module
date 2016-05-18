@@ -8,3 +8,24 @@ function devshop_build_block_info_alter(&$blocks, $theme, $code_blocks) {
     $blocks['hosting']['hosting_queues_summary']['status'] = 0;
     $blocks['hosting']['hosting_supporting_aegir']['status'] = 0;
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_build_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_id == 'contact_site_form') {
+        drupal_set_title(t('Request Early Access'));
+
+        $form['subject'] = array(
+            '#type' => 'value',
+            '#value' => 'devshop.build alpha request'
+        );
+        $form['message']['#title'] = t('Describe your Projects');
+        $form['copy']['#access'] = FALSE;
+        $form['actions']['submit']['#value'] = t('Request Early Access');
+        $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
+
+
+        dsm($form);
+    }
+}
