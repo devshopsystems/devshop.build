@@ -37,7 +37,7 @@ function devshop_servers_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['ui_name'] = 'Header';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/server?organization=!1" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/server?organization=!1" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
   $handler->display->display_options['header']['area']['format'] = 'unfiltered';
   $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   /* No results behavior: Global: Text area */

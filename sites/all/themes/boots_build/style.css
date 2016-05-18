@@ -34,9 +34,9 @@
     max-height: 4em;
 }
 
-.view-devshop-servers .btn-primary {
+.view-devshop-servers .btn-success {
     margin: 0 0 10px 0;
 }
-.view-devshop-organization-projects .btn-primary {
+.view-devshop-organization-projects .btn-success {
     margin: 0 0 10px 0;
 }
