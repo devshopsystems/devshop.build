@@ -15,3 +15,7 @@
 .view-devshop-organization-members table {
     padding-left: 1em;
 }
+
+.table-members {
+    width: auto;
+}
