@@ -10,6 +10,35 @@
 function devshop_organizations_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'devshop_content_access'.
+  $field_bases['devshop_content_access'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'devshop_content_access',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'no_ui' => TRUE,
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Use group defaults',
+        2 => 'Private - accessible only to group members',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'devshop_organization'.
   $field_bases['devshop_organization'] = array(
     'active' => 1,
@@ -51,35 +80,6 @@ function devshop_organizations_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
-  );
-
-  // Exported field_base: 'devshop_content_access'.
-  $field_bases['devshop_content_access'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'devshop_content_access',
-    'field_permissions' => array(
-      'type' => 2,
-    ),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'no_ui' => TRUE,
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'Use group defaults',
-        2 => 'Private - accessible only to group members',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_integer',
   );
 
   // Exported field_base: 'field_logo'.
@@ -130,8 +130,8 @@ function devshop_organizations_field_default_field_bases() {
       'machine_description' => 'Your organizations "system name". It may only contain lowercase letters, numbers and underscores. Leave blank to re-generate.',
       'machine_label' => 'System Name',
       'max_length' => 255,
-      'replace_pattern' => '(--|<[^<>]+>|[^/a-z0-9-])+',
-      'replace_value' => '_',
+      'replace_pattern' => '(--_|<[^<>]+>|[^/a-z0-9-])+',
+      'replace_value' => '',
       'show_complete_path' => 0,
       'unique' => 1,
     ),

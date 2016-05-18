@@ -259,19 +259,21 @@ function devshop_organizations_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
-  // Exported field_instance: 'node-server-devshop_organization'.
-  $field_instances['node-server-devshop_organization'] = array(
-    'bundle' => 'server',
+  // Exported field_instance: 'node-project-devshop_organization'.
+  $field_instances['node-project-devshop_organization'] = array(
+    'bundle' => 'project',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Each server belongs to an Organization.',
+    'description' => 'Select which organization this project belongs to.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'og_ui',
-        'settings' => array(),
-        'type' => 'og_list_default',
-        'weight' => 2,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -289,7 +291,7 @@ function devshop_organizations_field_default_field_instances() {
         'og_widget' => array(
           'access_override' => 0,
           'admin' => array(
-            'widget_type' => 'options_select',
+            'widget_type' => 'entityreference_autocomplete',
           ),
           'default' => array(
             'widget_type' => 'options_select',
@@ -299,24 +301,12 @@ function devshop_organizations_field_default_field_instances() {
       ),
       'user_register_form' => FALSE,
     ),
-    'view modes' => array(
-      'full' => array(
-        'custom settings' => FALSE,
-        'label' => 'Full',
-        'type' => 'og_list_default',
-      ),
-      'teaser' => array(
-        'custom settings' => FALSE,
-        'label' => 'Teaser',
-        'type' => 'og_list_default',
-      ),
-    ),
     'widget' => array(
       'active' => 0,
       'module' => 'og',
       'settings' => array(),
       'type' => 'og_complex',
-      'weight' => 4,
+      'weight' => 32,
     ),
   );
 
@@ -368,11 +358,11 @@ function devshop_organizations_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Determine if this is an OG group.');
-  t('Each server belongs to an Organization.');
   t('Group');
   t('Logo');
   t('Organization');
   t('Private');
+  t('Select which organization this project belongs to.');
   t('System Name');
   t('Upload your organizations logo.');
   t('User Organizations');
