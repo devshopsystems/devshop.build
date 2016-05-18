@@ -19,3 +19,21 @@
 .table-members {
     width: auto;
 }
+
+.btn-server-dashboard {
+    width: 18em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.btn-server-dashboard i.fa {
+    margin-left: -.5em;
+    margin-right: .5em;
+}
+.btn-group-server .btn {
+    max-height: 4em;
+}
+
+.view-devshop-servers .btn-primary {
+    margin: 0 0 10px 0;
+}
