@@ -24,8 +24,5 @@ function devshop_build_form_alter(&$form, &$form_state, $form_id) {
         $form['copy']['#access'] = FALSE;
         $form['actions']['submit']['#value'] = t('Request Early Access');
         $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
-
-
-        dsm($form);
     }
 }
