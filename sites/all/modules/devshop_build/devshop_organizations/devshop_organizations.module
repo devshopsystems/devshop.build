@@ -85,3 +85,10 @@ HTML;
   return $html;
 
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_organizations_form_organization_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['revision_information']['#access'] = FALSE;
+}
