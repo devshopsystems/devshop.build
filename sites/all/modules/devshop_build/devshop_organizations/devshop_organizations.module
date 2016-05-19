@@ -91,4 +91,7 @@ HTML;
  */
 function devshop_organizations_form_organization_node_form_alter(&$form, &$form_state, $form_id) {
   $form['revision_information']['#access'] = FALSE;
+  $form['group_access']['#access'] = FALSE;
+  $form['options']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
 }
