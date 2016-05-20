@@ -19,3 +19,6 @@
 [submodule "sites/all/modules/aegir/aegir_cloud"]
 	path = sites/all/modules/aegir/aegir_cloud
 	url = git@git.drupal.org:project/aegir_cloud.git
+[submodule "sites/all/modules/aegir/aegir_rancher"]
+	path = sites/all/modules/aegir/aegir_rancher
+	url = git@github.com:opendevshop/devshop_rancher.git
