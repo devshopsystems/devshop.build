@@ -22,3 +22,6 @@
 [submodule "sites/all/modules/aegir/aegir_rancher"]
 	path = sites/all/modules/aegir/aegir_rancher
 	url = git@github.com:opendevshop/devshop_rancher.git
+[submodule "sites/all/modules/aegir/devshop_terra"]
+	path = sites/all/modules/aegir/devshop_terra
+	url = git@github.com:opendevshop/hosting_terra.git
