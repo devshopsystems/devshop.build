@@ -222,3 +222,25 @@ function devshop_servers_form_devshop_remotes_alias_add_form_alter(&$form, &$for
     ),
   );
 }
+
+/**
+ * Implements hook_node_load().
+ */
+function devshop_servers_inventory_node_load($nodes, $types)
+{
+  if (!in_array('server', $types)) {
+    return;
+  }
+  foreach ($nodes as $nid => &$node) {
+    if ($node->type != 'server') {
+      continue;
+    }
+
+    // If the server is using the aegir-user role, override the paths.
+    if (in_array('opendevshop.aegir-user', $node->services['ansible']->roles)) {
+      $node->ansible_vars['aegir_user_name'] = 'devshop';
+      $node->ansible_vars['aegir_user_home'] = '/home/devshop';
+      $node->ansible_vars['aegir_user_in_web_group'] = 'no';
+    }
+  }
+}
