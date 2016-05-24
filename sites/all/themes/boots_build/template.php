@@ -4,6 +4,18 @@
  * Implements hook_preprocess_page()
  * @param $vars
  */
+function boots_build_preprocess_node(&$vars){
+
+  // I don't know why, but server nodes are missing their titles!
+  if (isset($vars['node']->nid) && empty($vars['node']->title)) {
+    $vars['node'] = node_load($vars['node']->nid);
+  }
+}
+
+/**
+ * Implements hook_preprocess_page()
+ * @param $vars
+ */
 function boots_build_preprocess_page(&$vars){
 
   if (!empty($vars['tabs']) && $vars['node']->type != 'project') {

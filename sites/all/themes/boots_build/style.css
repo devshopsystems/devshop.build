@@ -40,3 +40,11 @@
 .view-devshop-organization-projects .btn-success {
     margin: 0 0 10px 0;
 }
+#hosting-site-info, #hosting-task-list {
+    width: 100%;
+    float: none;
+    margin: 0;
+}
+.node-type-server .panel-body .form-item {
+    margin-right: 2em;
+}
