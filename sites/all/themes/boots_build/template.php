@@ -25,6 +25,12 @@ function boots_build_preprocess_page(&$vars){
   // Render stuff
   $vars['tabs_rendered'] = render($vars['tabs']);
   $vars['sidebar_first_rendered'] = render($vars['page']['sidebar_first']);
+
+  // Remove title from server node pages.
+  if ($vars['node']->type == 'server') {
+    $vars['title'] = t('Server');
+    $vars['subtitle'] = $vars['node']->title;
+  }
 }
 
 /**
