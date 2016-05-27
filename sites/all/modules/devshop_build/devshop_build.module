@@ -25,4 +25,13 @@ function devshop_build_form_alter(&$form, &$form_state, $form_id) {
         $form['actions']['submit']['#value'] = t('Request Early Access');
         $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
     }
+
+    if ($form_id == 'server_node_form' && !empty($_GET['organization'])) {
+        // Default Organization when ?organization=1 is set.
+        $form['devshop_organization'][LANGUAGE_NONE][0]['default']['#default_value'] =  array(
+            $_GET['organization'],
+        );
+
+
+    }
 }
