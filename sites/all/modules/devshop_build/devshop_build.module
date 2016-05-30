@@ -33,4 +33,66 @@ function devshop_build_form_alter(&$form, &$form_state, $form_id) {
           $_GET['organization'],
         );
     }
+
+    // Set organization when creating a project
+    if ($form_id == 'devshop_project_create_step_git') {
+
+        // If project node has not been set yet...
+        if (empty($form_state['project']->nid)) {
+            // Show the user a list of orgs to choose from.
+            if (empty(arg(3))) {
+
+                global $user;
+                $account = user_load($user->uid);
+                foreach ($account->field_user_organizations[LANGUAGE_NONE] as $data) {
+                    $node = node_load($data['target_id']);
+                    $image = array(
+                      'style_name' => 'icon',
+                      'path' => $node->field_logo['und'][0]['uri'],
+                      'alt' => $node->title,
+                      'title' => $node->title,
+                      'attributes' => array(
+                        'class' => 'pull-left',
+                      ),
+                    );
+
+                    $items[] = l(theme('image_style', $image) . ' &nbsp; ' . $node->title, "projects/add/git_url/{$node->nid}", array(
+                        'attributes' => array(
+                            'class' => array('list-group-item'),
+                        ),
+                        'html' => TRUE,
+                     ));
+                }
+
+                $form = array();
+                $form['start'] = array(
+                  '#type' => 'item',
+                  '#prefix' => '<div class="list-group">',
+                  '#title' => t('Choose the organization to create this project in:'),
+                  '#markup' => implode("\n", $items),
+                  '#suffix' => '</div>',
+                );
+            }
+            // If the NID is for a group, show it.
+            elseif ($group = node_load(arg(3))) {
+                if ($group->type != 'organization') {
+                    drupal_goto('projects/add/git_url');
+                }
+                $form['org'] = array(
+                  '#type' => 'item',
+                  '#title' => t('Organization'),
+                  '#markup' => l($group->title, "node/{$group->nid}"),
+                  '#weight' => -1,
+                );
+
+                // Allow the user to change it.
+                if (!$form_state['project']->nid) {
+                    $form['org']['#suffix'] = l(t('Change'), 'projects/add/git_url');
+                }
+            }
+            else {
+                drupal_goto('projects/add/git_url');
+            }
+        }
+    }
 }
