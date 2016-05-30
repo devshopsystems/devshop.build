@@ -84,15 +84,43 @@ function devshop_build_form_alter(&$form, &$form_state, $form_id) {
                   '#markup' => l($group->title, "node/{$group->nid}"),
                   '#weight' => -1,
                 );
+                $form['organization_nid'] = array(
+                  '#type' => 'value',
+                  '#value' => $group->nid,
+                );
 
                 // Allow the user to change it.
                 if (!$form_state['project']->nid) {
-                    $form['org']['#suffix'] = l(t('Change'), 'projects/add/git_url');
+                    $form['organization']['#suffix'] = l(t('Change'), 'projects/add/git_url');
                 }
+
+                // Add submit to save the group
+                $form['#submit'][] = 'devshop_build_project_create_redirect';
             }
             else {
                 drupal_goto('projects/add/git_url');
             }
         }
+    }
+
+    // Default to selected organization when creating a project
+    $organization = arg(3);
+    if ($form_id == 'devshop_project_create_step_settings' && !empty($organization)) {
+        // Default Organization when ?organization=1 is set.
+        $form['devshop_organization'][LANGUAGE_NONE][0]['default']['#default_value'] = array(
+          $organization,
+        );
+    }
+}
+
+/**
+ * Custom form submit function for step one of projects.
+ * @param $from
+ * @param $form_state
+ * @throws \Exception
+ */
+function devshop_build_project_create_redirect(&$from, &$form_state) {
+    if ($form_state['values']['organization_nid']) {
+        $form_state['redirect'] = 'project/add/settings/' . $form_state['values']['organization_nid'];
     }
 }
