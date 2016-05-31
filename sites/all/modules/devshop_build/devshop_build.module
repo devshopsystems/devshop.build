@@ -89,11 +89,6 @@ function devshop_build_form_alter(&$form, &$form_state, $form_id) {
                   '#value' => $group->nid,
                 );
 
-                // Allow the user to change it.
-                if (!$form_state['project']->nid) {
-                    $form['organization']['#suffix'] = l(t('Change'), 'projects/add/git_url');
-                }
-
                 // Add submit to save the group
                 $form['#submit'][] = 'devshop_build_project_create_redirect';
             }
