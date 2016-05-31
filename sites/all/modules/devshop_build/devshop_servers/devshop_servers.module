@@ -182,11 +182,12 @@ function devshop_servers_form_devshop_project_create_step_git_alter(&$form, &$fo
     '#title' => t('Repository Access'),
     '#collapsible' => FALSE,
     '#collapsed' => FALSE,
+    '#description' => t('In order to launch copies of your website, devshop.build needs access to your source code.'),
   );
   $form['connect'] ['options'] = array(
     '#theme' => 'item_list',
     '#items' => array(
-      t('If your project is on GitHub, add the user !link. Grant "admin" access and devshopbot will create the webhook for you. (Not Required)', array(
+      t('If your project is on GitHub, add the user !link. If you grant administrator access to devshopbot, will be able to create webhooks for you.', array(
         '!link' => l( '<img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' .
           t('devshopbot'), 'http://github.com/devshopbot',
           array(
@@ -200,8 +201,45 @@ function devshop_servers_form_devshop_project_create_step_git_alter(&$form, &$fo
       t('If your project is on Acquia or Pantheon, add the user !link', array(
         '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
       )),
+      t('If your project is in a private git server, grant access to the devshop.build !modal', array(
+        '!modal' => devshop_get_ssh_key_modal(),
+      )),
     ),
   );
+}
+
+function devshop_get_ssh_key_modal() {
+
+  $ssh_key = variable_get('devshop_public_key', '');
+
+  return <<<HTML
+    <button type="button" class="btn label label-default" data-toggle="modal" data-target="#sshKeyModal">
+        <i class="fa fa-key"></i>
+        SSH Public Key
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="sshKeyModal" tabindex="-1" role="dialog" aria-labelledby="sshKeyModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="sshKeyModalLabel">
+                        DevShop.Build SSH Public Key
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <textarea rows="13" cols="80">$ssh_key</textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+HTML;
 }
 
 /**
