@@ -229,7 +229,10 @@ function devshop_get_ssh_key_modal() {
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <textarea rows="13" cols="80">$ssh_key</textarea>
+                    <textarea rows="13" cols="80" onclick="this.select()">$ssh_key</textarea>
+                    <p>
+                      This SSH public key is used to clone your code. Make sure you have added this key to your repository.
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
