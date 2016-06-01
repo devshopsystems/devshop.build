@@ -116,6 +116,6 @@ function devshop_build_form_alter(&$form, &$form_state, $form_id) {
  */
 function devshop_build_project_create_redirect(&$from, &$form_state) {
     if ($form_state['values']['organization_nid']) {
-        $form_state['redirect'] = 'project/add/settings/' . $form_state['values']['organization_nid'];
+        $form_state['redirect'] = 'projects/add/settings/' . $form_state['values']['organization_nid'];
     }
 }
