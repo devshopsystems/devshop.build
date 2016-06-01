@@ -175,37 +175,39 @@ function devshop_servers_title_element_validate($element, &$form_state, $form) {
  */
 function devshop_servers_form_devshop_project_create_step_git_alter(&$form, &$form_state, $form_id) {
 
-  // Create Project Wizard
-  // Add info about connecting to Repo
-  $form['connect'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Repository Access'),
-    '#collapsible' => FALSE,
-    '#collapsed' => FALSE,
-    '#description' => t('In order to launch copies of your website, devshop.build needs access to your source code.'),
-  );
-  $form['connect'] ['options'] = array(
-    '#theme' => 'item_list',
-    '#items' => array(
-      t('If your project is on GitHub, add the user !link. If you grant administrator access to devshopbot, will be able to create webhooks for you.', array(
-        '!link' => l( '<img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' .
-          t('devshopbot'), 'http://github.com/devshopbot',
-          array(
-            'html' => TRUE,
-            'attributes' => array(
-              'class' => 'label label-default',
-            ),
-          )
-        ),
-      )),
-      t('If your project is on Acquia or Pantheon, add the user !link', array(
-        '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
-      )),
-      t('If your project is in a private git server, grant access to the devshop.build !modal', array(
-        '!modal' => devshop_get_ssh_key_modal(),
-      )),
-    ),
-  );
+  if (!empty(arg(3))) {
+    // Create Project Wizard
+    // Add info about connecting to Repo
+    $form['connect'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Repository Access'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+      '#description' => t('In order to launch copies of your website, devshop.build needs access to your source code.'),
+    );
+    $form['connect'] ['options'] = array(
+      '#theme' => 'item_list',
+      '#items' => array(
+        t('If your project is on GitHub, add the user !link. If you grant administrator access to devshopbot, will be able to create webhooks for you.', array(
+          '!link' => l( '<img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' .
+            t('devshopbot'), 'http://github.com/devshopbot',
+            array(
+              'html' => TRUE,
+              'attributes' => array(
+                'class' => 'label label-default',
+              ),
+            )
+          ),
+        )),
+        t('If your project is on Acquia or Pantheon, add the user !link', array(
+          '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
+        )),
+        t('If your project is in a private git server, grant access to the devshop.build !modal', array(
+          '!modal' => devshop_get_ssh_key_modal(),
+        )),
+      ),
+    );
+  }
 }
 
 function devshop_get_ssh_key_modal() {
