@@ -4,6 +4,8 @@
  * Provide the hosting serivce classes for database integration.
  */
 
+module_load_include('php', 'ansible_roles', 'src/hostingService_ansible_roles_custom');
+
 /**
  * Custom Ansible Roles service.
  */
