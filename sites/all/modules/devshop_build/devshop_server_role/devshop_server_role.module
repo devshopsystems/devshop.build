@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_hosting_service_type().
+ */
+function devshop_server_role_hosting_service()
+{
+  return array(
+    'devmaster' => 'ansible_roles',
+  );
+}
