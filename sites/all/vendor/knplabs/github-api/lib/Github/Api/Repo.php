@@ -12,6 +12,7 @@ use Github\Api\Repository\Releases;
 use Github\Api\Repository\Forks;
 use Github\Api\Repository\Hooks;
 use Github\Api\Repository\Labels;
+use Github\Api\Repository\Stargazers;
 use Github\Api\Repository\Statuses;
 
 /**
@@ -310,6 +311,18 @@ class Repo extends AbstractApi
     }
 
     /**
+     * Manage the stargazers of a repository.
+     *
+     * @link https://developer.github.com/v3/activity/starring/#list-stargazers
+     *
+     * @return Stargazers
+     */
+    public function stargazers()
+    {
+        return new Stargazers($this->client);
+    }
+
+    /**
      * Manage the hooks of a repository.
      *
      * @link http://developer.github.com/v3/issues/jooks/
@@ -475,11 +488,16 @@ class Repo extends AbstractApi
      */
     public function merge($username, $repository, $base, $head, $message = null)
     {
-        return $this->post('repos/'.rawurlencode($username).'/'.rawurlencode($repository).'/merges', array(
-            'base'           => $base,
-            'head'           => $head,
-            'commit_message' => $message
-        ));
+        $parameters = array(
+            'base' => $base,
+            'head' => $head,
+        );
+
+        if (is_string($message)) {
+            $parameters['commit_message'] = $message;
+        }
+
+        return $this->post('repos/'.rawurlencode($username).'/'.rawurlencode($repository).'/merges', $parameters);
     }
 
     /**
