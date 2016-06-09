@@ -47,7 +47,12 @@ class hostingService_ansible_roles_devmaster extends hostingService_ansible_role
    */
   function getRoles() {
     return array(
-      'opendevshop.devmaster'
+      'opendevshop.aegir-user',
+      'opendevshop.aegir-apache',
+      'geerlingguy.php',
+      'geerlingguy.php-mysql',
+      'geerlingguy.composer',
+      'opendevshop.devmaster',
     );
   }
 }
