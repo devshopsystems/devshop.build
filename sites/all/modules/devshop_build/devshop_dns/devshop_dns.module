@@ -1,0 +1,39 @@
+<?php
+
+require_once(__DIR__ . '/vendor/autoload.php');
+
+use jdubreville\dnsimple\Client as DNSimpleAPI;
+
+
+/**
+ * Implements hook_node_update().
+ */
+function devshop_dns_node_update($node) {
+  if ($node->type == 'server') {
+
+    // Lookup existing records.
+    $email = variable_get('dnsimple_email', '');
+    $token = variable_get('dnsimple_token', '');
+
+    // Don't do anything if token or email is empty.
+    if (empty($email) || empty($token) || empty($node->ip_addresses)) {
+      return;
+    }
+
+    // Get API Client.
+    $client = new DNSimpleAPI($email, $token);
+
+    try {
+      // Add a Domain Record
+      $client->domains('devshop.systems')->records()->create(array(
+        'name' => strtr($node->title, array('.devshop.systems' => '')),
+        'record_type' => 'A',
+        'content' => $node->ip_addresses[0],
+      ));
+
+    }
+    catch (Exception $e) {
+      drupal_set_message($e->getMessage(), 'error');
+    }
+  }
+}
