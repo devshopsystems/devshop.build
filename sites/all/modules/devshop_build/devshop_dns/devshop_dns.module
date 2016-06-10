@@ -47,7 +47,7 @@ function devshop_dns_node_update($node) {
       }
 
       if (function_exists('drush_log')) {
-        drush_log(dt('DNS record saved.'), 'devshop_log');
+        drush_log(dt('DNS record saved.'), 'devshop_info');
       }
       else {
         drupal_set_message(t('DNS record saved.'));
