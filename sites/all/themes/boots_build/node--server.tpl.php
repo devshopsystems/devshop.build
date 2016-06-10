@@ -6,7 +6,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
 
-        <?php if ($node->services['ansible_roles']->type == 'devmaster'): ?>
+        <?php if ($node->server_status == HOSTING_SERVER_ENABLED && $node->services['ansible_roles']->type == 'devmaster'): ?>
           <a href="http://<?php print $node->title ?>" target="_blank" class="btn btn-primary btn-small launch-devshop"><img src="https://raw.githubusercontent.com/opendevshop/devshop/0.x/logo.png" width="32" height="32"> Launch this DevShop</a>
 
         <?php else: ?>
