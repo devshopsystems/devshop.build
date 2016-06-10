@@ -29,6 +29,10 @@ class hostingService_ansible_roles_devmaster extends hostingService_ansible_role
     $this->ansible_vars['devshop_cli_version'] = '1.0.0-beta3';
     $this->ansible_vars['devshop_version'] = '1.0.0-beta3';
     $this->ansible_vars['server_hostname'] = $this->server->title;
+
+    // Load the creator of the project as the devmaster email.
+    $account = user_load($this->server->node->uid);
+    $this->ansible_vars['devshop_devmaster_email'] = $account->mail;
   }
 
   function insert() {
