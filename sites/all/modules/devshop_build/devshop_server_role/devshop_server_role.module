@@ -29,7 +29,6 @@ function devshop_server_role_node_view_alter(&$build) {
   $task = node_load($task->nid);
   $build['#task'] = $task;
 
-  dsm($task, 'task');
   if (!empty($task)) {
     $verified_icon = $task->icon;
     $verified_class =  $task->status_class;
@@ -37,7 +36,10 @@ function devshop_server_role_node_view_alter(&$build) {
 
     if ($task->task_status == HOSTING_TASK_QUEUED) {
       $verified_class .= ' btn-default';
-      $verified_text = $task->ago;
+      $verified_text = t('Verification ') . $task->ago;
+    }
+    elseif ($task->task_status == HOSTING_TASK_WARNING) {
+      $verified_text = t('Verified with warnings ') . $task->ago;
     }
   }
 

@@ -56,7 +56,7 @@
 }
 
 .verify-button {
-    width: 15em;
+    min-width: 15em;
 }
 .verify-button .visible {
     display: inline;

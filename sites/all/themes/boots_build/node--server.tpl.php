@@ -29,10 +29,9 @@
       <?php hide($content['info']) ?>
 
     <div class="panel-body">
-      <span class="pull-left">
-      <?php print render($content['info']['verified']); ?>
       <?php print render($content['verify_button']); ?>
-      </span>
+    </div>
+    <div class="panel-body">
       <span class="pull-left">
       <?php print render($content['info']['ansible_roles']); ?>
       </span>
@@ -42,23 +41,30 @@
     </div>
 
     <div class="panel-body tasks">
-      <?php print render($content['tasks_view']); ?>
       <?php print views_embed_view('hosting_task_list', 'page_contextual', $node->nid); ?>
     </div>
 
-    <?php if (user_access('administer hosting')): ?>
     <div class="panel-footer task-details">
-      <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseLogs" aria-expanded="false" aria-controls="collapseLogs">
-        <i class="fa fa-list"></i> <?php print t('Details'); ?>
-      </button>
-      <div class="collapse" id="collapseLogs">
-        <div class="well">
-          <?php print render($content); ?>
-          <?php print render($content['info']); ?>
+      <?php if (user_access('administer hosting')): ?>
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseLogs" aria-expanded="false" aria-controls="collapseLogs">
+          <i class="fa fa-list"></i> <?php print t('Details'); ?>
+        </button>
+        <div class="collapse" id="collapseLogs">
+          <div class="well">
+            <?php print render($content); ?>
+            <?php print render($content['info']); ?>
+          </div>
         </div>
-      </div>
+      <?php endif; ?>
+      <?php if (node_access('delete', $node)): ?>
+        <a href="<?php print url("hosting_confirm/{$node->nid}/server_delete", array(
+          'query' => array(
+            'token' => drupal_get_token($user->uid)
+          )
+        )); ?>" class="btn btn-danger pull-right">
+          <i class="fa fa-trash"></i> <?php print t('Destroy Server'); ?>
+        </a>
+      <?php endif; ?>
     </div>
-    <?php endif; ?>
   </div>
-
 </div>
