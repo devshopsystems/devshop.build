@@ -48,3 +48,9 @@
 .node-type-server .panel-body .form-item {
     margin-right: 2em;
 }
+
+.launch-devshop {
+    color: white !important;
+    font-size: 1.2em;
+    font-weight: bold;
+}
