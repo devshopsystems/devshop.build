@@ -36,6 +36,16 @@ function devshop_dns_node_update($node) {
         'ttl' => 60,
       ));
 
+      // If server is a devmaster server, save a wildcard record as well.
+      if ($node->services['ansible_roles']->type == 'devmaster') {
+        $client->domains('devshop.systems')->records()->create(array(
+          'name' => strtr('*' . $node->title, array('.devshop.systems' => '')),
+          'record_type' => 'A',
+          'content' => $ip,
+          'ttl' => 60,
+        ));
+      }
+
       if (function_exists('drush_log')) {
         drush_log(dt('DNS record saved.'), 'devshop_log');
       }
