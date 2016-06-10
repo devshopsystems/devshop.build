@@ -9,3 +9,61 @@ function devshop_server_role_hosting_service()
     'devmaster' => 'ansible_roles',
   );
 }
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function devshop_server_role_node_view_alter(&$build) {
+
+  global $user;
+  $node = $build['#node'];
+  $nid = $build['#node']->nid;
+
+  if ($node->type != 'server') {
+    return;
+  }
+
+  // Lookup verify task.
+  $query = db_query('SELECT * FROM {hosting_task} WHERE rid = :rid ORDER BY vid DESC', array(':rid' => $node->nid));
+  $task = $query->fetch();
+  $task = node_load($task->nid);
+  $build['#task'] = $task;
+
+  dsm($task, 'task');
+  if (!empty($task)) {
+    $verified_icon = $task->icon;
+    $verified_class =  $task->status_class;
+    $verified_text = $task->status_name . ' ' . $task->ago;
+
+    if ($task->task_status == HOSTING_TASK_QUEUED) {
+      $verified_class .= ' btn-default';
+      $verified_text = $task->ago;
+    }
+  }
+
+  $verify_trigger_text = t('Run Verification');
+
+  if ($task->task_status == HOSTING_TASK_PROCESSING || $task->task_status == HOSTING_TASK_QUEUED) {
+    $url = url("node/{$task->nid}");
+    $link_text = "<i class='fa fa-{$verified_icon}'></i> $verified_text";
+  }
+  else {
+    $url = "hosting_confirm/$nid/server_verify";
+    $link_text = "<span class='visible'><i class='fa fa-{$verified_icon}'></i> $verified_text</span><span class='visible-on-hover'><i class='fa fa-play'></i> $verify_trigger_text</span>";
+  }
+
+  $build['verify_button'] = array(
+    '#type' => 'markup',
+    '#markup' => l($link_text, $url, array(
+      'attributes' => array(
+        'class' => array("verify-button btn btn-$verified_class"),
+      ),
+      'html' => TRUE,
+      'query' => array(
+        'token' => drupal_get_token($user->uid),
+      ),
+    )),
+  );
+
+
+}

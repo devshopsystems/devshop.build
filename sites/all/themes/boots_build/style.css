@@ -54,3 +54,20 @@
     font-size: 1.2em;
     font-weight: bold;
 }
+
+.verify-button {
+    width: 15em;
+}
+.verify-button .visible {
+    display: inline;
+}
+.verify-button .visible-on-hover{
+    display: none;
+}
+
+.verify-button:hover .visible {
+    display: none;
+}
+.verify-button:hover .visible-on-hover{
+    display: inline;
+}

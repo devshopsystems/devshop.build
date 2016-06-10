@@ -31,6 +31,7 @@
     <div class="panel-body">
       <span class="pull-left">
       <?php print render($content['info']['verified']); ?>
+      <?php print render($content['verify_button']); ?>
       </span>
       <span class="pull-left">
       <?php print render($content['info']['ansible_roles']); ?>
