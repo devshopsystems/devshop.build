@@ -56,7 +56,7 @@
           </div>
         </div>
       <?php endif; ?>
-      <?php if (node_access('delete', $node)): ?>
+      <?php if ($node->server_status != HOSTING_SERVER_DELETED && node_access('delete', $node)): ?>
         <a href="<?php print url("hosting_confirm/{$node->nid}/server_delete", array(
           'query' => array(
             'token' => drupal_get_token($user->uid)

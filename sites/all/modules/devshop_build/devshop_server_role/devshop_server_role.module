@@ -54,18 +54,20 @@ function devshop_server_role_node_view_alter(&$build) {
     $link_text = "<span class='visible'><i class='fa fa-{$verified_icon}'></i> $verified_text</span><span class='visible-on-hover'><i class='fa fa-play'></i> $verify_trigger_text</span>";
   }
 
-  $build['verify_button'] = array(
-    '#type' => 'markup',
-    '#markup' => l($link_text, $url, array(
-      'attributes' => array(
-        'class' => array("verify-button btn btn-$verified_class"),
-      ),
-      'html' => TRUE,
-      'query' => array(
-        'token' => drupal_get_token($user->uid),
-      ),
-    )),
-  );
+  if ($node->server_status != HOSTING_SERVER_DELETED) {
+    $build['verify_button'] = array(
+      '#type' => 'markup',
+      '#markup' => l($link_text, $url, array(
+        'attributes' => array(
+          'class' => array("verify-button btn btn-$verified_class"),
+        ),
+        'html' => TRUE,
+        'query' => array(
+          'token' => drupal_get_token($user->uid),
+        ),
+      )),
+    );
+  }
 
 
 }
