@@ -36,6 +36,12 @@ function devshop_dns_node_update($node) {
         'ttl' => 60,
       ));
 
+      if (function_exists('drush_log')) {
+        drush_log(dt('DNS record saved.'), 'devshop_log');
+      }
+      else {
+        drupal_set_message(t('DNS record saved.'));
+      }
     }
     catch (Exception $e) {
       watchdog('devshop_dns', $e->getMessage(), WATCHDOG_ERROR);
