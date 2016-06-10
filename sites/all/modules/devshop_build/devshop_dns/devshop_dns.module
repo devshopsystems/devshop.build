@@ -25,15 +25,22 @@ function devshop_dns_node_update($node) {
 
     try {
       // Add a Domain Record
+      $ip = current($node->ip_addresses);
       $client->domains('devshop.systems')->records()->create(array(
         'name' => strtr($node->title, array('.devshop.systems' => '')),
         'record_type' => 'A',
-        'content' => $node->ip_addresses[0],
+        'content' => $ip,
+        'ttl' => 60,
       ));
 
     }
     catch (Exception $e) {
-      drupal_set_message($e->getMessage(), 'error');
+      watchdog('devshop_dns', $e->getMessage(), WATCHDOG_ERROR);
+
+      // Display the error message. Show a message if we get the "already exists" message.
+      if (strpos($e->getMessage(), 'already exists so it was ignored') === FALSE) {
+        drupal_set_message($e->getMessage(), 'error');
+      }
     }
   }
 }
