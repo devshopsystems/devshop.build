@@ -804,5 +804,47 @@
             "packet",
             "packet php"
         ]
+    },
+    {
+        "name": "jdubreville/dnsimple",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jdubreville/dnsimple_api_client_php.git",
+            "reference": "0313c0b17a29b0879d0229678ef0b4f315e5cb71"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jdubreville/dnsimple_api_client_php/zipball/0313c0b17a29b0879d0229678ef0b4f315e5cb71",
+            "reference": "0313c0b17a29b0879d0229678ef0b4f315e5cb71",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-06-19 17:35:02",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "jdubreville\\dnsimple\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jim Dubreville",
+                "email": "jdubreville@freerentalsite.com"
+            }
+        ],
+        "description": "PHP Client for dnsimple REST API.",
+        "homepage": "https://github.com/jdubreville/dnsimple_api_client_php"
     }
 ]

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname(dirname($vendorDir)).'/live.build.devshop.build/files/composer';
 
 return array(
+    'jdubreville\\dnsimple\\' => array($vendorDir . '/jdubreville/dnsimple/src'),
     'SensioLabs\\AnsiConverter' => array($vendorDir . '/sensiolabs/ansi-to-html'),
     'PacketHost\\Client' => array($vendorDir . '/packethost/packet/src'),
     'Intercom' => array($vendorDir . '/intercom/intercom-php/src'),
