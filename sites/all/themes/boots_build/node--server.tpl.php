@@ -42,10 +42,11 @@
 
     <div class="panel-body tasks">
       <?php print render($content['tasks_view']); ?>
+      <?php print views_embed_view('hosting_task_list', 'page_contextual', $node->nid); ?>
     </div>
 
     <?php if (user_access('administer hosting')): ?>
-    <div class="panel-body task-details">
+    <div class="panel-footer task-details">
       <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseLogs" aria-expanded="false" aria-controls="collapseLogs">
         <i class="fa fa-list"></i> <?php print t('Details'); ?>
       </button>
@@ -57,8 +58,6 @@
       </div>
     </div>
     <?php endif; ?>
-
   </div>
-
 
 </div>
