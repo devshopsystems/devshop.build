@@ -231,3 +231,15 @@ function devshop_servers_form_devshop_remotes_alias_add_form_alter(&$form, &$for
     ),
   );
 }
+
+/**
+ * Implements hook_node_presave().
+ */
+function devshop_servers_node_presave($node) {
+  if ($node->type == 'server' && $node->services['ansible_roles']->type == 'devmaster') {
+    $node->field_url['und'][0] = array(
+      'url' => 'http://' . $node->title,
+      'title' => t('Launch DevShop'),
+    );
+  }
+}
