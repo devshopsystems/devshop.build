@@ -28,3 +28,6 @@
 [submodule "sites/all/modules/aegir/aegir_cloud_packet"]
 	path = sites/all/modules/aegir/aegir_cloud_packet
 	url = git@github.com:opendevshop/aegir_cloud_packet.git
+[submodule "sites/all/modules/aegir/hosting_logs"]
+	path = sites/all/modules/aegir/hosting_logs
+	url = http://git.drupal.org/project/hosting_logs.git
