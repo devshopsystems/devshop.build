@@ -59,6 +59,20 @@ function aegir_ssh_sshkey_delete($key) {
 }
 
 /**
+ * Implements hook_user_cancel().
+ */
+function aegir_ssh_user_cancel($edit, $account, $method) {
+  aegir_ssh_server_verify();
+}
+
+/**
+ * Implements hook_user_delete().
+ */
+function aegir_ssh_user_delete($account) {
+  aegir_ssh_server_verify();
+}
+
+/**
  * Helper to trigger server verify.
  */
 function aegir_ssh_server_verify() {
