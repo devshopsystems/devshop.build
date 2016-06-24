@@ -145,8 +145,10 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
  */
 function devshop_servers_server_node_form_validate($form, &$form_state) {
 
-  // Set values for each type.
-  $build_server_type = $form_state['values']['build_server_type'];
+  // Load the machine name for the chosen server type.
+  $server_type_node = node_load($form_state['values']['field_server_type']['und'][0]['target_id']);
+  $build_server_type = $server_type_node->field_server_type_code['und'][0]['machine'];
+
   switch ($build_server_type) {
     case 'mini':
       // Set provider type to packet, ubuntu, and type 0
@@ -161,8 +163,10 @@ function devshop_servers_server_node_form_validate($form, &$form_state) {
   // Set to DevMaster (for now)
   form_set_value($form['services']['ansible_roles']['type'], 'devmaster', $form_state);
 
-  // Set Provider to Packet (for now)
-  form_set_value($form['services']['provider']['type'], 'packet', $form_state);
+  // Using key to get the only available option at the moment.
+  $options = variable_get('aegir_cloud_packet_options', array());
+  form_set_value($form['services']['provider']['packet']['provider_options']['project'], key($options['projects']), $form_state);
+  form_set_value($form['services']['provider']['packet']['provider_options']['facility'], key($options['facilities']), $form_state);
 
   // Set OS to ubuntu trusty
   form_set_value($form['services']['provider']['packet']['provider_options']['os'], 'ubuntu_14_04', $form_state);
