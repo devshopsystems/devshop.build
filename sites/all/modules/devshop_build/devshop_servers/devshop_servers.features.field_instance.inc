@@ -203,7 +203,7 @@ function devshop_servers_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 3,
     ),
   );
 
@@ -253,7 +253,7 @@ function devshop_servers_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 32,
+      'weight' => 4,
     ),
   );
 
@@ -290,7 +290,7 @@ function devshop_servers_field_default_field_instances() {
       'module' => 'safeword',
       'settings' => array(),
       'type' => 'safeword_machine_name_only',
-      'weight' => 33,
+      'weight' => 1,
     ),
   );
 
