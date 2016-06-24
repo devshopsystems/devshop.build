@@ -125,11 +125,13 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
       // Load the node and it's teaser for display.
       $node = node_load($nid);
-      $view = node_view($node, 'full');
-      $view['#theme'] = '';
-      hide($view['links']);
-      $label = '<h3>' . $node->title . '</h3>';
-      $label .= render($view);
+      if (!empty($node)) {
+        $view = node_view($node, 'full');
+        $view['#theme'] = '';
+        hide($view['links']);
+        $label = '<h3>' . $node->title . '</h3>';
+        $label .= render($view);
+      }
     }
 
     // Add our own validator
