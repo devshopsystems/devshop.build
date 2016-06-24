@@ -123,7 +123,8 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
     '#title' => t('Dedicated DevShop Server'),
     '#description' => t('Dedicated DevShop Servers are not virtualized: You are buying bare metal!')
   );
-  $label_mini =  <<<HTML
+  $options = [];
+  $options['mini']  =  <<<HTML
 <h3>Mini Dedicated</h3>
 <ul>
 <li>8GB DDR3 RAM</li>
@@ -133,16 +134,8 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 </ul>
 
 HTML;
-  $form['devshop_build_server_dedicated']['mini'] = array(
-    '#name' => 'devshop_build_server',
-    '#type' => 'radio',
-    '#title' => $label_mini,
-    '#return_value' => 'mini',
-    '#prefix' => '<div class="col-xs-6 col-sm-6">',
-    '#suffix' => '</div>',
-  );
 
-  $label_mega =  <<<HTML
+  $options['mega'] =  <<<HTML
 <h3>Mega Dedicated</h3>
 <ul>
 <li>32GB DDR3 RAM</li>
@@ -152,13 +145,9 @@ HTML;
 </ul>
 HTML;
 
-  $form['devshop_build_server_dedicated']['mega'] = array(
-    '#name' => 'devshop_build_server',
-    '#type' => 'radio',
-    '#title' => $label_mega,
-    '#return_value' => 'mega',
-    '#prefix' => '<div class="col-xs-6 col-sm-6">',
-    '#suffix' => '</div>',
+  $form['devshop_build_server_dedicated']['build_server_type'] = array(
+    '#type' => 'radios',
+    '#options' => $options,
   );
 
 //  // Add our own Options selector
@@ -226,6 +215,40 @@ HTML;
 //    '#suffix' => '</div>',
 //  );
 
+
+  // Add our own validator
+  array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
+}
+
+/**
+ * Validate hook.
+ *
+ * @param $form_state
+ * @param $form
+ */
+function devshop_servers_server_node_form_validate($form, &$form_state) {
+
+  // Set values for each type.
+  $build_server_type = $form_state['values']['build_server_type'];
+  switch ($build_server_type) {
+    case 'mini':
+      // Set provider type to packet, ubuntu, and type 0
+      form_set_value($form['services']['provider']['packet']['provider_options']['plan'], 'baremetal_0', $form_state);
+      break;
+
+    case 'mega':
+      form_set_value($form['services']['provider']['packet']['provider_options']['plan'], 'baremetal_1', $form_state);
+      break;
+  }
+
+  // Set to DevMaster (for now)
+  form_set_value($form['services']['ansible_roles']['type'], 'devmaster', $form_state);
+
+  // Set Provider to Packet (for now)
+  form_set_value($form['services']['provider']['type'], 'packet', $form_state);
+
+  // Set OS to ubuntu trusty
+  form_set_value($form['services']['provider']['packet']['provider_options']['os'], 'ubuntu_14_04', $form_state);
 
 }
 
