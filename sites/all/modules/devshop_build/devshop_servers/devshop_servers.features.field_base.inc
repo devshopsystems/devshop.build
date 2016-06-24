@@ -73,6 +73,40 @@ function devshop_servers_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_server_type_code'.
+  $field_bases['field_server_type_code'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_server_type_code',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'machine' => array(
+        0 => 'machine',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'safeword',
+    'settings' => array(
+      'allow_machine_changes' => 1,
+      'complete_path_label' => 'Complete path',
+      'machine_description' => 'A URL-safe version of the text. It may only contain lowercase letters, numbers and underscores. Leave blank to re-generate.
+
+This will be used in code to detect proper settings. Do not change unless you know exactly what you are doing. See devshop_servers_server_node_form_validate()',
+      'machine_label' => 'URL-safe',
+      'max_length' => 255,
+      'replace_pattern' => '(--|<[^<>]+>|[^/a-z0-9-])+',
+      'replace_value' => '',
+      'show_complete_path' => 0,
+      'unique' => 1,
+    ),
+    'translatable' => 0,
+    'type' => 'safeword_title',
+  );
+
   // Exported field_base: 'field_url'.
   $field_bases['field_url'] = array(
     'active' => 1,

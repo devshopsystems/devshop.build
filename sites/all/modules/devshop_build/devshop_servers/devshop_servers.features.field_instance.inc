@@ -257,12 +257,50 @@ function devshop_servers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-server_type-field_server_type_code'.
+  $field_instances['node-server_type-field_server_type_code'] = array(
+    'bundle' => 'server_type',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'safeword',
+        'settings' => array(),
+        'type' => 'safeword_machine_basic',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_server_type_code',
+    'label' => 'Server Type Code',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'safeword',
+      'settings' => array(),
+      'type' => 'safeword_machine_name_only',
+      'weight' => 33,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
   t('Group content visibility');
   t('Monthly Cost');
   t('Root Server User');
+  t('Server Type Code');
   t('The default monthly cost for a server of this type.');
   t('The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
   t('URL');
