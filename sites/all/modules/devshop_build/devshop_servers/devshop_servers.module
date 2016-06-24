@@ -117,107 +117,110 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
   $form['services_tabs']['#weight'] = 10;
 
-  // Add our own Options selector
-  $form['devshop_build_server_dedicated'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Dedicated DevShop Server'),
-    '#description' => t('Dedicated DevShop Servers are not virtualized: You are buying bare metal!')
-  );
-  $options = [];
-  $options['mini']  =  <<<HTML
-<h3>Mini Dedicated</h3>
-<ul>
-<li>8GB DDR3 RAM</li>
-<li>4 CPU @ 2.4 GHz</li>
-<li>80 GB SSD</li>
-<li>1Gbps Network </li>
-</ul>
+  if (empty($form['#node']->nid)) {
+
+    // Add our own Options selector
+    $form['devshop_build_server_dedicated'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Dedicated DevShop Server'),
+      '#description' => t('Dedicated DevShop Servers are not virtualized: You are buying bare metal!')
+    );
+    $options = [];
+    $options['mini']  =  <<<HTML
+  <h3>Mini Dedicated</h3>
+  <ul>
+  <li>8GB DDR3 RAM</li>
+  <li>4 CPU @ 2.4 GHz</li>
+  <li>80 GB SSD</li>
+  <li>1Gbps Network </li>
+  </ul>
 
 HTML;
 
-  $options['mega'] =  <<<HTML
-<h3>Mega Dedicated</h3>
-<ul>
-<li>32GB DDR3 RAM</li>
-<li>4 CPU @ 3.4 GHz</li>
-<li>120 GB SSD</li>
-<li>2Gbps Network</li>
-</ul>
+    $options['mega'] =  <<<HTML
+  <h3>Mega Dedicated</h3>
+  <ul>
+  <li>32GB DDR3 RAM</li>
+  <li>4 CPU @ 3.4 GHz</li>
+  <li>120 GB SSD</li>
+  <li>2Gbps Network</li>
+  </ul>
 HTML;
 
-  $form['devshop_build_server_dedicated']['build_server_type'] = array(
-    '#type' => 'radios',
-    '#options' => $options,
-  );
+    $form['devshop_build_server_dedicated']['build_server_type'] = array(
+      '#type' => 'radios',
+      '#options' => $options,
+    );
 
-//  // Add our own Options selector
-//  $form['devshop_build_server_virtual'] = array(
-//    '#type' => 'fieldset',
-//    '#title' => t('Virtual DevShop Server'),
-//    '#description' => t('Virtual DevShop Servers are faster to spin up.  Spin up time is about 3 minutes.')
-//  );
+  //  // Add our own Options selector
+  //  $form['devshop_build_server_virtual'] = array(
+  //    '#type' => 'fieldset',
+  //    '#title' => t('Virtual DevShop Server'),
+  //    '#description' => t('Virtual DevShop Servers are faster to spin up.  Spin up time is about 3 minutes.')
+  //  );
 
-//
-//  $label_micro =  <<<HTML
-//<h3>Micro</h3>
-//<ul>
-//<li>2GB DDR3 RAM</li>
-//<li>2 CPU @ 2.4 GHz</li>
-//<li>20 GB SSD</li>
-//<li>1Gbps Network </li>
-//</ul>
-//
-//HTML;
-//  $form['devshop_build_server_virtual']['micro'] = array(
-//    '#name' => 'devshop_build_server',
-//    '#type' => 'radio',
-//    '#title' => $label_micro,
-//    '#return_value' => 'micro_virtual',
-//    '#prefix' => '<div class="col-xs-4 col-sm-4">',
-//    '#suffix' => '</div>',
-//  );
-//
-//  $label_mini =  <<<HTML
-//<h3>Mini</h3>
-//<ul>
-//<li>8GB DDR3 RAM</li>
-//<li>4 CPU @ 2.4 GHz</li>
-//<li>80 GB SSD</li>
-//<li>1Gbps Network </li>
-//</ul>
-//
-//HTML;
-//  $form['devshop_build_server_virtual']['mini'] = array(
-//    '#name' => 'devshop_build_server',
-//    '#type' => 'radio',
-//    '#title' => $label_mini,
-//    '#return_value' => 'mini_virtual',
-//    '#prefix' => '<div class="col-xs-4 col-sm-4">',
-//    '#suffix' => '</div>',
-//  );
-//
-//  $label_mega =  <<<HTML
-//<h3>Mega</h3>
-//<ul>
-//<li>32GB DDR3 RAM</li>
-//<li>4 CPU @ 3.4 GHz</li>
-//<li>120 GB SSD</li>
-//<li>2Gbps Network</li>
-//</ul>
-//HTML;
-//
-//  $form['devshop_build_server_virtual']['mega'] = array(
-//    '#name' => 'devshop_build_server',
-//    '#type' => 'radio',
-//    '#title' => $label_mega,
-//    '#return_value' => 'mega_virtual',
-//    '#prefix' => '<div class="col-xs-4 col-sm-4">',
-//    '#suffix' => '</div>',
-//  );
+  //
+  //  $label_micro =  <<<HTML
+  //<h3>Micro</h3>
+  //<ul>
+  //<li>2GB DDR3 RAM</li>
+  //<li>2 CPU @ 2.4 GHz</li>
+  //<li>20 GB SSD</li>
+  //<li>1Gbps Network </li>
+  //</ul>
+  //
+  //HTML;
+  //  $form['devshop_build_server_virtual']['micro'] = array(
+  //    '#name' => 'devshop_build_server',
+  //    '#type' => 'radio',
+  //    '#title' => $label_micro,
+  //    '#return_value' => 'micro_virtual',
+  //    '#prefix' => '<div class="col-xs-4 col-sm-4">',
+  //    '#suffix' => '</div>',
+  //  );
+  //
+  //  $label_mini =  <<<HTML
+  //<h3>Mini</h3>
+  //<ul>
+  //<li>8GB DDR3 RAM</li>
+  //<li>4 CPU @ 2.4 GHz</li>
+  //<li>80 GB SSD</li>
+  //<li>1Gbps Network </li>
+  //</ul>
+  //
+  //HTML;
+  //  $form['devshop_build_server_virtual']['mini'] = array(
+  //    '#name' => 'devshop_build_server',
+  //    '#type' => 'radio',
+  //    '#title' => $label_mini,
+  //    '#return_value' => 'mini_virtual',
+  //    '#prefix' => '<div class="col-xs-4 col-sm-4">',
+  //    '#suffix' => '</div>',
+  //  );
+  //
+  //  $label_mega =  <<<HTML
+  //<h3>Mega</h3>
+  //<ul>
+  //<li>32GB DDR3 RAM</li>
+  //<li>4 CPU @ 3.4 GHz</li>
+  //<li>120 GB SSD</li>
+  //<li>2Gbps Network</li>
+  //</ul>
+  //HTML;
+  //
+  //  $form['devshop_build_server_virtual']['mega'] = array(
+  //    '#name' => 'devshop_build_server',
+  //    '#type' => 'radio',
+  //    '#title' => $label_mega,
+  //    '#return_value' => 'mega_virtual',
+  //    '#prefix' => '<div class="col-xs-4 col-sm-4">',
+  //    '#suffix' => '</div>',
+  //  );
 
 
-  // Add our own validator
-  array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
+    // Add our own validator
+    array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
+  }
 }
 
 /**
