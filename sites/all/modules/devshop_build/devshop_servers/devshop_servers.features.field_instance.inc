@@ -163,10 +163,107 @@ function devshop_servers_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
+  // Exported field_instance: 'node-server_type-body'.
+  $field_instances['node-server_type-body'] = array(
+    'bundle' => 'server_type',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => TRUE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 31,
+    ),
+  );
+
+  // Exported field_instance: 'node-server_type-field_monthly_cost'.
+  $field_instances['node-server_type-field_monthly_cost'] = array(
+    'bundle' => 'server_type',
+    'default_value' => array(
+      0 => array(
+        'value' => 100,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The default monthly cost for a server of this type.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_monthly_cost',
+    'label' => 'Monthly Cost',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '$',
+      'suffix' => 'per month',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 32,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Body');
   t('Group content visibility');
+  t('Monthly Cost');
   t('Root Server User');
+  t('The default monthly cost for a server of this type.');
   t('The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
   t('URL');
 
