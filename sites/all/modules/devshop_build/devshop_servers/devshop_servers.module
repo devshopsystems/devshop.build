@@ -134,6 +134,10 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
       }
     }
 
+    if (!user_access('administer servers')) {
+      unset($form['field_server_type']['und']['#options']['_none']);
+    }
+
     // Add our own validator
     array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
   }
