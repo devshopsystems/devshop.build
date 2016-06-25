@@ -134,9 +134,13 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
       }
     }
 
+    // Hide "N/A" option for non-admins.
     if (!user_access('administer servers')) {
       unset($form['field_server_type']['und']['#options']['_none']);
     }
+
+    // Hide "amount" field.
+    $form['field_monthly_cost']['#access'] = FALSE;
 
     // Add our own validator
     array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
@@ -176,6 +180,11 @@ function devshop_servers_server_node_form_validate($form, &$form_state) {
 
   // Set OS to ubuntu trusty
   form_set_value($form['services']['provider']['packet']['provider_options']['os'], 'ubuntu_14_04', $form_state);
+
+  // Set the default monthly price from the server type.->field_monthly_cost['und'][0]['value']
+  $default_cost = $server_type_node->field_monthly_cost['und'][0]['value'];
+  form_set_value($form['field_monthly_cost']['und'][0]['value'], $default_cost, $form_state);
+
 
 }
 
