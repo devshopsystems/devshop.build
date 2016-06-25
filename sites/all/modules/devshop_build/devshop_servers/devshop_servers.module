@@ -117,7 +117,7 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
   $form['services_tabs']['#weight'] = 10;
 
-  $form['services']['#access'] = FALSE;user_access('administer servers');
+  $form['services']['#access'] = FALSE;
 
   if (empty($form['#node']->nid)) {
 
@@ -144,6 +144,10 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
     // Add our own validator
     array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
+  }
+  else {
+    // You can't change a server type once it's created.
+    $form['field_server_type']['#access'] = FALSE;
   }
 }
 
