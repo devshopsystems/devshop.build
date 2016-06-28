@@ -40,23 +40,3 @@ function devshop_organizations_node_info() {
   drupal_alter('node_info', $items);
   return $items;
 }
-
-/**
- * Implements hook_default_og_membership_type().
- */
-function devshop_organizations_default_og_membership_type() {
-  $items = array();
-  $items['organization_administrator'] = entity_import('og_membership_type', '{
-    "name" : "organization_administrator",
-    "description" : "Organization Administrator",
-    "language" : "",
-    "rdf_mapping" : []
-  }');
-  $items['organization_member'] = entity_import('og_membership_type', '{
-    "name" : "organization_member",
-    "description" : "Organization Member",
-    "language" : "",
-    "rdf_mapping" : []
-  }');
-  return $items;
-}

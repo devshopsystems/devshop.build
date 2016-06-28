@@ -33,7 +33,9 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:create server content'
   $permissions['node:organization:create server content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:organization:delete any server content'
@@ -88,7 +90,9 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update any server content'
   $permissions['node:organization:update any server content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:organization:update devshop_content_access field'
@@ -98,7 +102,10 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update devshop_organization field'
   $permissions['node:organization:update devshop_organization field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:organization:update field_logo field'
@@ -144,7 +151,9 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update own server content'
   $permissions['node:organization:update own server content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:organization:view devshop_content_access field'
@@ -155,8 +164,8 @@ function devshop_organizations_og_features_default_permissions() {
   // Exported og permission: 'node:organization:view devshop_organization field'
   $permissions['node:organization:view devshop_organization field'] = array(
     'roles' => array(
+      'administrator member' => 'administrator member',
       'member' => 'member',
-      'non-member' => 'non-member',
     ),
   );
 

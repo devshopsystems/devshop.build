@@ -232,9 +232,15 @@ function devshop_servers_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
@@ -245,7 +251,7 @@ function devshop_servers_field_default_field_instances() {
       'max' => '',
       'min' => 0,
       'prefix' => '$',
-      'suffix' => 'per month',
+      'suffix' => ' per month',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -265,17 +271,16 @@ function devshop_servers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'safeword',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'safeword_machine_basic',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
