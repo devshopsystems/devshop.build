@@ -73,6 +73,46 @@ function devshop_servers_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_server_type'.
+  $field_bases['field_server_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_server_type',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'ASC',
+          'property' => 'created',
+          'type' => 'property',
+        ),
+        'target_bundles' => array(
+          'server_type' => 'server_type',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_server_type_code'.
   $field_bases['field_server_type_code'] = array(
     'active' => 1,
