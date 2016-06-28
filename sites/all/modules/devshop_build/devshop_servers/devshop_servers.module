@@ -107,7 +107,7 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   // Hide IP address and root user forms unless user selects private server.
   $private_server_states = array(
     'visible' => array(
-      ':input[name="field_server_type[und]"]' => array('value' => 15346),
+      ':input[name="field_server_type[und]"]' => array('value' => 16129),
     ),
   );
   $form['field_url']['#access'] = FALSE;
