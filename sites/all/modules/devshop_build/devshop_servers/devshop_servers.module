@@ -104,13 +104,17 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   // Disable fields
   $form['human_name']['#access'] = FALSE;
 
-  // Hide IP address form on server create.
-  if (!isset($form['#node']->nid)){
-    $form['ips_wrapper']['#access'] = FALSE;
-  }
-
+  // Hide IP address and root user forms unless user selects private server.
+  $private_server_states = array(
+    'visible' => array(
+      ':input[name="field_server_type[und]"]' => array('value' => 15346),
+    ),
+  );
   $form['field_url']['#access'] = FALSE;
-  $form['field_root_server_user']['#access'] = FALSE;
+  $form['field_root_server_user']['#states'] = $private_server_states;
+  $form['field_root_server_user']['#weight'] = 100;
+  $form['ips_wrapper']['#states'] = $private_server_states;
+  $form['ips_wrapper']['#weight'] = 100;
 
   // @TODO: Test that content privacy is still saved.
   $form['group_content_access']['#access'] = FALSE;
