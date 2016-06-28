@@ -19,7 +19,7 @@ function devshop_servers_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".',
+    'description' => 'The user that DevShop.Build will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -307,7 +307,7 @@ function devshop_servers_field_default_field_instances() {
   t('Root Server User');
   t('Server Type Code');
   t('The default monthly cost for a server of this type.');
-  t('The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
+  t('The user that DevShop.Build will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
   t('URL');
 
   return $field_instances;
