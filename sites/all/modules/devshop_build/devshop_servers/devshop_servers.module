@@ -135,12 +135,12 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
     }
 
     // Hide "N/A" option for non-admins.
-    if (!user_access('administer servers')) {
+    if (!user_access('administer server')) {
       unset($form['field_server_type']['und']['#options']['_none']);
     }
 
     // Hide "amount" field.
-    $form['field_monthly_cost']['#access'] = FALSE;
+    $form['field_monthly_cost']['#access'] = user_access('administer server');
 
     // Add our own validator
     array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
@@ -165,25 +165,26 @@ function devshop_servers_server_node_form_validate($form, &$form_state) {
 
   switch ($build_server_type) {
     case 'mini':
-      // Set provider type to packet, ubuntu, and type 0
-      form_set_value($form['services']['provider']['packet']['provider_options']['plan'], 'baremetal_0', $form_state);
-      break;
-
     case 'mega':
-      form_set_value($form['services']['provider']['packet']['provider_options']['plan'], 'baremetal_1', $form_state);
+      // Set provider type to packet.
+      form_set_value($form['services']['provider']['type'], 'packet', $form_state);
+
+      // Set plan based on server type.
+      $plan = ($build_server_type == 'mini')? 'baremetal_0': 'baremetal_1';
+      form_set_value($form['services']['provider']['packet']['provider_options']['plan'], $plan, $form_state);
+
+      // Using key to get the only available option at the moment.
+      $options = variable_get('aegir_cloud_packet_options', array());
+      form_set_value($form['services']['provider']['packet']['provider_options']['project'], key($options['projects']), $form_state);
+      form_set_value($form['services']['provider']['packet']['provider_options']['facility'], key($options['facilities']), $form_state);
+
+      // Set OS to ubuntu trusty
+      form_set_value($form['services']['provider']['packet']['provider_options']['os'], 'ubuntu_14_04', $form_state);
       break;
   }
 
   // Set to DevMaster (for now)
   form_set_value($form['services']['ansible_roles']['type'], 'devmaster', $form_state);
-
-  // Using key to get the only available option at the moment.
-  $options = variable_get('aegir_cloud_packet_options', array());
-  form_set_value($form['services']['provider']['packet']['provider_options']['project'], key($options['projects']), $form_state);
-  form_set_value($form['services']['provider']['packet']['provider_options']['facility'], key($options['facilities']), $form_state);
-
-  // Set OS to ubuntu trusty
-  form_set_value($form['services']['provider']['packet']['provider_options']['os'], 'ubuntu_14_04', $form_state);
 
   // Set the default monthly price from the server type.->field_monthly_cost['und'][0]['value']
   $default_cost = $server_type_node->field_monthly_cost['und'][0]['value'];
