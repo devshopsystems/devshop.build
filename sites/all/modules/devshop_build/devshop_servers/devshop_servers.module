@@ -117,12 +117,20 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   $form['ips_wrapper']['#weight'] = 100;
   $form['ips_wrapper']['#type'] = 'container';
 
-  $form['ips_wrapper']['#prefix'] = '<label>' . t("Your server's public IP addresses.") . '</label>';
+  $form['ips_wrapper']['new_ip_addresses'][0]['#title'] = t("Your server's public IP address.");
+  $form['ips_wrapper']['ip_addresses'][0]['#title'] = t("Your server's public IP address.");
   $form['ips_wrapper']['ip_addresses'][0]['#description'] = t("Enter your server's public IP address. We will create the initial DNS records for you.");
   $form['ips_wrapper']['new_ip_addresses'][0]['#description'] = t("Enter your server's public IP address. We will create the initial DNS records for you.");
 
   unset($form['ips_wrapper']['new_ip_addresses'][1]);
   unset($form['ips_wrapper']['new_ip_addresses'][2]);
+
+
+  // Show the SSH key for the server
+  $form['ssh_key'] = array(
+    '#markup' => 'hello' . devshop_get_ssh_key_modal(),
+    '#states' => $private_server_states,
+  );
 
   // @TODO: Test that content privacy is still saved.
   $form['group_content_access']['#access'] = FALSE;
