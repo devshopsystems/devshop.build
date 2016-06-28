@@ -112,9 +112,9 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   );
   $form['field_url']['#access'] = FALSE;
   $form['field_root_server_user']['#states'] = $private_server_states;
-  $form['field_root_server_user']['#weight'] = 100;
+  $form['field_root_server_user']['#weight'] = 50;
   $form['ips_wrapper']['#states'] = $private_server_states;
-  $form['ips_wrapper']['#weight'] = 100;
+  $form['ips_wrapper']['#weight'] = 50;
   $form['ips_wrapper']['#type'] = 'container';
 
   $form['ips_wrapper']['new_ip_addresses'][0]['#title'] = t("Your server's public IP address.");
@@ -128,8 +128,12 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
 
   // Show the SSH key for the server
   $form['ssh_key'] = array(
-    '#markup' => 'hello' . devshop_get_ssh_key_modal(),
+    '#type' => 'fieldset',
+    '#weight' => 50,
     '#states' => $private_server_states,
+    'key' => array(
+      '#markup' => t('To setup a Private Dedicated server, you must grant access to our public key: ') . devshop_get_ssh_key_modal(),
+    ),
   );
 
   // @TODO: Test that content privacy is still saved.
