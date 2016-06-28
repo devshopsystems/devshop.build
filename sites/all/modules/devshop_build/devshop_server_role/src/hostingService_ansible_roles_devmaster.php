@@ -25,14 +25,17 @@ class hostingService_ansible_roles_devmaster extends hostingService_ansible_role
 
     $this->roles = $this->getRoles();
 
-    $this->ansible_vars['mysql_root_password'] = variable_get("server_root_mysql_passwd_{$this->server->title}", user_password(64));
+    $this->ansible_vars['mysql_root_password'] = variable_get("server_root_mysql_passwd_{$this->server->node->title}", user_password(64));
     $this->ansible_vars['devshop_cli_version'] = '1.0.0-beta3';
     $this->ansible_vars['devshop_version'] = '1.0.0-beta3';
-    $this->ansible_vars['server_hostname'] = $this->server->title;
+    $this->ansible_vars['server_hostname'] = $this->server->node->title;
 
     // Load the creator of the project as the devmaster email.
     $account = user_load($this->server->node->uid);
     $this->ansible_vars['devshop_devmaster_email'] = $account->mail;
+
+    // Replace aegir authorized keys with the author's ssh key.
+//    $this->ansible_vars['aegir_user_authorized_keys'] =
   }
 
   function insert() {
