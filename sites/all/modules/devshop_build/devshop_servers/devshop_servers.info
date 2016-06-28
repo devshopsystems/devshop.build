@@ -59,6 +59,7 @@ features[variable][] = node_preview_server_type
 features[variable][] = node_submitted_server
 features[variable][] = node_submitted_server_type
 features[views_view][] = devshop_servers
+features[views_view][] = server_types
 features_exclude[dependencies][ctools] = ctools
 features_exclude[field_base][field_server_users_admins] = field_server_users_admins
 features_exclude[field_instance][node-server-field_server_users_admins] = node-server-field_server_users_admins
