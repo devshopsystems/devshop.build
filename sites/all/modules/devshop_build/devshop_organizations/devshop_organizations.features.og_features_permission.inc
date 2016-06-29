@@ -117,7 +117,9 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update field_organization_name field'
   $permissions['node:organization:update field_organization_name field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:organization:update field_url field'
@@ -180,7 +182,10 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:view field_organization_name field'
   $permissions['node:organization:view field_organization_name field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:organization:view field_url field'
