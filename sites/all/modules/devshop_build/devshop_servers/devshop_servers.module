@@ -175,7 +175,7 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   }
 
   // Allow author to be set.
-  $form['author']['#access'] = user_access('administer content');
+  $form['author']['#access'] = user_access('administer nodes');
 }
 
 /**
