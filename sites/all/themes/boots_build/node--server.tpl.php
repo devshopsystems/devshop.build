@@ -29,7 +29,7 @@
       <?php hide($content['info']) ?>
 
     <div class="panel-body">
-      <?php print render($content['verify_button']); ?>
+      <?php print render($content['devshop_organization']); ?>
     </div>
     <div class="panel-body">
       <?php print render($content['ssh_access']); ?>
@@ -43,6 +43,9 @@
       </span>
     </div>
 
+    <div class="panel-body">
+      <?php print render($content['verify_button']); ?>
+    </div>
     <div class="panel-body tasks">
       <?php print views_embed_view('hosting_task_list', 'page_contextual', $node->nid); ?>
     </div>
