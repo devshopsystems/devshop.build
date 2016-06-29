@@ -16,7 +16,7 @@ function devshop_server_role_hosting_service()
 function devshop_server_role_node_view_alter(&$build) {
 
   global $user;
-  $node = $build['#node'];
+  $node = node_load($build['#node']->nid);
   $nid = $build['#node']->nid;
 
   if ($node->type != 'server') {
@@ -66,6 +66,11 @@ function devshop_server_role_node_view_alter(&$build) {
           'token' => drupal_get_token($user->uid),
         ),
       )),
+    );
+    $build['ssh_access'] = array(
+      '#markup' => "ssh aegir@{$node->title}",
+      '#prefix' => '<div class="well well-sm">' . t('You can access the server via ssh: ') . '<code>',
+      '#suffix' => '</code></div>',
     );
   }
 

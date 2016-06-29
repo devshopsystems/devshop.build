@@ -32,6 +32,9 @@
       <?php print render($content['verify_button']); ?>
     </div>
     <div class="panel-body">
+      <?php print render($content['ssh_access']); ?>
+    </div>
+    <div class="panel-body">
       <span class="pull-left">
       <?php print render($content['info']['ansible_roles']); ?>
       </span>
