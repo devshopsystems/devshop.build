@@ -1,0 +1,6 @@
+name = DevShop License
+description = Provides devshop licenses.
+core = 7.x
+package = DevShop.Build
+dependencies[] = commerce_license
+
