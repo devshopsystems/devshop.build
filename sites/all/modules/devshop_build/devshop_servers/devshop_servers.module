@@ -139,9 +139,32 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   // @TODO: Test that content privacy is still saved.
   $form['group_content_access']['#access'] = FALSE;
 
-  $form['services_tabs']['#weight'] = 10;
+  $form['services_tabs']['#weight'] = 70;
+  $form['services']['#access'] = user_access('administer server');
 
-  $form['services']['#access'] = FALSE;
+  // Since we can't hide fieldsets, we'll hide the fields, i guess. This is admins only, anyway.
+  $children = element_children($form['services']);
+  foreach (element_children($form['services']) as $i) {
+    $form['services'][$i]['type']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_server_type[und]"]' => array('value' => '_none'),
+      ),
+    );
+  }
+
+  $form['services_note'] = array(
+    '#access' => user_access('administer server'),
+    '#type' => 'fieldset',
+    'note' => array(
+      '#markup' => '<div class="alert alert-warning">' . t('Service configuration disabled when Server Type is selected.  Select "N/A" to manually choose services.') . '</div>',
+    ),
+    '#weight' => 69,
+    '#states' => array(
+      'invisible' => array(
+        ':input[name="field_server_type[und]"]' => array('value' => '_none'),
+      ),
+    )
+  );
 
   if (empty($form['#node']->nid)) {
 
