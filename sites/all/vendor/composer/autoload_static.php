@@ -74,6 +74,13 @@ class ComposerStaticInitComposerManager
     );
 
     public static $prefixesPsr0 = array (
+        'j' => 
+        array (
+            'jdubreville\\dnsimple\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jdubreville/dnsimple/src',
+            ),
+        ),
         'S' => 
         array (
             'SensioLabs\\AnsiConverter' => 
@@ -86,6 +93,13 @@ class ComposerStaticInitComposerManager
             'PacketHost\\Client' => 
             array (
                 0 => __DIR__ . '/..' . '/packethost/packet/src',
+            ),
+        ),
+        'J' => 
+        array (
+            'JenkinsApi' => 
+            array (
+                0 => __DIR__ . '/..' . '/chbiel/jenkins-php-api/src',
             ),
         ),
         'I' => 

@@ -9,6 +9,7 @@ return array(
     'jdubreville\\dnsimple\\' => array($vendorDir . '/jdubreville/dnsimple/src'),
     'SensioLabs\\AnsiConverter' => array($vendorDir . '/sensiolabs/ansi-to-html'),
     'PacketHost\\Client' => array($vendorDir . '/packethost/packet/src'),
+    'JenkinsApi' => array($vendorDir . '/chbiel/jenkins-php-api/src'),
     'Intercom' => array($vendorDir . '/intercom/intercom-php/src'),
     'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
     'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
