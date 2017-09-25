@@ -31,3 +31,6 @@
 [submodule "sites/all/modules/aegir/hosting_tasks_extra"]
 	path = sites/all/modules/aegir/hosting_tasks_extra
 	url = http://git.drupal.org/project/hosting_tasks_extra.git
+[submodule "sites/all/modules/aegir/hosting_git"]
+	path = sites/all/modules/aegir/hosting_git
+	url = http://git.drupal.org/project/hosting_git.git
