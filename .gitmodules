@@ -28,3 +28,6 @@
 [submodule "sites/all/modules/aegir/hosting_logs"]
 	path = sites/all/modules/aegir/hosting_logs
 	url = http://git.drupal.org/project/hosting_logs.git
+[submodule "sites/all/modules/aegir/hosting_tasks_extra"]
+	path = sites/all/modules/aegir/hosting_tasks_extra
+	url = http://git.drupal.org/project/hosting_tasks_extra.git
