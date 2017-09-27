@@ -1,6 +1,6 @@
 [submodule "sites/all/modules/aegir/aegir_ansible"]
 	path = sites/all/modules/aegir/aegir_ansible
-	url = git@github.com:opendevshop/aegir_ansible
+	url = git@git.drupal.org:project/aegir_ansible.git
 [submodule "sites/all/modules/aegir/hosting"]
 	path = sites/all/modules/aegir/hosting
 	url = git@git.drupal.org:project/hosting.git
@@ -19,3 +19,18 @@
 [submodule "sites/all/modules/aegir/aegir_cloud"]
 	path = sites/all/modules/aegir/aegir_cloud
 	url = git@git.drupal.org:project/aegir_cloud.git
+[submodule "sites/all/modules/aegir/aegir_rancher"]
+	path = sites/all/modules/aegir/aegir_rancher
+	url = git@github.com:opendevshop/devshop_rancher.git
+[submodule "sites/all/modules/aegir/devshop_terra"]
+	path = sites/all/modules/aegir/devshop_terra
+	url = git@github.com:opendevshop/hosting_terra.git
+[submodule "sites/all/modules/aegir/hosting_logs"]
+	path = sites/all/modules/aegir/hosting_logs
+	url = http://git.drupal.org/project/hosting_logs.git
+[submodule "sites/all/modules/aegir/hosting_tasks_extra"]
+	path = sites/all/modules/aegir/hosting_tasks_extra
+	url = http://git.drupal.org/project/hosting_tasks_extra.git
+[submodule "sites/all/modules/aegir/hosting_git"]
+	path = sites/all/modules/aegir/hosting_git
+	url = http://git.drupal.org/project/hosting_git.git

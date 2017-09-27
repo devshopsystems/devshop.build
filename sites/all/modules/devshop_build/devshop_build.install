@@ -1,0 +1,14 @@
+<?php
+
+
+/**
+ * Delete all tasks for the broken site customerremote.drupal.devshop.site nid 9942
+ */
+function devshop_build_update_7000() {
+
+    $results = db_query('SELECT nid FROM hosting_task WHERE rid=9942');
+    while ($result = $results->fetchObject()) {
+        node_delete($result->nid);
+    }
+}
+

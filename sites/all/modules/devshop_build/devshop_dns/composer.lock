@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "6f83362aedc4dc7d2e8bc6d9de4597a4",
+    "content-hash": "6e65d78cfbe1cea8d06f39de9f70cb54",
+    "packages": [
+        {
+            "name": "jdubreville/dnsimple",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jdubreville/dnsimple_api_client_php.git",
+                "reference": "0313c0b17a29b0879d0229678ef0b4f315e5cb71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jdubreville/dnsimple_api_client_php/zipball/0313c0b17a29b0879d0229678ef0b4f315e5cb71",
+                "reference": "0313c0b17a29b0879d0229678ef0b4f315e5cb71",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "jdubreville\\dnsimple\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Dubreville",
+                    "email": "jdubreville@freerentalsite.com"
+                }
+            ],
+            "description": "PHP Client for dnsimple REST API.",
+            "homepage": "https://github.com/jdubreville/dnsimple_api_client_php",
+            "time": "2015-06-19 17:35:02"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "jdubreville/dnsimple": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

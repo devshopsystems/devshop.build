@@ -17,6 +17,7 @@ function devshop_servers_user_default_permissions() {
       'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
       'devshop user' => 'devshop user',
+      'server user' => 'server user',
     ),
     'module' => 'node',
   );
@@ -58,6 +59,7 @@ function devshop_servers_user_default_permissions() {
     'roles' => array(
       'Drupal Administrator' => 'Drupal Administrator',
       'administrator' => 'administrator',
+      'server user' => 'server user',
     ),
     'module' => 'node',
   );

@@ -29,40 +29,29 @@ function devshop_servers_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Header: CSS */
+  /* Header: Header */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['ui_name'] = 'CSS';
+  $handler->display->display_options['header']['area']['ui_name'] = 'Header';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<style>
-/** HACK IT IN! **/
-.btn-server-dashboard {
-    width: 18em;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.btn-server-dashboard i.fa {
-  margin-left: -.5em;
-  margin-right: .5em;
-}
-.btn-group-server .btn {
-    max-height: 4em;
-}
-</style>
-
-<a href="/node/add/server"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/server?organization=!1" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i> Add Server</a>';
   $handler->display->display_options['header']['area']['format'] = 'unfiltered';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No organization servers.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['content'] = '<div class="well well-lg">
+  This organization has no servers.
+</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'unfiltered';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['devshop_organization_target_id']['id'] = 'devshop_organization_target_id';
   $handler->display->display_options['relationships']['devshop_organization_target_id']['table'] = 'og_membership';
@@ -183,6 +172,16 @@ function devshop_servers_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<div class=\'well well-lg\'>
+You do not have access to any servers.
+</div>';
+  $handler->display->display_options['empty']['area']['format'] = 'unfiltered';
   $handler->display->display_options['path'] = 'servers';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Servers';
@@ -213,6 +212,84 @@ function devshop_servers_views_default_views() {
     ),
   );
   $export['devshop_servers'] = $view;
+
+  $view = new view();
+  $view->name = 'server_types';
+  $view->description = 'The page where people can see what to buy.';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Server Types';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Server Types';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer hosting';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/node/add/server-type">Add new server type</a>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Monthly Cost */
+  $handler->display->display_options['fields']['field_monthly_cost']['id'] = 'field_monthly_cost';
+  $handler->display->display_options['fields']['field_monthly_cost']['table'] = 'field_data_field_monthly_cost';
+  $handler->display->display_options['fields']['field_monthly_cost']['field'] = 'field_monthly_cost';
+  $handler->display->display_options['fields']['field_monthly_cost']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'server_type' => 'server_type',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'buy';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $export['server_types'] = $view;
 
   return $export;
 }

@@ -46,3 +46,52 @@ function devshop_organizations_node_insert($node) {
     $node->devshop_content_access = $project_node->devshop_content_access;
   }
 }
+
+/**
+ * Implements hook_menu().
+ */
+function devshop_organizations_menu() {
+  $items['access_denied'] = array(
+    'page callback' => 'devshop_build_403',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function devshop_organizations_menu_alter(&$items) {
+  $items['node/%node/group']['type'] = MENU_CALLBACK;
+}
+
+/**
+ * Access denied page.
+ *
+ * @return string
+ */
+function devshop_build_403() {
+
+  drupal_set_title(t('Access Denied!'));
+
+  $html = <<<HTML
+
+  <h2>However...</h2>
+  <p>DevShop.Build is in private alpha.  Would you like to sign up?</p>
+  <p><a href="/contact" class="btn btn-large btn-success">Request Early Access</a></p>
+HTML;
+
+  return $html;
+
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_organizations_form_organization_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['revision_information']['#access'] = FALSE;
+  $form['group_access']['#access'] = FALSE;
+  $form['options']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
+}

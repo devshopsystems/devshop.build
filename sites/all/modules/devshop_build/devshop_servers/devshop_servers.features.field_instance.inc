@@ -10,6 +10,52 @@
 function devshop_servers_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-server-field_monthly_cost'.
+  $field_instances['node-server-field_monthly_cost'] = array(
+    'bundle' => 'server',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The actual monthly cost to charge this customer.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_monthly_cost',
+    'label' => 'Monthly Cost',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '$',
+      'suffix' => ' per month',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 33,
+    ),
+  );
+
   // Exported field_instance: 'node-server-field_root_server_user'.
   $field_instances['node-server-field_root_server_user'] = array(
     'bundle' => 'server',
@@ -19,7 +65,7 @@ function devshop_servers_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".',
+    'description' => 'The user that DevShop.Build will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -51,6 +97,49 @@ function devshop_servers_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-server-field_server_type'.
+  $field_instances['node-server-field_server_type'] = array(
+    'bundle' => 'server',
+    'default_value' => array(
+      0 => array(
+        'target_id' => 15338,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Choose the size of your server. DevShop Dedicated servers are bare metal: no virtualization. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_server_type',
+    'label' => 'Server Type',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 31,
     ),
   );
 
@@ -163,11 +252,154 @@ function devshop_servers_field_default_field_instances() {
     'widget_type' => 'options_select',
   );
 
+  // Exported field_instance: 'node-server_type-body'.
+  $field_instances['node-server_type-body'] = array(
+    'bundle' => 'server_type',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => TRUE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-server_type-field_monthly_cost'.
+  $field_instances['node-server_type-field_monthly_cost'] = array(
+    'bundle' => 'server_type',
+    'default_value' => array(
+      0 => array(
+        'value' => 100,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The default monthly cost for a server of this type.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_monthly_cost',
+    'label' => 'Monthly Cost',
+    'required' => 1,
+    'settings' => array(
+      'max' => '',
+      'min' => 0,
+      'prefix' => '$',
+      'suffix' => ' per month',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-server_type-field_server_type_code'.
+  $field_instances['node-server_type-field_server_type_code'] = array(
+    'bundle' => 'server_type',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_server_type_code',
+    'label' => 'Server Type Code',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'safeword',
+      'settings' => array(),
+      'type' => 'safeword_machine_name_only',
+      'weight' => 1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Body');
+  t('Choose the size of your server. DevShop Dedicated servers are bare metal: no virtualization. ');
   t('Group content visibility');
+  t('Monthly Cost');
   t('Root Server User');
-  t('The user that DevShop.Support will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
+  t('Server Type');
+  t('Server Type Code');
+  t('The actual monthly cost to charge this customer.');
+  t('The default monthly cost for a server of this type.');
+  t('The user that DevShop.Build will use to login with.  May be "root" or another user with passwordless-sudo access like "ubuntu".');
   t('URL');
 
   return $field_instances;

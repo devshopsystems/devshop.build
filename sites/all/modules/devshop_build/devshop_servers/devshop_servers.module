@@ -104,54 +104,141 @@ function devshop_servers_form_server_node_form_alter(&$form, &$form_state, $form
   // Disable fields
   $form['human_name']['#access'] = FALSE;
 
-  // Hide IP address form on server create.
-  if (!isset($form['#node']->nid)){
-    $form['ips_wrapper']['#access'] = FALSE;
-  }
-
+  // Hide IP address and root user forms unless user selects private server.
+  $private_server_states = array(
+    'visible' => array(
+      ':input[name="field_server_type[und]"]' => array('value' => 16129),
+    ),
+  );
   $form['field_url']['#access'] = FALSE;
-  $form['field_root_server_user']['#access'] = FALSE;
+  $form['field_root_server_user']['#states'] = $private_server_states;
+  $form['field_root_server_user']['#weight'] = 50;
+  $form['ips_wrapper']['#states'] = $private_server_states;
+  $form['ips_wrapper']['#weight'] = 50;
+  $form['ips_wrapper']['#type'] = 'container';
+
+  $form['ips_wrapper']['new_ip_addresses'][0]['#title'] = t("Your server's public IP address.");
+  $form['ips_wrapper']['ip_addresses'][0]['#title'] = t("Your server's public IP address.");
+  $form['ips_wrapper']['ip_addresses'][0]['#description'] = t("Enter your server's public IP address. We will create the initial DNS records for you.");
+  $form['ips_wrapper']['new_ip_addresses'][0]['#description'] = t("Enter your server's public IP address. We will create the initial DNS records for you.");
+
+  unset($form['ips_wrapper']['new_ip_addresses'][1]);
+  unset($form['ips_wrapper']['new_ip_addresses'][2]);
+
+
+  // Show the SSH key for the server
+  $form['ssh_key'] = array(
+    '#type' => 'fieldset',
+    '#weight' => 50,
+    '#states' => $private_server_states,
+    'key' => array(
+      '#markup' => t('To setup a Private Dedicated server, you must grant access to our public key: ') . devshop_get_ssh_key_modal(),
+    ),
+  );
 
   // @TODO: Test that content privacy is still saved.
   $form['group_content_access']['#access'] = FALSE;
 
-  $form['services_tabs']['#weight'] = 10;
+  $form['services_tabs']['#weight'] = 70;
+  $form['services']['#access'] = user_access('administer server');
 
-  // Alter softlayer options to limit to what we want
+  // Since we can't hide fieldsets, we'll hide the fields, i guess. This is admins only, anyway.
+  $children = element_children($form['services']);
+  foreach (element_children($form['services']) as $i) {
+    $form['services'][$i]['type']['#states'] = array(
+      'visible' => array(
+        ':input[name="field_server_type[und]"]' => array('value' => '_none'),
+      ),
+    );
+  }
 
-  
-    // If Issue doesn't get in, we can alter ourselves. https://www.drupal.org/node/2714539
-//  // re-order some things
-//  $form['services_tabs'] = array(
-//    '#type' => 'vertical_tabs',
-//  );
-//
-//  foreach (element_children($form['services']) as $i) {
-//    $form['services'][$i]['#type'] = 'fieldset';
-//    $form['services'][$i]['#group'] = 'services_tabs';
-//    $form['services'][$i]['#collapsible'] = TRUE;
-//    $form['services'][$i]['#collapsed'] = TRUE;
-//    $form['services'][$i]['#prefix'] = '';
-//    $form['services'][$i]['#suffix'] = '';
-//  }
-//  dsm($form);
+  $form['services_note'] = array(
+    '#access' => user_access('administer server'),
+    '#type' => 'fieldset',
+    'note' => array(
+      '#markup' => '<div class="alert alert-warning">' . t('Service configuration disabled when Server Type is selected.  Select "N/A" to manually choose services.') . '</div>',
+    ),
+    '#weight' => 69,
+    '#states' => array(
+      'invisible' => array(
+        ':input[name="field_server_type[und]"]' => array('value' => '_none'),
+      ),
+    )
+  );
 
-//  $form['visibility'] = array(
-//    '#type' => 'vertical_tabs',
-//    '#attached' => array(
-//      'js' => array(drupal_get_path('module', 'block') . '/block.js'),
-//    ),
-//  );
-//
-//  // Per-path visibility.
-//  $form['visibility']['path'] = array(
-//    '#type' => 'fieldset',
-//    '#title' => t('Pages'),
-//    '#collapsible' => TRUE,
-//    '#collapsed' => TRUE,
-//    '#group' => 'visibility',
-//    '#weight' => 0,
-//  );
+  if (empty($form['#node']->nid)) {
+
+    foreach ($form['field_server_type']['und']['#options'] as $nid => &$label) {
+
+      // Load the node and it's teaser for display.
+      $node = node_load($nid);
+      if (!empty($node)) {
+        $view = node_view($node, 'full');
+        $view['#theme'] = '';
+        hide($view['links']);
+        $label = '<h3>' . $node->title . '</h3>';
+        $label .= render($view);
+      }
+    }
+
+    // Hide "N/A" option for non-admins.
+    if (!user_access('administer server')) {
+      unset($form['field_server_type']['und']['#options']['_none']);
+    }
+
+    // Hide "amount" field.
+    $form['field_monthly_cost']['#access'] = user_access('administer server');
+
+    // Add our own validator
+    array_unshift($form['#validate'], 'devshop_servers_server_node_form_validate');
+  }
+  else {
+    // You can't change a server type once it's created.
+    $form['field_server_type']['#access'] = FALSE;
+  }
+
+  // Allow author to be set.
+  $form['author']['#access'] = user_access('administer nodes');
+}
+
+/**
+ * Validate hook.
+ *
+ * @param $form_state
+ * @param $form
+ */
+function devshop_servers_server_node_form_validate($form, &$form_state) {
+
+  // Load the machine name for the chosen server type.
+  $server_type_node = node_load($form_state['values']['field_server_type']['und'][0]['target_id']);
+  $build_server_type = $server_type_node->field_server_type_code['und'][0]['machine'];
+
+  switch ($build_server_type) {
+    case 'mini':
+    case 'mega':
+      // Set provider type to packet.
+      form_set_value($form['services']['provider']['type'], 'packet', $form_state);
+
+      // Set plan based on server type.
+      $plan = ($build_server_type == 'mini')? 'baremetal_0': 'baremetal_1';
+      form_set_value($form['services']['provider']['packet']['provider_options']['plan'], $plan, $form_state);
+
+      // Using key to get the only available option at the moment.
+      $options = variable_get('aegir_cloud_packet_options', array());
+      form_set_value($form['services']['provider']['packet']['provider_options']['project'], key($options['projects']), $form_state);
+      form_set_value($form['services']['provider']['packet']['provider_options']['facility'], key($options['facilities']), $form_state);
+
+      // Set OS to ubuntu trusty
+      form_set_value($form['services']['provider']['packet']['provider_options']['os'], 'ubuntu_14_04', $form_state);
+      break;
+  }
+
+  // Set to DevMaster (for now)
+  form_set_value($form['services']['ansible_roles']['type'], 'devmaster', $form_state);
+
+  // Set the default monthly price from the server type.->field_monthly_cost['und'][0]['value']
+  $default_cost = $server_type_node->field_monthly_cost['und'][0]['value'];
+  form_set_value($form['field_monthly_cost']['und'][0]['value'], $default_cost, $form_state);
 
 
 }
@@ -175,33 +262,76 @@ function devshop_servers_title_element_validate($element, &$form_state, $form) {
  */
 function devshop_servers_form_devshop_project_create_step_git_alter(&$form, &$form_state, $form_id) {
 
-  // Create Project Wizard
-  // Add info about connecting to Repo
-  $form['connect'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Repository Access'),
-    '#collapsible' => FALSE,
-    '#collapsed' => FALSE,
-  );
-  $form['connect'] ['options'] = array(
-    '#theme' => 'item_list',
-    '#items' => array(
-      t('If your project is on GitHub, add the user !link. Grant "admin" access and devshopbot will create the webhook for you. (Not Required)', array(
-        '!link' => l( '<img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' .
-          t('devshopbot'), 'http://github.com/devshopbot',
-          array(
-            'html' => TRUE,
-            'attributes' => array(
-              'class' => 'label label-default',
-            ),
-          )
-        ),
-      )),
-      t('If your project is on Acquia or Pantheon, add the user !link', array(
-        '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
-      )),
-    ),
-  );
+  if (!empty(arg(3))) {
+    // Create Project Wizard
+    // Add info about connecting to Repo
+    $form['connect'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Repository Access'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+      '#description' => t('In order to launch copies of your website, devshop.build needs access to your source code.'),
+    );
+    $form['connect'] ['options'] = array(
+      '#theme' => 'item_list',
+      '#items' => array(
+        t('If your project is on GitHub, add the user !link. If you grant administrator access to devshopbot, will be able to create webhooks for you.', array(
+          '!link' => l( '<img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' .
+            t('devshopbot'), 'http://github.com/devshopbot',
+            array(
+              'html' => TRUE,
+              'attributes' => array(
+                'class' => 'label label-default',
+              ),
+            )
+          ),
+        )),
+        t('If your project is on Acquia or Pantheon, add the user !link', array(
+          '!link' => '<span class="label label-default"><img src="https://avatars3.githubusercontent.com/u/11931385?v=3&s=16">' . t('build@opendevshop.com') . '</span>'
+        )),
+        t('If your project is in a private git server, grant access to the devshop.build !modal', array(
+          '!modal' => devshop_get_ssh_key_modal(),
+        )),
+      ),
+    );
+  }
+}
+
+function devshop_get_ssh_key_modal() {
+
+  $ssh_key = variable_get('devshop_public_key', '');
+
+  return <<<HTML
+    <button type="button" class="btn label label-default" data-toggle="modal" data-target="#sshKeyModal">
+        <i class="fa fa-key"></i>
+        SSH Public Key
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="sshKeyModal" tabindex="-1" role="dialog" aria-labelledby="sshKeyModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="sshKeyModalLabel">
+                        DevShop.Build SSH Public Key
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <textarea rows="13" cols="80" onclick="this.select()">$ssh_key</textarea>
+                    <p>
+                      This SSH public key is used to clone your code. Make sure you have added this key to your repository.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+HTML;
 }
 
 /**
@@ -221,4 +351,16 @@ function devshop_servers_form_devshop_remotes_alias_add_form_alter(&$form, &$for
       t("If your site is on a private server, you can grant access to devshop.build's SSH key:"),
     ),
   );
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function devshop_servers_node_presave($node) {
+  if ($node->type == 'server' && $node->services['ansible_roles']->type == 'devmaster') {
+    $node->field_url['und'][0] = array(
+      'url' => 'http://' . $node->title,
+      'title' => t('Launch DevShop'),
+    );
+  }
 }

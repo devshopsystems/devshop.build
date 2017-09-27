@@ -1,0 +1,9 @@
+name = DevMaster Ansible Role
+description = Provides a "devmaster" server role to Aegir Ansible.
+package = Aegir Ansible
+dependencies[] = hosting_server
+dependencies[] = ansible_roles
+
+core = 7.x
+
+files[] = src/hostingService_ansible_roles_devmaster.php

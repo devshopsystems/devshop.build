@@ -8,3 +8,114 @@ function devshop_build_block_info_alter(&$blocks, $theme, $code_blocks) {
     $blocks['hosting']['hosting_queues_summary']['status'] = 0;
     $blocks['hosting']['hosting_supporting_aegir']['status'] = 0;
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function devshop_build_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_id == 'contact_site_form') {
+        drupal_set_title(t('Request Early Access'));
+
+        $form['subject'] = array(
+            '#type' => 'value',
+            '#value' => 'devshop.build alpha request'
+        );
+        $form['message']['#title'] = t('Describe your Projects');
+        $form['copy']['#access'] = FALSE;
+        $form['actions']['submit']['#value'] = t('Request Early Access');
+        $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
+    }
+
+    // Set organization on server node.
+    if ($form_id == 'server_node_form' && !empty($_GET['organization'])) {
+        // Default Organization when ?organization=1 is set.
+        $form['devshop_organization'][LANGUAGE_NONE][0]['default']['#default_value'] = array(
+          $_GET['organization'],
+        );
+    }
+
+    // Set organization when creating a project
+    if ($form_id == 'devshop_project_create_step_git') {
+
+        // If project node has not been set yet...
+        if (empty($form_state['project']->nid)) {
+            // Show the user a list of orgs to choose from.
+            if (empty(arg(3))) {
+
+                global $user;
+                $account = user_load($user->uid);
+                foreach ($account->field_user_organizations[LANGUAGE_NONE] as $data) {
+                    $node = node_load($data['target_id']);
+                    $image = array(
+                      'style_name' => 'icon',
+                      'path' => $node->field_logo['und'][0]['uri'],
+                      'alt' => $node->title,
+                      'title' => $node->title,
+                      'attributes' => array(
+                        'class' => 'pull-left',
+                      ),
+                    );
+
+                    $items[] = l(theme('image_style', $image) . ' &nbsp; ' . $node->title, "projects/add/git_url/{$node->nid}", array(
+                        'attributes' => array(
+                            'class' => array('list-group-item'),
+                        ),
+                        'html' => TRUE,
+                     ));
+                }
+
+                $form = array();
+                $form['start'] = array(
+                  '#type' => 'item',
+                  '#prefix' => '<div class="list-group">',
+                  '#title' => t('Choose the organization to create this project in:'),
+                  '#markup' => implode("\n", $items),
+                  '#suffix' => '</div>',
+                );
+            }
+            // If the NID is for a group, show it.
+            elseif ($group = node_load(arg(3))) {
+                if ($group->type != 'organization') {
+                    drupal_goto('projects/add/git_url');
+                }
+                $form['organization'] = array(
+                  '#type' => 'item',
+                  '#title' => t('Organization'),
+                  '#markup' => l($group->title, "node/{$group->nid}"),
+                  '#weight' => -1,
+                );
+                $form['organization_nid'] = array(
+                  '#type' => 'value',
+                  '#value' => $group->nid,
+                );
+
+                // Add submit to save the group
+                $form['#submit'][] = 'devshop_build_project_create_redirect';
+            }
+            else {
+                drupal_goto('projects/add/git_url');
+            }
+        }
+    }
+
+    // Default to selected organization when creating a project
+    $organization = arg(3);
+    if ($form_id == 'devshop_project_create_step_settings' && !empty($organization)) {
+        // Default Organization when ?organization=1 is set.
+        $form['devshop_organization'][LANGUAGE_NONE][0]['default']['#default_value'] = array(
+          $organization,
+        );
+    }
+}
+
+/**
+ * Custom form submit function for step one of projects.
+ * @param $from
+ * @param $form_state
+ * @throws \Exception
+ */
+function devshop_build_project_create_redirect(&$from, &$form_state) {
+    if ($form_state['values']['organization_nid']) {
+        $form_state['redirect'] = 'projects/add/settings/' . $form_state['values']['organization_nid'];
+    }
+}

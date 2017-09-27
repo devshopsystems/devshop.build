@@ -1,0 +1,73 @@
+.btn-member {
+    width: 100px;
+    height: 100px;
+}
+
+.btn-member i.fa {
+    margin-top: .35em;
+}
+
+.view-devshop-organization-members td {
+    padding: 0 1em 1em 0;
+    max-width: 100px;
+}
+
+.view-devshop-organization-members table {
+    padding-left: 1em;
+}
+
+.table-members {
+    width: auto;
+}
+
+.btn-server-dashboard {
+    width: 18em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.btn-server-dashboard i.fa {
+    margin-left: -.5em;
+    margin-right: .5em;
+}
+.btn-group-server .btn {
+    max-height: 4em;
+}
+
+.view-devshop-servers .btn-success {
+    margin: 0 0 10px 0;
+}
+.view-devshop-organization-projects .btn-success {
+    margin: 0 0 10px 0;
+}
+#hosting-site-info, #hosting-task-list {
+    width: 100%;
+    float: none;
+    margin: 0;
+}
+.node-type-server .panel-body .form-item {
+    margin-right: 2em;
+}
+
+.launch-devshop {
+    color: white !important;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.verify-button {
+    min-width: 15em;
+}
+.verify-button .visible {
+    display: inline;
+}
+.verify-button .visible-on-hover{
+    display: none;
+}
+
+.verify-button:hover .visible {
+    display: none;
+}
+.verify-button:hover .visible-on-hover{
+    display: inline;
+}

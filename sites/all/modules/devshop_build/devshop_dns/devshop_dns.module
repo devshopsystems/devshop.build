@@ -1,0 +1,90 @@
+<?php
+
+require_once(__DIR__ . '/vendor/autoload.php');
+
+use jdubreville\dnsimple\Client as DNSimpleAPI;
+
+
+/**
+ * Implements hook_node_update().
+ */
+function devshop_dns_node_update($node) {
+
+  // Lookup existing records.
+  $email = variable_get('dnsimple_email', '');
+  $token = variable_get('dnsimple_token', '');
+
+  // Don't do anything if token or email is empty.
+  if (empty($email) || empty($token)) {
+    return;
+  }
+
+  // Get API Client.
+  $client = new DNSimpleAPI($email, $token);
+
+  if ($node->type == 'server' && !empty($node->ip_addresses)) {
+    try {
+
+      // @TODO: Lookup existing records and remove them if they exist.
+
+      // Add a Domain Record
+      $ip = current($node->ip_addresses);
+      $client->domains('devshop.systems')->records()->create(array(
+        'name' => strtr($node->title, array('.devshop.systems' => '')),
+        'record_type' => 'A',
+        'content' => $ip,
+        'ttl' => 60,
+      ));
+
+      // If server is a devmaster server, save a wildcard record as well.
+      if ($node->services['ansible_roles']->type == 'devmaster') {
+        $client->domains('devshop.systems')->records()->create(array(
+          'name' => strtr('*' . $node->title, array('.devshop.systems' => '')),
+          'record_type' => 'A',
+          'content' => $ip,
+          'ttl' => 60,
+        ));
+      }
+
+      if (function_exists('drush_log')) {
+        drush_log(dt('DNS record saved.'), 'devshop_info');
+      }
+      else {
+        drupal_set_message(t('DNS record saved.'));
+      }
+    }
+    catch (Exception $e) {
+      watchdog('devshop_dns', $e->getMessage(), WATCHDOG_ERROR);
+
+      // Display the error message. Show a message if we get the "already exists" message.
+      if (strpos($e->getMessage(), 'already exists so it was ignored') === FALSE) {
+        drupal_set_message($e->getMessage(), 'error');
+      }
+    }
+  }
+
+  // When sites are updated, save their DNS record.
+  if ($node->type == 'site' && !empty($node->environment->ip_addresses)) {
+    try {
+
+      // @TODO: Lookup existing records and remove them if they exist.
+      // Add a Domain Record
+      $ip = current($node->environment->ip_addresses);
+      $client->domains('devshop.site')->records()->create(array(
+        'name' => strtr($node->title, array('.devshop.site' => '')),
+        'record_type' => 'A',
+        'content' => $ip,
+        'ttl' => 60,
+      ));
+
+    }
+    catch (Exception $e) {
+      watchdog('devshop_dns', $e->getMessage(), WATCHDOG_ERROR);
+
+      // Display the error message. Show a message if we get the "already exists" message.
+      if (strpos($e->getMessage(), 'already exists so it was ignored') === FALSE) {
+        drupal_set_message($e->getMessage(), 'error');
+      }
+    }
+  }
+}

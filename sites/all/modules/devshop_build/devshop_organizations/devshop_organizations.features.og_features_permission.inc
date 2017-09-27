@@ -33,7 +33,9 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:create server content'
   $permissions['node:organization:create server content'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:organization:delete any server content'
@@ -88,12 +90,22 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update any server content'
   $permissions['node:organization:update any server content'] = array(
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
+  );
+
+  // Exported og permission: 'node:organization:update devshop_content_access field'
+  $permissions['node:organization:update devshop_content_access field'] = array(
     'roles' => array(),
   );
 
   // Exported og permission: 'node:organization:update devshop_organization field'
   $permissions['node:organization:update devshop_organization field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:organization:update field_logo field'
@@ -105,7 +117,9 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update field_organization_name field'
   $permissions['node:organization:update field_organization_name field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
   );
 
   // Exported og permission: 'node:organization:update field_url field'
@@ -130,11 +144,6 @@ function devshop_organizations_og_features_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported og permission: 'node:organization:update devshop_content_access field'
-  $permissions['node:organization:update devshop_content_access field'] = array(
-    'roles' => array(),
-  );
-
   // Exported og permission: 'node:organization:update group_group field'
   $permissions['node:organization:update group_group field'] = array(
     'roles' => array(
@@ -144,12 +153,22 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:update own server content'
   $permissions['node:organization:update own server content'] = array(
+    'roles' => array(
+      'administrator member' => 'administrator member',
+    ),
+  );
+
+  // Exported og permission: 'node:organization:view devshop_content_access field'
+  $permissions['node:organization:view devshop_content_access field'] = array(
     'roles' => array(),
   );
 
   // Exported og permission: 'node:organization:view devshop_organization field'
   $permissions['node:organization:view devshop_organization field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:organization:view field_logo field'
@@ -163,7 +182,10 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:view field_organization_name field'
   $permissions['node:organization:view field_organization_name field'] = array(
-    'roles' => array(),
+    'roles' => array(
+      'administrator member' => 'administrator member',
+      'member' => 'member',
+    ),
   );
 
   // Exported og permission: 'node:organization:view field_url field'
@@ -178,11 +200,6 @@ function devshop_organizations_og_features_default_permissions() {
 
   // Exported og permission: 'node:organization:view group_access field'
   $permissions['node:organization:view group_access field'] = array(
-    'roles' => array(),
-  );
-
-  // Exported og permission: 'node:organization:view devshop_content_access field'
-  $permissions['node:organization:view devshop_content_access field'] = array(
     'roles' => array(),
   );
 
