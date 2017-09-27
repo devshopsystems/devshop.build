@@ -752,10 +752,10 @@ function boots_build_preprocess_page(&$vars){
 function boots_build_preprocess_node(&$vars) {
   global $user;
   if ($vars['node']->type == 'project') {
-    boots_preprocess_node_project($vars);
+    boots_build_preprocess_node_project($vars);
   }
   elseif ($vars['node']->type == 'task') {
-    boots_preprocess_node_task($vars);
+    boots_build_preprocess_node_task($vars);
   }
   elseif ($vars['node']->type == 'site') {
     if (!empty($vars['node']->environment)) {
