@@ -16,7 +16,9 @@ function oauth2_server_authorize_page() {
 
   // Save the parameters in session so that they can be fetched later.
   $parameters = drupal_get_query_parameters();
-  $_SESSION['oauth2_server_authorize'] = $parameters;
+  if (!empty($parameters['client_id']) || !empty($parameters['response_type'])) {
+    $_SESSION['oauth2_server_authorize'] = $parameters;
+  }
 
   // The user is not logged in. Redirect to login.
   if (!user_is_logged_in()) {
@@ -24,6 +26,11 @@ function oauth2_server_authorize_page() {
       'destination' => 'oauth2/authorize',
     );
     drupal_goto('user/login', array('query' => $query));
+  }
+  // If there isn't an OAuth2 authorization in progress, redirect to the front
+  // page and exit.
+  elseif (empty($_SESSION['oauth2_server_authorize'])) {
+    drupal_goto();
   }
 
   $request = new OAuth2\Request($_SESSION['oauth2_server_authorize']);
