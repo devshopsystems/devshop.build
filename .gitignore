@@ -5,3 +5,6 @@ sites/*/settings*.php
 sites/*/files
 sites/*/private
 sites/*/drushrc.php
+sites/all/drush/drushrc.php
+sites/sites.php
+sites/*/local.settings.php
