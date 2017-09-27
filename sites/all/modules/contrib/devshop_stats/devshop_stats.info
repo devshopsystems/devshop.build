@@ -1,9 +1,9 @@
 name = DevShop Stats
 description = Provides usage statistics for OpenDevShop on Drupal.org
 core = 7.x
-; Information added by Drupal.org packaging script on 2016-02-26
-version = "7.x-1.0-alpha1"
+; Information added by Drupal.org packaging script on 2017-09-26
+version = "7.x-1.00-rc3"
 core = "7.x"
 project = "devshop_stats"
-datestamp = "1456514651"
+datestamp = "1506452547"
 
