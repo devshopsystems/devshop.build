@@ -61,6 +61,10 @@
       <strong>Install Profile</strong>
       <small><?php print $project->install_profile ?></small>
     </li>
+    <li data-toggle="tooltip" data-placement="bottom" title="<?php print t('The source code for each environment will be placed into subfolders of this folder.');?>">
+      <strong>Base Path</strong>
+      <small><?php print $project->code_path ?></small>
+    </li>
 
     <!-- Drush Info -->
     <li class="pull-right">
@@ -145,10 +149,10 @@
       <li class="<?php print $float; ?>"><?php print $webhook_url; ?></li>
     <?php endif; ?>
     <?php endif; ?>
-
+    
     <?php // Extra items to allow modules to add things. ?>
     <?php foreach ($project_extra_items as $item): ?>
-    <li><?php print $item; ?></li>
+      <li><?php print $item; ?></li>
     <?php endforeach; ?>
 
   </ul>
@@ -173,11 +177,17 @@
 
     <?php endforeach; ?>
 
-  <?php if (user_access('create devshop-create task')): ?>
+  <?php if (drupal_valid_path("node/add/site/$project->name")): ?>
   <div class="placeholder add-project-button col-xs-12 col-sm-6 col-md-4 col-lg-3">
-    <a href="/hosting_confirm/<?php print $node->nid; ?>/project_devshop-create" class="btn btn-lg btn-success">
+    <a href="<?php print url("node/add/site/$project->name"); ?>" class="btn btn-lg btn-success">
       <i class="fa fa-plus-square"></i><br />
       <?php print t('Create New Environment'); ?></a>
   </div>
   <?php endif; ?>
+</div>
+
+<div class="drupal-content">
+  <?php
+    print render($content);
+  ?>
 </div>

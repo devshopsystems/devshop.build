@@ -6,15 +6,9 @@
     <div class="panel-heading">
       <h3 class="panel-title">
 
-        <?php if ($node->server_status == HOSTING_SERVER_ENABLED && $node->services['ansible_roles']->type == 'devmaster'): ?>
-          <a href="http://<?php print $node->title ?>" target="_blank" class="btn btn-primary btn-small launch-devshop"><img src="https://raw.githubusercontent.com/opendevshop/devshop/0.x/logo.png" width="32" height="32"> Launch this DevShop</a>
-
-        <?php else: ?>
-          <a class="btn btn-link" href="<?php print $node_url; ?>">
-            <?php print $node->title; ?>
-          </a>
-        <?php endif; ?>
-
+        <a class="btn btn-link" href="<?php print $node_url; ?>">
+          <?php print $node->title; ?>
+        </a>
         <div class="pull-right">
           <?php foreach ($node->ip_addresses as $ip): ?>
             <label class='label label-default'><?php print $ip; ?></label>
@@ -26,51 +20,24 @@
         </div>
       </h3>
     </div>
-      <?php hide($content['info']) ?>
+      <?php hide($content['info']['ip_addresses']) ?>
+      <?php hide($content['info']['status']) ?>
+      <?php hide($content['info']['verified']) ?>
+      <?php hide($content['tasks_view']) ?>
 
     <div class="panel-body">
-      <?php print render($content['devshop_organization']); ?>
-    </div>
-    <div class="panel-body">
-      <?php print render($content['ssh_access']); ?>
-    </div>
-    <div class="panel-body">
       <span class="pull-left">
-      <?php print render($content['info']['ansible_roles']); ?>
+      <?php print render($content['info']['verified']); ?>
       </span>
       <span class="pull-left">
         <?php print render($content['info']['status']); ?>
       </span>
     </div>
-
     <div class="panel-body">
-      <?php print render($content['verify_button']); ?>
+      <?php print render($content['tasks_view']); ?>
     </div>
-    <div class="panel-body tasks">
-      <?php print views_embed_view('hosting_task_list', 'page_contextual', $node->nid); ?>
-    </div>
-
-    <div class="panel-footer task-details">
-      <?php if (user_access('administer hosting')): ?>
-        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseLogs" aria-expanded="false" aria-controls="collapseLogs">
-          <i class="fa fa-list"></i> <?php print t('Details'); ?>
-        </button>
-        <div class="collapse" id="collapseLogs">
-          <div class="well">
-            <?php print render($content); ?>
-            <?php print render($content['info']); ?>
-          </div>
-        </div>
-      <?php endif; ?>
-      <?php if ($node->server_status != HOSTING_SERVER_DELETED && node_access('delete', $node)): ?>
-        <a href="<?php print url("hosting_confirm/{$node->nid}/server_delete", array(
-          'query' => array(
-            'token' => drupal_get_token($user->uid)
-          )
-        )); ?>" class="btn btn-danger pull-right">
-          <i class="fa fa-trash"></i> <?php print t('Destroy Server'); ?>
-        </a>
-      <?php endif; ?>
+    <div class="panel-body">
+       <?php print render($content); ?>
     </div>
   </div>
 </div>
