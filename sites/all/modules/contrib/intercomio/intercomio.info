@@ -8,9 +8,9 @@ dependencies[] = composer_manager
 
 files[] = src/IntercomioController.php
 
-; Information added by Drupal.org packaging script on 2015-12-04
+; Information added by Drupal.org packaging script on 2017-09-22
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "intercomio"
-datestamp = "1449257644"
+datestamp = "1506106446"
 
