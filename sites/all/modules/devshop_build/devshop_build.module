@@ -119,3 +119,12 @@ function devshop_build_project_create_redirect(&$from, &$form_state) {
         $form_state['redirect'] = 'projects/add/settings/' . $form_state['values']['organization_nid'];
     }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function devshop_build_form_site_node_form_alter(&$form, &$form_state, $form_id)
+{
+    $form['client']['#type'] = 'value';
+    $form['client']['#default_value'] = variable_get('devshop_build_force_client', 26);
+}
