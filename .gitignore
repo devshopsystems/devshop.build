@@ -8,3 +8,5 @@ sites/*/drushrc.php
 sites/all/drush/drushrc.php
 sites/sites.php
 sites/*/local.settings.php
+
+.idea
