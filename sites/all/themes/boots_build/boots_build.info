@@ -5,6 +5,7 @@ engine = phptemplate
 
 base theme = boots
 stylesheets[all][] = style.css
+stylesheets[all][] = icons.css
 
 ; Settings
 settings[toggle_logo] = 0

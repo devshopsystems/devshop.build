@@ -400,7 +400,7 @@ function boots_build_preprocess_environment(&$vars) {
  * $tasks = hosting_get_tasks('task_status', HOSTING_TASK_PROCESSING);
  * print boots_render_tasks($tasks);
  */
-function boots_render_tasks($tasks = NULL, $class = '', $actions = array(), $float = 'left'){
+function boots_build_render_tasks($tasks = NULL, $class = '', $actions = array(), $float = 'left'){
   global $user;
 
   if (is_null($tasks)){
@@ -590,7 +590,7 @@ function boots_build_preprocess_page(&$vars){
   }
 
   if (user_access('access task logs')){
-    $vars['tasks'] = boots_render_tasks();
+    $vars['tasks'] = boots_build_render_tasks();
   }
 
   // On any node/% page...

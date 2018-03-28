@@ -1,0 +1,32 @@
+.hybridauth-widget-wrapper {
+    float: right;
+}
+
+.hybridauth-icon
+{
+    background: none;
+    width: 64px;
+    height: 64px;
+    opacity: 1;
+}
+.hybridauth-icon:before {
+    font-family: 'FontAwesome';
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.hybridauth-github-hybridauth-32:before {
+    content: "\f09b";
+}
+
+.hybridauth-linkedin-hybridauth-32:before {
+    content: "\f0e1";
+}
+
+.hybridauth-twitter-hybridauth-32:before {
+    content: "\f099";
+}
+
+#user-login .form-actions {
+     clear: none;
+}
