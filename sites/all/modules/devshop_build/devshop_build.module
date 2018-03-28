@@ -127,4 +127,8 @@ function devshop_build_form_site_node_form_alter(&$form, &$form_state, $form_id)
 {
     $form['client']['#type'] = 'value';
     $form['client']['#default_value'] = variable_get('devshop_build_force_client', 26);
+
+    $form['db_server']['#type'] = 'value';
+    $form['db_server']['#value'] = variable_get('devshop_build_force_db_server', 38);
+    $form['db_server']['#default_value'] = variable_get('devshop_build_force_db_server', 38);
 }
