@@ -71,7 +71,7 @@ function intercomio_action_log_event($user, $context = array()) {
   $event_name = check_plain($context['intercomio_event_name']);
   $controller = intercomio_get_controller();
   if ($controller) {
-    $controller->createEvent($user, ['event_name' => $event_name]);
+    $controller->createEvent($user, array('event_name' => $event_name));
   }
 }
 
