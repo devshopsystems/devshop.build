@@ -14,6 +14,14 @@ function devshop_support_intercom_webhooks_setup_form() {
     '#markup' => t('Setup Intercom.io webhooks to receive data directly from intercom.'),
   );
 
+//  $client = intercomio_get_client();
+
+  new Guzzle
+  $response = $client->get('https://api.intercom.io/subscriptions/')->getResponse()->getBody();
+
+
+  dsm($response);
+
   return system_settings_form($form);
 
 }

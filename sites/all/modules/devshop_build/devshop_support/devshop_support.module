@@ -14,6 +14,12 @@ function devshop_support_menu() {
     'access callback' => TRUE,
   );
 
+  $items['intercom/webhook'] = array(
+    'page callback' => 'devshop_support_intercom_webhook',
+    'access callback' => TRUE,
+    'file' => 'devshop_support.webhook.inc',
+  );
+
   $items['user/%/support'] = array(
     'title' => t('Support Conversations'),
     'description' => 'My Profile',
@@ -30,6 +36,14 @@ function devshop_support_menu() {
     'page arguments' => array('devshop_support_intercom_webhooks_setup_form'),
     'access arguments' => array('access administration pages'),
     'file' => 'devshop_support.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/config/services/intercomio/subscriptions'] = array(
+    'title' => t('Subscriptions'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('devshop_support_intercom_conversations_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'devshop_support.conversations.inc',
     'type' => MENU_LOCAL_TASK,
   );
   return $items;
